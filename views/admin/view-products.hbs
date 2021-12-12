@@ -1,23 +1,28 @@
 <section>
   <div class="container col-md-8 mt-5">
-      <table class="table">
+    <div class="row">
+      <a href="/admin/add-product" class="btn btn-success ml-auto mt-2">Add Products</a>
+    </div>
+      <table class="table mt-5">
         <thead>
-          <tr>
-            <th scope="col">No</th>
+          <tr> 
+            
             <th scope="col">Name</th>
             <th scope="col">Category</th>
             <th scope="col">Price</th>
+            <th scope="col">Size</th>
             <th scope="col">Image</th>
           </tr>
         </thead>
         <tbody>
             {{#each products}}
           <tr>
-            <th scope="row">1</th>
-            <td>{{this.name}}</td>
-            <td>{{this.category}}</td>
-            <td>{{this.price}}</td>
-            <td> <img style="width: 60px; height:auto;" src="{{this.image}}" alt=""></td>
+            
+            <td>{{this.Name}}</td>
+            <td>{{this.Category}}</td>
+            <td>{{this.Price}}</td>
+            <td>{{this.Size}}</td>
+            <td> <img style="width: 60px; height:auto;" src="/product-images/{{this._id}}.jpg" alt=""></td>
             <td>
                 <button class="btn btn-primary mr-3">Edit</button>
                 <button class="btn btn-danger">Delete</button>
