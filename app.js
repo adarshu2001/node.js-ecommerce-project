@@ -9,7 +9,7 @@ var adminRouter = require('./routes/admin');
 const { engine : hbs } = require("express-handlebars");
 const fileUpload = require('express-fileupload')
 var db = require('./config/connection')
-
+// var mdb = require('mdb-ui-kit')
 var app = express();
 
 // view engine setup
@@ -21,9 +21,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use("/css",express.static(path.join(__dirname,"node_modules/mdb-ui-kit/css")));
-app.use("/js",express.static(path.join(__dirname,"node_modules/mdb-ui-kit/js")));
+// app.use("/css",express.static(path.join(__dirname,"node_modules/mdb-ui-kit/css")));
+// app.use("/js",express.static(path.join(__dirname,"node_modules/mdb-ui-kit/js")));
 app.use(fileUpload())
 
 db.connect((err)=>{

@@ -1,0 +1,318 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif
+}
+
+body {
+    background: white
+}
+
+/************Navbar**************/
+
+.navbar {
+    background: #131313
+}
+
+.nav-item::after {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 2px;
+    background: #fec400;
+    transition: 0.4s
+}
+
+.nav-item:hover::after {
+    width: 100%
+}
+
+.navbar-dark .navbar-nav .active>.nav-link,
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link.show,
+.navbar-dark .navbar-nav .show>.nav-link,
+.navbar-dark .navbar-nav .nav-link:focus,
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #fec400
+}
+
+.nav-link {
+    padding: 25px 5px;
+    transition: 0.2s
+}
+
+/************Navbar End**************/
+
+
+
+
+
+/**************  Login Form  **********/
+
+.wrapper {
+    max-width: 350px;
+    min-height: 500px;
+    margin: 80px auto;
+    padding: 40px 30px 30px 30px;
+    background-color: #ecf0f3;
+    border-radius: 15px;
+    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff
+}
+
+.logo {
+    width: 80px;
+    margin: auto
+}
+
+.logo img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0px 0px 3px #5f5f5f, 0px 0px 0px 5px #ecf0f3, 8px 8px 15px #a7aaa7, -8px -8px 15px #fff
+}
+
+.wrapper .name {
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: 1.3px;
+    padding-left: 10px;
+    color: #555
+}
+
+.wrapper .form-field input {
+    width: 100%;
+    display: block;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.2rem;
+    color: #666;
+    padding: 10px 15px 10px 10px
+}
+
+.wrapper .form-field {
+    padding-left: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff
+}
+
+.wrapper .form-field .fas {
+    color: #555
+}
+
+.wrapper .btn {
+    box-shadow: none;
+    width: 100%;
+    height: 40px;
+    background-color: #03A9F4;
+    color: #fff;
+    border-radius: 25px;
+    box-shadow: 3px 3px 3px #b1b1b1, -3px -3px 3px #fff;
+    letter-spacing: 1.3px
+}
+
+.wrapper .btn:hover {
+    background-color: #039BE5
+}
+
+.wrapper a {
+    text-decoration: none;
+    font-size: 0.8rem;
+    color: #03A9F4
+}
+
+.wrapper a:hover {
+    color: #039BE5
+}
+
+@media(max-width: 380px) {
+    .wrapper {
+        margin: 30px 20px;
+        padding: 40px 15px 15px 15px
+    }
+}
+
+/**************  Login Form End **********/
+
+
+
+
+
+
+
+
+/**************  signup Form  **********/
+
+.row {
+    width: 900px;
+    border: none;
+    border-radius: 0;
+    box-sizing: border-box
+}
+
+.lcol {
+
+    background: linear-gradient(to bottom, rgba(26, 111, 118, 1) 50%, rgba(40, 30, 101, 1) 100%, rgba(125, 185, 232, 1) 100%);
+    height: 550px;
+    padding: 0 35px
+}
+
+.rcol {
+    background: #fff;
+    padding: 80px;
+    height: 550px
+}
+
+span.txt {
+    color: #17C296
+}
+
+.greeting {
+    padding-top: 200px;
+    padding-right: 90px
+}
+
+h6.mt-3 {
+    padding-right: 115px
+}
+
+.footer {
+    margin-top: 220px
+}
+
+.footer span {
+    color: #B0A1E2;
+    font-size: 9px;
+    cursor: pointer
+}
+
+.fab {
+    color: #EDEDF5;
+    font-size: 10px;
+    margin-right: 20px;
+    padding-top: 3px;
+    cursor: pointer
+}
+
+h2.heading {
+    font-weight: bold
+}
+
+.form-control {
+    border: none;
+    border-radius: 0px;
+    border-bottom: 1px solid #F2F2F2
+}
+
+.form-control::placeholder {
+    font-size: 13px;
+    color: #C2C2CC
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-bottom: 1px solid #F2F2F2
+}
+
+.fone input {
+    padding-left: 20px
+}
+
+.fone {
+    position: relative
+}
+
+.fone .fas {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    padding: 8px 0px;
+    color: #C2C2CC;
+    font-size: 12px
+}
+
+.fone .image {
+    position: absolute;
+    left: 275px;
+    top: 0px;
+    cursor: pointer
+}
+
+.form-check-input {
+    margin-top: 10px
+}
+
+.form-check-label {
+    font-size: 9px;
+    color: #C2C2CC
+}
+
+.btn-success {
+    padding: 7px 40px   ;
+    background: #11C892;
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.btn-success:hover {
+    background: #11C892
+}
+
+.btn-success:focus {
+    box-shadow: none
+}
+
+u {
+    cursor: pointer
+}
+
+p.exist {
+    font-size: 13px;
+    color: #C2C2CC
+}
+
+p.exist a {
+    cursor: pointer;
+    color: #4529f6;
+    font-size: 13px;
+}
+
+@media screen and (max-width: 993px) {
+    .fone .image {
+        position: absolute;
+        left: 180px
+    }
+
+    .footer {
+        margin-top: 170px
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .row {
+        width: 450px
+    }
+
+    .rcol {
+        padding: 60px 180px 60px 60px
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .rcol {
+        padding: 60px 50px 60px 50px
+    }
+
+    .footer {
+        margin-top: 140px
+    }
+}
+
+
+
+/**************  signup  Form End **********/
