@@ -7,6 +7,7 @@ module.exports = {
 
 
     addProduct:(product)=>{
+        product.Price = parseInt(product.Price)
         return new Promise((resolve,reject)=>{
             db.get().collection(collection.PRODUCT_COLLECTION).insertOne(product).then((data)=>{
                 resolve(data.insertedId)

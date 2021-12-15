@@ -41,8 +41,102 @@ body {
     padding: 25px 5px;
     transition: 0.2s
 }
+.account{
+    color: #0082be;
+    font-size: 15px;
+    font-weight: bold;
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+}
+.account:hover{
+    background-color: #0082be;
+    color: white;
+}
 
 /************Navbar End**************/
+
+
+
+
+
+
+
+
+
+/* ***********Card Design************ */
+
+.container{
+    margin-top: 110px;
+}
+
+.card{
+    border: none;
+    outline: none;
+    background-color: #fff;
+    border-radius: 20px;
+    transition: transform .4s;
+    width: 215px;
+    height: 500px;
+    
+}
+.card:hover{
+    transform: translateY(-15px);
+    transition: transform .4s;
+}
+h5{
+    color: #039BE5;
+    padding-top: 10px;
+    font-weight: bold;
+    
+}
+.text1{
+    font-size: 18px;
+    color: #888585;
+    font-weight: 600;
+}
+.info{
+    line-height: 37px;
+}
+.cost span{
+    color: rgb(95, 94, 94);
+    font-weight: bold;
+    font-size: 20px;
+}
+.addtocart{
+    height: 2rem;
+    width: 8rem;
+    border: none;
+    border-radius: 15px;
+    outline: none;
+    font-weight: 400;
+    font-size: 15px;
+    background-color: #03A9F4;
+    color: whitesmoke;
+}
+.addtocart:hover{
+    background-color: #0082be;
+   
+}
+.inner{
+    overflow: hidden;
+}
+.inner img{
+    width: 12rem;
+    height: 13rem;
+    transition: all .8s ease;
+}
+.inner:hover img{
+    transform: scale(1.7);
+}
+
+
+/* ***********Card Design End************ */
+
+
+
+
 
 
 
