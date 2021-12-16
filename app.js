@@ -11,6 +11,7 @@ const fileUpload = require('express-fileupload')
 var db = require('./config/connection')
 // var mdb = require('mdb-ui-kit')
 var app = express();
+var session = require('express-session')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use("/css",express.static(path.join(__dirname,"node_modules/mdb-ui-kit/css")));
 // app.use("/js",express.static(path.join(__dirname,"node_modules/mdb-ui-kit/js")));
 app.use(fileUpload())
+app.use(session({secret:"#k#e#Y#",cookie:{maxAge:600000}}))
 
 db.connect((err)=>{
   if (err) console.log('Database is not connected'+ err);

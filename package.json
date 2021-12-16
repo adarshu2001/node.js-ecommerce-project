@@ -12,6 +12,7 @@
     "express": "~4.16.1",
     "express-fileupload": "^1.2.1",
     "express-handlebars": "^6.0.2",
+    "express-session": "^1.17.2",
     "hbs": "^4.2.0",
     "http-errors": "~1.6.3",
     "mdb-ui-kit": "^3.10.1",

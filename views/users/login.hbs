@@ -6,6 +6,9 @@
     />
   </div>
   <div class="text-center mt-4 name"> Login </div>
+      {{#if loginErr}}
+    <p class="err text-center text-danger font-weight-bold">{{loginErr}}</p>
+      {{/if}}
   <form action="/login" method="post" class="p-3 mt-3">
     <div class="form-field d-flex align-items-center">
       <span class="far fa-user"></span>

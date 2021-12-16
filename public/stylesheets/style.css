@@ -12,7 +12,8 @@ body {
 /************Navbar**************/
 
 .navbar {
-    background: #131313
+    background: #131313;  
+    
 }
 
 .nav-item::after {

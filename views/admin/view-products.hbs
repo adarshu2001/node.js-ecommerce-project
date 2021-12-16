@@ -24,8 +24,8 @@
             <td>{{this.Size}}</td>
             <td> <img style="width: 60px; height:auto;" src="/product-images/{{this._id}}.jpg" alt=""></td>
             <td>
-                <button class="btn btn-primary mr-3">Edit</button>
-                <button class="btn btn-danger">Delete</button>
+                <a class="btn btn-primary mr-3" href="">Edit</a>
+                <a class="btn btn-danger" href="/delete-product/{{this._id}}">Delect</a>              
                 </td>
           </tr>
           {{/each}}
