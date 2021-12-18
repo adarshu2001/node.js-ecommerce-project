@@ -68,9 +68,6 @@ body {
 
 /* ***********Card Design************ */
 
-.container{
-    margin-top: 110px;
-}
 
 .card{
     border: none;
@@ -345,7 +342,7 @@ h2.heading {
     color: #C2C2CC
 }
 
-.btn-success {
+.addbtn {
     padding: 7px 40px   ;
     background: #11C892;
     border: none;

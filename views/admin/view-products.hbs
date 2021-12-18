@@ -1,7 +1,7 @@
 <section>
   <div class="container col-md-8 mt-5">
     <div class="row">
-      <a href="/admin/add-product" class="btn btn-success ml-auto mt-2">Add Products</a>
+      <a href="/admin/add-product" class="btn btn-success  ml-auto mt-2">Add Products</a>
     </div>
       <table class="table mt-5">
         <thead>
@@ -24,8 +24,8 @@
             <td>{{this.Size}}</td>
             <td> <img style="width: 60px; height:auto;" src="/product-images/{{this._id}}.jpg" alt=""></td>
             <td>
-                <a class="btn btn-primary mr-3" href="">Edit</a>
-                <a class="btn btn-danger" href="/delete-product/{{this._id}}">Delect</a>              
+                <a class="btn btn-primary mr-3" href="admin/edit-product/{{this._id}}">Edit</a>
+                <a class="btn btn-danger" href="admin/delete-product/{{this._id}}" onclick="return confirm('Are You Want To Delet {{this.Name}} ?')">Delect</a>              
                 </td>
           </tr>
           {{/each}}
