@@ -405,6 +405,37 @@ p.exist a {
     }
 }
 
-
-
 /**************  signup  Form End **********/
+
+
+
+
+
+
+
+
+
+
+/* *********Cart Page*********** */
+
+.cart-page{
+    margin: 80px auto;
+}
+.cart-table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.cart-info{
+    display: flex;
+    flex-wrap: wrap;
+}
+.cart-head{
+    text-align: left;
+    padding: 7px;
+    color: white;
+    background: rgb(246, 95, 40);
+    font-weight: bold;   
+}
+
+
+/* *********Cart Page*********** */

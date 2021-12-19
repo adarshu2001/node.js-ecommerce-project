@@ -51,11 +51,12 @@ router.get('/logout',(req,res)=>{
   res.redirect('/')
 })
 router.get('/cart',verifyLogin,(req,res)=>{
-  res.render('users/cart')
+  res.render('users/cart',{user:req.session.user})
 })
 router.get('/add-to-cart/:id',(req,res)=>{
-  console.log('Add');
-  userHelpers.addToCart(req.params.id,req.session._id)
+  userHelpers.addToCart(req.params.id,req.session.user._id).then((response)=>{
+    res.json({status:true})
+  })
 })
 
 module.exports = router;
