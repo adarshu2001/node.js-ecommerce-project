@@ -436,6 +436,49 @@ p.exist a {
     background: rgb(246, 95, 40);
     font-weight: bold;   
 }
+.cart-remove{
+    width: 80px;
+    height: 30px;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    background: rgb(246, 95, 40);
+    text-align: center;
+    font-size: 400;
+   
+margin-top: 10px;}
+.cart-remove:hover{
+    background: rgb(243, 124, 73);
+}
+.cart-td{
+    padding: 10px 5px;
+}
+.cart-count{
+    padding-left: 15px;
+}
+.cart-item-count{
+    width: 25px;
+}
+.cart-img{
+    width: 110px;
+    height: 110px;
+    margin-right: 10px;
+}
+.total-price{
+    display: flex;
+    justify-content: flex-end;
+}
+.total-price table{
+    border-top: 3px solid rgb(246, 95, 40);
+    width: 25%;
+    min-width: 350px;
+}
+td:last-child{
+    text-align: right;
+}
+th:last-child{
+    text-align: right;
+}
 
 
 /* *********Cart Page*********** */

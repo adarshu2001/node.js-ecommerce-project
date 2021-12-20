@@ -1,27 +1,42 @@
 <div class="container">
-<div class="small-container cart-page">
+ <div class="small-container cart-page">
     <table class="cart-table">
         <tr>
             <th class="cart-head">Product</th>
             <th class="cart-head">Quantity</th>
             <th class="cart-head">Price</th>
         </tr>
-        <tr>
-            <td>
+        {{#each products}}
+        <tr>   
+            {{#each this.product}}       
+            <td class="cart-td">
                 <div class="cart-info">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRznElFCba6n_yj-g_zjGwbRI-rfcPTGKnFdQ&usqp=CAU" alt="">
+                    <img class="cart-img"  src="product-images/{{this._id}}.jpg" alt="">
                     <div>
-                        <p>T Shirt</p>
-                        <small>Price : 100</small>
-                        <button>Remove</button>
+                        <p>{{this.Name}}</p>
+                        <small>Size : {{this.Size}}</small>
+                        <br>
+                        <button class="cart-remove">Remove</button>
                     </div>
                 </div>
             </td>
-            <td>
-                <button class="cart-item-count">-</button>2<button class="cart-item-count">+</button>
+             {{/each}} 
+            <td class="cart-count">
+                <button class="cart-item-count mr-2">-</button>{{this.quantity}}<button class="cart-item-count ml-2">+</button>
             </td>
-            <td>100</td>
+             {{#each this.product}}      
+            <td>{{this.Price}}</td>
+               {{/each}}  
         </tr>
+        {{/each}}
     </table>
-</div>
+    <div class="total-price">
+        <table>
+            <tr>
+                <td>Total : </td>
+                <td> Rs . 200</td>
+            </tr>
+        </table>
+    </div>
+ </div>
 </div>

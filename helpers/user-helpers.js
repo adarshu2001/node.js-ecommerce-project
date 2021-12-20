@@ -64,10 +64,8 @@ module.exports = {
                     }
                     ).then((response)=>{
                         resolve()
-                    })
-                
-                }
-               
+                    })            
+                }            
             }else{              
                 let cartObj = {
                     user:objectId(userId),
@@ -78,5 +76,43 @@ module.exports = {
                 })
             }
         })
+    },
+    getCartProduct:(userId)=>{
+        return new Promise(async(resolve,reject)=>{
+            let cartItems = await db.get().collection(collection.CART_COLLECTION).aggregate([
+                {
+                    $match:{user:objectId(userId)}
+                },
+                {
+                    $unwind:'$products'
+                },
+                {
+                    $project:{
+                        items:'$products.items',
+                        quantity:'$products.quantity'
+                    }
+                },
+                {
+                    $lookup:{
+                        from:collection.PRODUCT_COLLECTION,
+                        localField:'items',
+                        foreignField:'_id',
+                        as:'product'
+                    }
+                }                                                  
+            ]).toArray()
+            resolve(cartItems)
+        })
+    },
+    getCartCount:(userId)=>{     
+        return new Promise(async(resolve,reject)=>{
+            let count = 0
+            let cart = await db.get().collection(collection.CART_COLLECTION).findOne({user:objectId(userId)})
+            if (cart){
+                count = cart.products.length
+            }
+            resolve(count)
+        })
     }
+
 }
