@@ -7,26 +7,22 @@
             <th class="cart-head">Price</th>
         </tr>
         {{#each products}}
-        <tr>   
-            {{#each this.product}}       
+        <tr>              
             <td class="cart-td">
                 <div class="cart-info">
-                    <img class="cart-img"  src="product-images/{{this._id}}.jpg" alt="">
+                    <img class="cart-img"  src="product-images/{{this.product._id}}.jpg" alt="">
                     <div>
-                        <p>{{this.Name}}</p>
-                        <small>Size : {{this.Size}}</small>
+                        <p>{{this.product.Name}}</p>
+                        <small>Size : {{this.product.Size}}</small>
                         <br>
                         <button class="cart-remove">Remove</button>
                     </div>
                 </div>
-            </td>
-             {{/each}} 
+            </td>       
             <td class="cart-count">
-                <button class="cart-item-count mr-2">-</button>{{this.quantity}}<button class="cart-item-count ml-2">+</button>
-            </td>
-             {{#each this.product}}      
-            <td>{{this.Price}}</td>
-               {{/each}}  
+                <button class="cart-item-count mr-2" onclick="changeQuantity('{{this._id}}','{{this.product._id}}',-1)">-</button>{{this.quantity}}<button class="cart-item-count ml-2" onclick="changeQuantity('{{this._id}}','{{this.product._id}}',1)">+</button>
+            </td>              
+            <td>{{this.product.Price}}</td>  
         </tr>
         {{/each}}
     </table>
