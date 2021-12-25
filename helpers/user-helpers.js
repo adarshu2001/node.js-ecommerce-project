@@ -49,7 +49,7 @@ module.exports = {
                 let proExist = userCart.products.findIndex(product => product.items==proId)             
                 if (proExist !=-1) {
                     db.get().collection(collection.CART_COLLECTION)
-                    .updateOne({'products.items':objectId(proId)},
+                    .updateOne({user:objectId(userId),'products.items':objectId(proId)},
                     {
                         $inc:{'products.$.quantity':1}
                     }
@@ -120,7 +120,6 @@ module.exports = {
         })
     },
     changeProductQuantity:(details)=>{
-        console.log(details);
         count = parseInt(details.count)
         return new Promise((resolve,reject)=>{
             db.get().collection(collection.CART_COLLECTION)
