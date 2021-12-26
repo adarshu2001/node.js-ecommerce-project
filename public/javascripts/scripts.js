@@ -1,5 +1,4 @@
 
-
 const viewImage = (event)=>{
     document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])    
 }
@@ -20,16 +19,42 @@ const addToCart=(proId)=>{
 }
 
 const changeQuantity=(cartId,proId,count)=>{
+    let quantity = parseInt(document.getElementById(proId).innerHTML)
     $.ajax({
         url:'/change-product-quantity',
         data:{
             cart:cartId,
             product:proId,
-            count:count
+            count:count,
+            quantity:quantity
         },
         method:'post',
         success:(response)=>{
-            alert(response)
+            if (response.removeProduct){
+                alert("Product is Removed From Cart")
+                location.reload()
+            }else{
+                document.getElementById(proId).innerHTML=quantity+count
+            }
+            
+        }
+    })
+}
+
+const removeProduct = (cartId,proId)=>{
+    $.ajax({
+        url:'/cart-product-remove',
+        data:{
+            cart:cartId,
+            product:proId
+        },
+
+        method:'post',
+        success:(response)=>{
+            if (response.CartProductremove){
+                alert("Product is Removed From Cart")
+                location.reload()
+            }
         }
     })
 }

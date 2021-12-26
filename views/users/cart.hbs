@@ -15,12 +15,12 @@
                         <p>{{this.product.Name}}</p>
                         <small>Size : {{this.product.Size}}</small>
                         <br>
-                        <button class="cart-remove">Remove</button>
+                        <button onclick="removeProduct('{{this._id}}','{{this.product._id}}')" class="cart-remove">Remove</button>
                     </div>
                 </div>
             </td>       
             <td class="cart-count">
-                <button class="cart-item-count mr-2" onclick="changeQuantity('{{this._id}}','{{this.product._id}}',-1)">-</button>{{this.quantity}}<button class="cart-item-count ml-2" onclick="changeQuantity('{{this._id}}','{{this.product._id}}',1)">+</button>
+                <button class="cart-item-count mr-2" onclick="changeQuantity('{{this._id}}','{{this.product._id}}',-1)">-</button><span id="{{this.product._id}}">{{this.quantity}}</span><button class="cart-item-count ml-2" onclick="changeQuantity('{{this._id}}','{{this.product._id}}',1)">+</button>
             </td>              
             <td>{{this.product.Price}}</td>  
         </tr>
