@@ -70,7 +70,7 @@ router.post('/change-product-quantity',(req,res)=>{
     res.json(response)
   })
 })
-router.post('/cart-product-remove/:id',(req,res)=>{
+router.post('/cart-product-remove',(req,res)=>{
   userHelpers.removeCartProduct(req.body).then((response)=>{
     res.json({response})
 
