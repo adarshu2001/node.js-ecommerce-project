@@ -479,6 +479,33 @@ td:last-child{
 th:last-child{
     text-align: right;
 }
+.order{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 70px;
+}
+.order a{
+    width: 105px;
+    height: 32px;
+    padding: 2px;
+    color: white;
+    background: rgb(246, 95, 40);
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: none;
+    border-radius: 5px;
+    box-shadow: none;
+    transition: all .5s ease;
+
+}
+.order a:hover{
+    background: rgb(243, 124, 73);
+    transform: scale(1.1);
+
+}
+
 
 
 /* *********Cart Page*********** */

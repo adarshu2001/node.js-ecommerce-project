@@ -72,7 +72,7 @@ router.post('/change-product-quantity',(req,res)=>{
 })
 router.post('/cart-product-remove',(req,res)=>{
   userHelpers.removeCartProduct(req.body).then((response)=>{
-    res.json({response})
+    res.json({status:true})
 
   })
 })

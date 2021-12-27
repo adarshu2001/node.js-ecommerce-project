@@ -50,7 +50,7 @@ const removeProduct = (cartId,proId)=>{
         },
         method:'post',
         success:(response)=>{
-            if (response.cartProductRemove){
+            if (response.status){
                 alert("Product is Removed From Cart")
                 location.reload()
             }
