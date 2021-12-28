@@ -1,0 +1,36 @@
+<section>
+    <div class="container mt-5">
+        <form action="" id="checkout-form">
+            <div class="row">
+                <div class="class col-md-6">
+                    <h2>Enter Delivery Details</h2><br>
+                    <div>
+                        <input class="form-control" type="text" id="address" name="address" placeholder="Address">
+
+                        <input class="form-control" type="text" id="address" name="address" placeholder="Mobile Number">
+
+                        <input class="form-control" type="text" id="address" name="address" placeholder="Pincode">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="container mt-5 ml-5 checkout">
+                        <h5>Total : Rs - {{total}}</h5>
+                        <hr>
+                        <div class="payment">
+                           <p>Payment</p>                       
+                            <label class="radio-inline">
+                                <input type="radio" name="payment-method" value="COD" checked>COD
+                            </label>
+                            <label class="radio-inline mt-2">
+                                <input type="radio" name="payment-method" value="ONLINE">Online Payment
+                            </label>
+                            <button class="btn btn-success float-right" type="submit">Checkout</button>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

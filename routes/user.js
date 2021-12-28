@@ -76,5 +76,9 @@ router.post('/cart-product-remove',(req,res)=>{
 
   })
 })
+router.get('/place-order',verifyLogin ,async(req,res)=>{
+  let total = await userHelpers.getTotalAmount(req.session.user._id)
+  res.render('users/place-order',{user:req.session.user,total})
+})
 
 module.exports = router;
