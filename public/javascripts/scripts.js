@@ -18,7 +18,7 @@ const addToCart=(proId)=>{
     })   
 }
 
-const changeQuantity=(cartId,proId,count)=>{
+const changeQuantity=(cartId,proId,userId,count)=>{
     let quantity = parseInt(document.getElementById(proId).innerHTML)
     $.ajax({
         url:'/change-product-quantity',
@@ -26,6 +26,7 @@ const changeQuantity=(cartId,proId,count)=>{
             cart:cartId,
             product:proId,
             count:count,
+            user:userId,
             quantity:quantity
         },
         method:'post',
@@ -35,6 +36,7 @@ const changeQuantity=(cartId,proId,count)=>{
                 location.reload()
             }else{
                 document.getElementById(proId).innerHTML=quantity+count
+                document.getElementById('totalsum').innerHTML=response.total
             }
             
         }

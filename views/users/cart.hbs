@@ -20,7 +20,9 @@
                 </div>
             </td>       
             <td class="cart-count">
-                <button class="cart-item-count mr-2" onclick="changeQuantity('{{this._id}}','{{this.product._id}}',-1)">-</button><span id="{{this.product._id}}">{{this.quantity}}</span><button class="cart-item-count ml-2" onclick="changeQuantity('{{this._id}}','{{this.product._id}}',1)">+</button>
+                <button class="cart-item-count mr-2" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)">-</button>
+                <span id="{{this.product._id}}">{{this.quantity}}</span>
+                <button class="cart-item-count ml-2" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">+</button>
             </td>              
             <td>{{this.product.Price}}</td>  
         </tr>
@@ -30,7 +32,7 @@
         <table>
             <tr>
                 <td>Total : </td>
-                <td> Rs . 200</td>
+                <td> Rs . <span id="totalsum">{{totalSum}}</span></td>
             </tr>
         </table>
     </div>
