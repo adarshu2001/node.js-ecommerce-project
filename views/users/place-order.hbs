@@ -7,9 +7,11 @@
                     <div>
                         <input class="form-control" type="text" id="address" name="address" placeholder="Address">
 
-                        <input class="form-control" type="text" id="address" name="address" placeholder="Mobile Number">
+                        <input class="form-control" type="text" id="mobile" name="mobile" placeholder="Mobile Number">
 
-                        <input class="form-control" type="text" id="address" name="address" placeholder="Pincode">
+                        <input class="form-control" type="text" id="pincode" name="pincode" placeholder="Pincode">
+
+                        <input class="form-control" type="text" id="" name="userId" value="{{user._id}}" hidden>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -21,6 +23,7 @@
                             <label class="radio-inline">
                                 <input type="radio" name="payment-method" value="COD" checked>COD
                             </label>
+                            <br>    
                             <label class="radio-inline mt-2">
                                 <input type="radio" name="payment-method" value="ONLINE">Online Payment
                             </label>
