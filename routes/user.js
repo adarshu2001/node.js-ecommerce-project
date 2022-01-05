@@ -1,6 +1,6 @@
 var express = require('express');
 const async = require('hbs/lib/async');
-const { response } = require('../app');
+const { response, render } = require('../app');
 var router = express.Router();
 const productHelpers = require('../helpers/product-helpers');
 const userHelpers = require('../helpers/user-helpers')
@@ -86,8 +86,16 @@ router.post('/place-order',async(req,res)=>{
   let products = await userHelpers.getCartProList(req.body.userId)
   let totalPrice = await userHelpers.getTotalAmount(req.body.userId)
   userHelpers.placeOrder(req.body,products,totalPrice).then((response)=>{
+    res.json({status:true})
 
   })
+})
+router.get('/order-success',(req,res)=>{
+  res.render('users/order-success',{user:req.session.user})
+})
+router.get('/orders',verifyLogin,async(req,res)=>{
+  let orders = await userHelpers.getUserOrders(req.session.user._id)
+  res.render('users/orders',{user:req.session.user,orders})
 })
 
 module.exports = router;

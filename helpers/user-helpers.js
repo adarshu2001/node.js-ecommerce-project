@@ -209,11 +209,12 @@ module.exports = {
                 paymentMethod:order['payment-method'],
                 products:products,
                 totalAmount:total,
-                status:status
+                status:status,
+                date:new Date()
             }
             db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj).then((response)=>{
                 db.get().collection(collection.CART_COLLECTION).deleteOne({user:objectId(order.userId)})
-
+                resolve()
             })
         })
 
@@ -222,6 +223,14 @@ module.exports = {
         return new Promise(async(resolve,reject)=>{
             let cart = await db.get().collection(collection.CART_COLLECTION).findOne({user:objectId(userId)})
             resolve(cart.products)
+        })
+    },
+    getUserOrders:(userId)=>{
+        return new Promise(async(resolve,reject)=>{
+            let orders = await db.get().collection(collection.ORDER_COLLECTION).find({user:objectId(userId)}).toArray()
+            console.log(orders);
+            resolve(orders)
+           
         })
     }
 
