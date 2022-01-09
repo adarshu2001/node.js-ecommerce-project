@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const async = require('hbs/lib/async')
 var objectId = require('mongodb').ObjectId
 const Razorpay = require('razorpay')
+const { resolve } = require('path')
 var instance = new Razorpay({
     key_id: 'rzp_test_r5p0n7ioSfr096',
     key_secret: 'Xn5Z95nZRUwtCubL4SdoAS58',
@@ -217,8 +218,7 @@ module.exports = {
                 date:new Date()
             }
             db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj).then((response)=>{
-                db.get().collection(collection.CART_COLLECTION).deleteOne({user:objectId(order.userId)})
-                console.log("order id :",response.insertedId);
+                db.get().collection(collection.CART_COLLECTION).deleteOne({user:objectId(order.userId)})            
                 resolve(response.insertedId)
             })
         })
@@ -232,8 +232,7 @@ module.exports = {
     },
     getUserOrders:(userId)=>{
         return new Promise(async(resolve,reject)=>{
-            let orders = await db.get().collection(collection.ORDER_COLLECTION).find({user:objectId(userId)}).toArray()
-            console.log(orders);
+            let orders = await db.get().collection(collection.ORDER_COLLECTION).find({user:objectId(userId)}).toArray()        
             resolve(orders)
            
         })
@@ -291,7 +290,37 @@ module.exports = {
                 
 
         })
+    },
+    verifyPayment:(details)=>{
+        return new Promise(async(resolve,reject)=>{
+           
+            const crypto = require('crypto')   
+            let hmac = crypto.createHmac('sha256', 'Xn5Z95nZRUwtCubL4SdoAS58');
+            hmac.update(details['payment[razorpay_order_id]']+'|'+details['payment[razorpay_payment_id]']);
+            hmac = hmac.digest('hex') 
+            if (hmac==details['payment[razorpay_signature]']){
+                resolve()
+            }else{
+                reject()
+            }
+        })
+    },
+    changePaymentStatus:(orderId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.ORDER_COLLECTION)
+            .updateOne({_id:objectId(orderId)},
+            {
+                $set:{
+                    status:'placed'
+                }
+            }
+            ).then(()=>{
+                resolve()
+            })
+        })
+
     }
+   
     
 
 }

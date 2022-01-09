@@ -1,4 +1,5 @@
 
+
 const viewImage = (event)=>{
     document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])    
 }
@@ -116,7 +117,15 @@ const verifyPayment = (payment,order)=>{
            payment,
             order
         },
-        method:'post'
+        method:'post',
+        success:(response)=>{
+            if (response.status){
+                location.href='/order-success'
+            }else{
+                alert("Payment Failed")
+            }
+        }
+     
     })
 }
 
