@@ -274,7 +274,7 @@ module.exports = {
         console.log("order:",orderId);
         return new Promise((resolve,reject)=>{
             var option = {
-                amount: total,
+                amount: total*100,
                 currency: "INR",
                 receipt: ""+orderId,
             };

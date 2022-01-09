@@ -88,9 +88,9 @@ const razorpayPayment = (order)=>{
         "image": "",
         "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         "handler": function (response){
-            alert(response.razorpay_payment_id);
-            alert(response.razorpay_order_id);
-            alert(response.razorpay_signature);
+            // alert(response.razorpay_payment_id);/
+            // alert(response.razorpay_order_id);
+            // alert(response.razorpay_signature);
 
             verifyPayment(response,order);
         },
