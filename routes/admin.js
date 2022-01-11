@@ -8,11 +8,10 @@ var router = express.Router();
 
 /* GET admin listing. */
 router.get('/', function(req, res, next) {
+  let admin = req.session.admin
   productHelpers.getAllProducts().then((products)=>{
-    res.render('admin/view-products',{products, admin:true})
-
+    res.render('admin/view-products',{products, admin:true,admin})
   })
-  
 });
 router.get('/add-product',(req,res)=>{
   res.render('admin/add-product')
@@ -52,6 +51,30 @@ router.post('/edit-product/:id',(req,res)=>{
       let image = req.files.Image
       image.mv('./public/product-images/'+id+'.jpg')
     }
+  })
+})
+router.get('/admin-login',(req,res)=>{
+  res.render('admin/login')
+})
+router.get('/admin-signup',(req,res)=>{
+  res.render('admin/signup')
+})
+router.post('/admin-signup',(req,res)=>{
+  productHelpers.adminDoSignup(req.body).then((response)=>{
+  
+  })
+
+})
+router.post('/admin-login',(req,res)=>{
+  productHelpers.adminDoLogin(req.body).then((response)=>{
+    if (response.status) {
+      req.session.admin = response.admin
+      req.session.adminLoggedIn = true
+      res.redirect('/admin')
+    }else{
+
+    }
+
   })
 })
 

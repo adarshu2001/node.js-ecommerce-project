@@ -9,7 +9,7 @@
   {{#if loginErr}}
     <p class="err text-center text-danger font-weight-bold">{{loginErr}}</p>
   {{/if}}
-  <form action="/login" method="post" class="p-3 mt-3">
+  <form action="/admin/admin-login" method="post" class="p-3 mt-3">
     <div class="form-field d-flex align-items-center">
       <span class="far fa-user"></span>
       <input type="email" name="Email" placeholder="User Email" />
@@ -23,6 +23,6 @@
   <div class="text-center fs-6">
     <a href="#">Forget password?</a>
     or
-    <a href="/signup">Sign up</a>
+    <a href="/admin/admin-signup">Sign up</a>
   </div>
 </div>
