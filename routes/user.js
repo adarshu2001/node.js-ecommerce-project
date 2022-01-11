@@ -5,7 +5,7 @@ var router = express.Router();
 const productHelpers = require('../helpers/product-helpers');
 const userHelpers = require('../helpers/user-helpers')
 const verifyLogin = (req,res,next)=>{
-  if (req.session.loggedIn) {
+  if (req.session.userLoggedIn) {
     next()
   }else{
     res.redirect('/login')
@@ -16,7 +16,7 @@ const verifyLogin = (req,res,next)=>{
 router.get('/',async function(req, res, next) {
   let user = req.session.user
   let cartCount = null
-  if (req.session.user){
+  if (req.session.userLoggedIn){
     cartCount = await userHelpers.getCartCount(req.session.user._id)
   }
   productHelpers.getAllProducts().then((products)=>{
@@ -24,41 +24,47 @@ router.get('/',async function(req, res, next) {
   })
 });
 router.get('/login',(req,res)=>{
-  if(req.session.loggedIn){
+  if(req.session.userLoggedIn){
     res.redirect('/')
   }
-  res.render('users/login',{"loginErr":req.session.loginErr})
+  res.render('users/login',{"loginErr":req.session.userLoginErr})
+  req.session.userLoginErr=false
 })
 router.get('/signup',(req,res)=>{
   res.render('users/signup')
 })
 router.post('/signup',(req,res)=>{
   userHelpers.doSignUp(req.body).then((response)=>{
-    req.session.loggedIn = true
     req.session.user=response
+    req.session.userLoggedIn = true
     res.redirect('/')
   })
 })
 router.post('/login',(req,res)=>{
   userHelpers.doLogin(req.body).then((response)=>{
-    if(response.status){
-      req.session.loggedIn = true
+    if(response.status){  
       req.session.user = response.user
+      req.session.userLoggedIn = true
       res.redirect('/')
     }else{
-      req.session.loginErr = "Invalid Email or Password"
+      req.session.userLoginErr = "Invalid Email or Password"
       res.redirect('/login')
     }
   })
 })
 router.get('/logout',(req,res)=>{
-  req.session.destroy()
+  req.session.user = null
+  req.session.userLoggedIn=false
   res.redirect('/')
 })
 router.get('/cart',verifyLogin,async(req,res)=>{
   let products = await userHelpers.getCartProduct(req.session.user._id)
-  let totalSum = await userHelpers.getTotalAmount(req.session.user._id)
-  res.render('users/cart',{user:req.session.user,products,totalSum})
+  if (products.length>0){
+     let totalSum = await userHelpers.getTotalAmount(req.session.user._id)  
+     res.render('users/cart',{user:req.session.user,products,totalSum})
+  }else{
+    res.render('users/cart-empty',{user:req.session.user})
+  }
 })
 router.get('/add-to-cart/:id',(req,res)=>{
   userHelpers.addToCart(req.params.id,req.session.user._id).then((response)=>{
@@ -84,6 +90,7 @@ router.get('/place-order',verifyLogin ,async(req,res)=>{
 })
 router.post('/place-order',async(req,res)=>{
   let products = await userHelpers.getCartProList(req.body.userId)
+  console.log("dot"+ products);
   let totalPrice = await userHelpers.getTotalAmount(req.body.userId)
   userHelpers.placeOrder(req.body,products,totalPrice).then((orderId)=>{
     if(req.body['payment-method']==='COD'){
