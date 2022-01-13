@@ -6,12 +6,77 @@
 }
 
 body {
-    background: white
+    width: 100%;
 }
 
 /************Navbar**************/
 
-.navbar {
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 80px;
+    background: #aacccc;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+}
+#header img {
+    width: 55px;
+    height: 60px;
+    
+}
+#nav1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#nav1 li{
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+#nav1 li a {
+    text-decoration: none;
+    font-size: 23px;
+    font-weight: 400;
+    color: #2b2c2c;
+    transition: 0.3s ease;
+}
+#nav1 li a:hover,
+#nav1 li a.active {
+    color: #039BE5;
+}
+#nav1 li a.active::after,
+#nav1 li a:hover::after {
+    content: "";
+    width: 30%;
+    height: 2px;
+    background: #039BE5;
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
+}
+#nav2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#nav2 li{
+    list-style: none;
+    padding: 0 40px;
+    position: relative;
+}
+#nav2 li a {
+    text-decoration: none;
+    font-size: 23px;
+    font-weight: 400;
+    color: #212324;
+    transition: 0.3s ease;
+}
+#nav2 li a:hover {
+    color: #039BE5;
+} 
+
+/* .navbar {
     background: #131313;  
     
 }
@@ -54,7 +119,7 @@ body {
 .account:hover{
     background-color: #0082be;
     color: white;
-}
+} */
 
 /************Navbar End**************/
 

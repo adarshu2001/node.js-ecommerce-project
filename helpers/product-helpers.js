@@ -67,14 +67,15 @@ module.exports = {
     },
     adminDoLogin:(adminData)=>{
         return new Promise(async(resolve,reject)=>{
-            let response={}
+            let logginStatus = false
+            let responseAdmin={}
             let admin = await db.get().collection(collection.ADMIN_COLLECTION).findOne({Email:adminData.Email})
             if (admin){
                 bcrypt.compare(adminData.Password,admin.Password).then((status)=>{
                     if (status){
-                       response.admin = admin 
-                       response.status = true
-                       resolve(response)
+                       responseAdmin.admin=admin 
+                       responseAdmin.status=true
+                       resolve(responseAdmin)
                        console.log("admin true");
                     }else{
                         resolve({status:false})

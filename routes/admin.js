@@ -8,10 +8,15 @@ var router = express.Router();
 
 /* GET admin listing. */
 router.get('/', function(req, res, next) {
-  let admin = req.session.admin
-  productHelpers.getAllProducts().then((products)=>{
-    res.render('admin/view-products',{products, admin:true,admin})
-  })
+  if (req.session.adminLoggedIn){
+    productHelpers.getAllProducts().then((products)=>{
+      res.render('admin/view-products',{products, admin:true})
+    })
+
+  }else{
+    res.redirect('/admin/admin-login')
+  }
+ 
 });
 router.get('/add-product',(req,res)=>{
   res.render('admin/add-product')
@@ -54,7 +59,10 @@ router.post('/edit-product/:id',(req,res)=>{
   })
 })
 router.get('/admin-login',(req,res)=>{
-  res.render('admin/login')
+  if (req.session.adminLoggedIn){
+    res.redirect('/admin/admin-login',{"logginErr":req.session.logginErr})
+  }
+  res.render('admin/admin-login')
 })
 router.get('/admin-signup',(req,res)=>{
   res.render('admin/signup')
@@ -66,16 +74,17 @@ router.post('/admin-signup',(req,res)=>{
 
 })
 router.post('/admin-login',(req,res)=>{
-  productHelpers.adminDoLogin(req.body).then((response)=>{
-    if (response.status) {
-      req.session.admin = response.admin
+  productHelpers.adminDoLogin(req.body).then((responseAdmin)=>{
+    if (responseAdmin.status) {
+      req.session.admin = responseAdmin.admin
       req.session.adminLoggedIn = true
+      console.log("This is Admin");
       res.redirect('/admin')
     }else{
-
+      req.session.logginErr = true
     }
-
   })
 })
+
 
 module.exports = router;
