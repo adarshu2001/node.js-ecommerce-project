@@ -16,8 +16,12 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 20px 80px;
-    background: #aacccc;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    background: rgb(226, 247, 253);
+    box-shadow: 0 5px 15px rgba(248, 57, 57, 0.06);
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    left: 0;
 }
 #header img {
     width: 55px;
@@ -133,8 +137,120 @@ body {
 
 /* ***********Card Design************ */
 
+#hero{  
+  background-image: url("/homecov-img/cover.jpg");  
+  height: 90vh;
+  width: 100%;
+  background-size: cover;
+  background-position: top 20% right 0;
+  padding: 0 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+#hero h4 {
+    font-size: 30px;
+    padding-left: 15px;
+    color: rgb(126, 211, 245);
+}
+#hero h2 {
+    font-size: 60px;
+    padding-left: 20px;
+    color: rgb(126, 211, 245);
+}
+#hero h1 {
+    font-size: 70px;
+    padding-left: 25px;
+    color: #8ccff3
 
-.card{
+}
+#hero p {
+    font-size: 20px;
+    padding-left: 80px;
+    color: #b1b1b1;
+}
+#hero button {
+    width: 120px;
+    height: 45px;
+    font-weight: bold;
+    margin-left: 200px;
+    margin-top: 20px;
+    background: white;
+    color:#6fc3f0;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+#hero button:hover{
+    color: white;
+    background: #6fc3f0;
+}
+#feature{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 80px 80px;
+}
+#feature .fe-box{
+    width: 180px;
+    text-align: center;
+    padding: 20px 15px;
+    box-shadow: 20px 20px 34px rgba(0, 0, 0, 0.03);
+    border: 1px solid #cce7d0;
+    border-radius: 4px;
+    margin: 15px 0;
+}
+#feature .fe-box:hover{
+    box-shadow: 10px 10px 54px rgba(70, 62, 221, 0.1);
+}
+#feature .fe-box img {
+    width: 125px;
+    height: 100px;
+    margin-bottom: 10px;
+    
+}
+#feature .fe-box h6 {
+    display: inline-block;
+    padding: 10px 8px 6px 8px;
+    line-height: 1;
+    border-radius: 4px;
+    color: #005d5d;
+    background-color: #fddde4;
+    font-weight: bold;
+}
+#feature .fe-box:nth-child(2) h6 {
+    background-color: #cdebbc;
+}
+#feature .fe-box:nth-child(3) h6 {
+    background-color: #d1e8f2;
+}
+#feature .fe-box:nth-child(4) h6 {
+    background-color: #cdd4f8;
+}
+#feature .fe-box:nth-child(5) h6 {
+    background-color: #f6dbf6
+}
+#feature .fe-box:nth-child(6) h6 {
+    background-color: #ffdfbf;
+}
+#products {
+    padding: 40px 80px;
+    text-align: center;
+}
+#products .pro {
+    width: 23%;
+    min-width: 250px;
+    padding: 10px 12px;
+    border: 1px solid #cee7d0;
+}
+#products .pro img{
+    width: 100%;
+    border-radius: 20px;
+}
+/* .card{
     border: none;
     outline: none;
     background-color: #fff;
@@ -192,7 +308,7 @@ h5{
 }
 .inner:hover img{
     transform: scale(1.7);
-}
+} */
 
 
 /* ***********Card Design End************ */
