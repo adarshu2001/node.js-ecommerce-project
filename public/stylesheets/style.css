@@ -16,7 +16,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 20px 80px;
-    background: rgb(226, 247, 253);
+    background: rgb(38, 97, 114);
     box-shadow: 0 5px 15px rgba(248, 57, 57, 0.06);
     z-index: 999;
     position: sticky;
@@ -42,7 +42,7 @@ body {
     text-decoration: none;
     font-size: 23px;
     font-weight: 400;
-    color: #2b2c2c;
+    color: #d3d6d6;
     transition: 0.3s ease;
 }
 #nav1 li a:hover,
@@ -73,7 +73,7 @@ body {
     text-decoration: none;
     font-size: 23px;
     font-weight: 400;
-    color: #212324;
+    color: #d3d6d6;
     transition: 0.3s ease;
 }
 #nav2 li a:hover {
@@ -239,17 +239,140 @@ body {
 #products {
     padding: 40px 80px;
     text-align: center;
+    background-color: rgb(241, 238, 238);
 }
-#products .pro {
-    width: 23%;
+#products .pro-container{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    flex-wrap: wrap;
+}
+#products h2 {
+    font-weight: bolder;
+    font-size: 46px;
+    line-height: 54px;
+    color: #191c1d;
+    background-color: rgb(155, 151, 151);
+}
+#products p {
+    font-size: 18px;
+    color: #5f5f5f;
+}
+#products .pro {    
+    width: 23%;  
     min-width: 250px;
     padding: 10px 12px;
     border: 1px solid #cee7d0;
+    border-radius: 25px;
+    background-color: rgb(240, 240, 240);
+    cursor: pointer;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+    margin: 15px 0;
+    position: relative;
+    transition: 0.3s ease;
+}
+#products .pro:hover{
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.08);  
 }
 #products .pro img{
-    width: 100%;
+    width: 85%;
     border-radius: 20px;
+    margin: 15px 10px;
 }
+#products .pro .des {
+    text-align: start;
+    padding: 10px 0;
+}
+#products .pro .des span {
+    color: #606063;
+    font-size: 20px;
+}
+#products .pro .des h5 {
+    padding-top: 10px;
+    color: #1a1a1a;
+    font-size: 20px;
+}
+#products .pro .des i {
+    font-size: 15px;
+    color: rgb(243, 181, 25 );
+}
+#products .pro .des h4 {
+    padding-top: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #535353;
+}
+#products .pro .whlist {
+    width: 45px;
+    height: 45px;
+    line-height: 40px;
+    border-radius: 50px;    
+    font-weight: 500;
+    color: #eb0c0c;
+    border: 1px solid #cce7d2; 
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+    cursor: pointer;
+}
+#products .pro .cart {
+    width: 45px;
+    height: 45px;
+    line-height: 40px;
+    border-radius: 50px;    
+    font-weight: 500;
+    color: #039BE5;
+    border: 1px solid #cce7d2;
+    position: absolute;
+    bottom: 20px;
+    right: 70px; 
+    cursor: pointer;
+}
+#banner {
+    margin: 80px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: url("/banner/banner.png");
+    width: 100%;
+    height: 40vh;
+    background-size: cover;
+    background-position: center;
+
+}
+#banner h4 {
+    font-size: 28px;
+    padding-bottom: 12px;
+    color: #c8cbcc;
+}
+#banner h2 {
+    font-size: 35px;
+    color: #c8cbcc;
+    padding-top: 10px;
+}
+#banner button{
+    width: 130px;
+    height: 50px;
+    margin-top: 10px;
+    background: white;
+    font-weight: bold;
+    color:#6fc3f0;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+#banner button:hover {
+    color: white;
+    background: #6fc3f0;
+    
+}
+
+     
+
+
 /* .card{
     border: none;
     outline: none;
