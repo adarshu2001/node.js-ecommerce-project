@@ -257,6 +257,7 @@ body {
 #products p {
     font-size: 18px;
     color: #5f5f5f;
+    text-decoration: underline; 
 }
 #products .pro {    
     width: 23%;  
@@ -353,13 +354,13 @@ body {
     padding-top: 10px;
 }
 #banner button{
-    width: 130px;
+    width: 135px;
     height: 50px;
     margin-top: 10px;
     background: white;
     font-weight: bold;
     color:#6fc3f0;
-    border-radius: 50px;
+    border-radius: 5px;
     border: none;
     cursor: pointer;
     transition: 0.4s ease;
@@ -368,6 +369,92 @@ body {
     color: white;
     background: #6fc3f0;
     
+}
+#sm-banner {
+    margin: 80px 0;
+    display: flex;
+    justify-content: space-around;
+}
+#sm-banner .banner-box {
+    position: relative;
+    padding-top: 50px;
+}
+#sm-banner .banner-box img {
+    width: 680px;
+    height: 50vh;
+  
+}
+#sm-banner .banner-condent {
+    position: absolute;
+    top: 15%;
+    left: 25px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;  
+}
+#sm-banner .banner-condent h4 {
+    color: #d1e8f2;
+    font-size: 25px;
+    font-weight: 500;
+}
+#sm-banner .banner-condent h2 {
+    color: #d1e8f2;
+    font-size: 25px;
+    font-weight: bold;
+}
+#sm-banner .banner-condent button{
+    width: 110px;
+    height: 45px;
+    font-size: 18px;
+    font-weight: 600;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    transition: 0.4s ease;
+
+}
+#sm-banner .banner-condent button:hover{
+    background-color: rgb(63, 145, 221);
+}
+
+
+#sm-banner .banner-condent2 {
+    position: absolute;
+    top: 25%;
+    left: 48%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;  
+}
+#sm-banner .banner-condent2 h4 {
+    color: #d1e8f2;
+    font-size: 25px;
+    font-weight: 500;
+}
+#sm-banner .banner-condent2 h2 {
+    color: #d1e8f2;
+    font-size: 25px;
+    font-weight: bold;
+}
+#sm-banner .banner-condent2 button{
+    width: 110px;
+    height: 45px;
+    font-size: 18px;
+    font-weight: 600;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    transition: 0.4s ease;
+
+}
+#sm-banner .banner-condent2 button:hover{
+    background-color: rgb(63, 145, 221);
 }
 
      
