@@ -451,13 +451,127 @@ body {
     color: white;
     cursor: pointer;
     transition: 0.4s ease;
-
 }
 #sm-banner .banner-condent2 button:hover{
     background-color: rgb(63, 145, 221);
 }
 
-     
+
+
+
+#lst-banner {
+    margin: 80px 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: #dbd8d8;
+}
+#lst-banner .img-banner {
+    position: relative;
+    padding-top: 50px;
+    margin: 30px 0; 
+}
+#lst-banner .img-banner img {
+    width: 400px;
+    height: 30vh;
+  
+}
+#lst-banner .banner-text {
+    position: absolute;
+    top: 60%;
+    left: 25px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;  
+}
+#lst-banner .banner-text h2 {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+#lst-banner .banner-text h3 {
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+#newsletter {
+    margin: 40px 0;
+    padding: 40px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: #041e42;
+    background-position: 20% 30%;
+}
+#newsletter h4 {
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+}
+#newsletter p {
+    font-size: 18px;
+    font-weight: 600;
+    color: #818ea0;
+}
+#newsletter p span {
+    color: #ffbd27;
+}
+#newsletter .form {
+    display: flex;
+    width: 40%;
+}
+#newsletter input {
+    height: 3.125rem;
+    padding: 0 1.25em;
+    font-size: 14px;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    outline: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+#newsletter button {
+    background-color: #088178;
+    color: white;
+    width: 100px;
+    white-space: nowrap;
+    border: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+#newsletter button:hover {
+    cursor: pointer;
+    background-color: #005d5d;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 
 
 /* .card{
