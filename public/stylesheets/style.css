@@ -24,7 +24,7 @@ body {
     left: 0;
 }
 #header img {
-    width: 55px;
+    width: 60px;
     height: 60px;
     
 }
@@ -545,6 +545,73 @@ body {
 #newsletter button:hover {
     cursor: pointer;
     background-color: #005d5d;
+}
+
+
+
+
+footer {
+    padding: 40px 80px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+}
+footer img {
+    margin-bottom: 30px;
+    width: 60px;
+    height: 60px;
+}
+footer .col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+footer h4 {
+    font-size: 18px;
+    padding-bottom: 20px;
+    font-weight: 700;
+}
+footer p {
+    font-size: 13px;
+    margin: 0 0 8px 0;
+} 
+footer a {
+    font-size: 16px;
+   text-decoration: none;
+   color: #222;
+   margin-bottom: 10px;
+   transition: 0.4s ease;
+}
+footer .social {
+    margin-top: 20px;
+
+}
+footer .social i {
+    color: #465b52;
+    padding-right: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.4s ease;
+}
+footer .install .row img {
+    width: 170px;
+    height: 60px;
+    border:  1px solid #088178;
+    border-radius: 6px;
+}
+footer .social i:hover {
+    color: #088178;
+    transform: scale(1.8); 
+}
+footer a:hover{
+    color: #088178; 
+    text-decoration: none; 
+    transform: scale(1.1);   
+}
+footer .copyright {
+    width: 100%;
+    text-align: center;
 }
 
 
