@@ -69,16 +69,104 @@ body {
     padding: 0 40px;
     position: relative;
 }
+#nav2 li span {
+    width: 25px;
+    height: 25px;
+    background: green;
+    position: absolute;
+    text-align: center; 
+    border-radius: 35px;
+    font-size: 18px;
+   
+    bottom: 20px;
+}
 #nav2 li a {
     text-decoration: none;
     font-size: 23px;
     font-weight: 400;
     color: #d3d6d6;
     transition: 0.3s ease;
+    position: absolute;
 }
 #nav2 li a:hover {
     color: #039BE5;
+}
+.userhead {
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+}
+.userhead .avtar-head{
+    text-decoration: none;
+    font-size: 23px;
+    font-weight: 400;
+    color: #d3d6d6;
+    transition: 0.3s ease;
+    
+}
+.userhead span {
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    color: #d3d6d6;
+    transition: 0.3s ease;
+}
+.userhead span:hover {
+    cursor: pointer;
+}
+.userhead .avtar-head:hover{
+    color: #039BE5;
+    cursor: pointer;
+
 } 
+.userhead .menu {
+    position: absolute;
+    align-items: center;
+    top:70px;
+    background-color:rgb(49, 41, 41);
+    width: 90px;
+    border-radius: 5px;
+    box-sizing: 0 5px 25px rgba(0,0,0,0.1) ;
+    transition: 0.5s;
+    visibility: hidden;
+    opacity: 0;
+
+}
+.userhead .menu.active{
+    visibility: visible;
+    opacity: 1;
+}
+.userhead .menu a {
+    color: white
+}
+.userhead .menu ul li{
+    list-style: none;
+    text-decoration: none;
+}
+/* .userhead .menu::before{
+    content: "";
+    position: absolute;
+    top: -10;
+    right: -10;
+    width: 15px;
+    height: 10px;
+    background-color:rgb(49, 41, 41);
+    transform: rotate(45deg);
+} */
+.userhead .menu ul li a {
+    display: inline-block;
+    font-weight: 400;
+    transition: 0.5s;       
+}
+.userhead .menu ul li a:hover{
+    color: #005d5d;
+    text-decoration: none;
+}
+
+
+
+
+
 
 /* .navbar {
     background: #131313;  
@@ -137,8 +225,12 @@ body {
 
 /* ***********Card Design************ */
 
+
+
+
+
 #hero{  
-  background-image: url("/homecov-img/cover.jpg");  
+  background-image: url("/homecover/cover.jpg");  
   height: 90vh;
   width: 100%;
   background-size: cover;
@@ -187,6 +279,8 @@ body {
     color: white;
     background: #6fc3f0;
 }
+
+
 #feature{
     display: flex;
     align-items: center;
@@ -205,6 +299,7 @@ body {
 }
 #feature .fe-box:hover{
     box-shadow: 10px 10px 54px rgba(70, 62, 221, 0.1);
+    cursor: pointer;
 }
 #feature .fe-box img {
     width: 125px;
@@ -277,6 +372,8 @@ body {
 }
 #products .pro img{
     width: 85%;
+    /* width: 350px;
+    height: 480px; */
     border-radius: 20px;
     margin: 15px 10px;
 }

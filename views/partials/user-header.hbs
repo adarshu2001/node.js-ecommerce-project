@@ -3,20 +3,51 @@
   <div>
     <ul id="nav1">
       <li><a class="active" href="">Home</a></li>
-      <li><a href="">Products</a></li>
-      <li><a href="">About</a></li>
-      <li><a href="">Contact</a></li>
+      <li><a href="">Mens</a></li>
+      <li><a href="">Womens</a></li>
+      <li><a href="">Childrens</a></li>
+      {{#if user}}
       <li><a href="">Orders</a></li>
+      {{/if}}
     </ul>
   </div>
   <div>
     <ul id="nav2">
       <li><a href=""><i class="far fa-heart"></i></a></li>
-      <li><a href=""><i class="far fa-user"></i></a></li>
-      <li><a href=""><i class="fas fa-shopping-cart"></i></a></li>
+      {{!-- <li><a href=""><i class="far fa-user"></i></a></li> --}}
+      <li><a href="/cart"><i class="fas fa-shopping-cart">
+        {{#if user}}
+        <span id="cart-count">{{cartCount}}</span>
+        {{/if}}
+        </i></a></li>  
     </ul>
   </div>
+
+  <div class="userhead"  onclick="menuToggle()" > 
+    {{#if user}}
+    <span> Hi, {{user.Name}}</span>
+        {{else}}
+      <i class="far fa-user avtar-head"></i>
+      {{/if}}
+      <div class="menu">
+        <ul>
+       {{#if user}}
+        <li><a href="">Profile</a></li>
+        <li><a href="">Settings</a></li>
+        <li><a href="/logout">Logout</a></li>
+        {{else}}
+         <li><a href="/login">Login</a></li>
+         {{/if}}
+        </ul>
+      </div>   
+  </div>
+      
 </section>
+ 
+
+
+
+
 {{!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark"> <button class="navbar-toggler" type="button" data-target="#navigation"> <span class="navbar-toggler-icon"></span> </button>
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav">

@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
  
 });
 router.get('/add-product',(req,res)=>{
-  res.render('admin/add-product')
+  res.render('admin/add-product',{admin:true})
 })
 router.post('/add-product',(req,res)=>{
   // console.log(req.body);
@@ -62,7 +62,7 @@ router.get('/admin-login',(req,res)=>{
   if (req.session.adminLoggedIn){
     res.redirect('/admin/admin-login',{"logginErr":req.session.logginErr})
   }
-  res.render('admin/admin-login')
+  res.render('admin/admin-login',{admin:true})
 })
 router.get('/admin-signup',(req,res)=>{
   res.render('admin/signup')

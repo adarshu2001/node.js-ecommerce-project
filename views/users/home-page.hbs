@@ -1,0 +1,358 @@
+{{!-- <section>
+  <div class="container mb-5 mt-5">
+    <div class="row">
+      {{#each products}}
+        <div class="col-12 col-md-4 col-lg-3 col-xl-3 p-3">
+          <div class="card mt-3">
+            <div class="product align-items-center p-3 text-center">
+              <div class="inner">
+                <img
+                  src="product-images/{{this._id}}.jpg"
+                  alt=""
+                  class="rounded"
+                />
+              </div>
+              <h5 class="mt-2">{{this.Name}}</h5>
+              <div class="mt-3 info">
+                <span class="text1 d-block mt-2">{{this.Category}}</span>
+                <span class="text1">Size - {{this.Size}}</span>
+              </div>
+              <div class="cost mt-3 text-dark">
+                <span>RS - {{this.Price}}</span>
+              </div>
+              <div class="p-3 text-center mt-3">
+                <button onclick="addToCart('{{this._id}}')" class="addtocart">Add To Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</section> --}}
+<section id="hero"> 
+      <h4>Amazing Offer</h4>
+      <h2>Amazing Price</h2>
+      <h1>On Each Products</h1>
+      <p>Save more with coupons & up to 70% off!! </p>
+      <button>Shop Now</button>
+</section>
+
+{{! <section id="sm-banner">
+  <div class="banner-box">
+    <img src="/banner/banner2.jpg" alt="">
+    <div class="banner-condent">
+    <h4>Crazy Deal !</h4>
+    <h2>BYE 1 GET 1 FREE</h2>
+    <h4>The best classic dress is on sales at YOK</h4>
+    <button>Learn More</button>
+    </div>
+  </div> }}
+
+<section id="feature">
+  <div class="fe-box">
+    <img src="/feature-img/free-shipping.png" alt="" />
+    <h6>Free Shipping</h6>
+  </div>
+  <div class="fe-box">
+    <img src="/feature-img/online.png" alt="" />
+    <h6>Online Orders</h6>
+  </div>
+  <div class="fe-box">
+    <img src="/feature-img/save.png" alt="" />
+    <h6>Save Money</h6>
+  </div>
+  <div class="fe-box">
+    <img src="/feature-img/promotion.png" alt="" />
+    <h6>Promotions</h6>
+  </div>
+  <div class="fe-box">
+    <img src="/feature-img/happy-sell.png" alt="" />
+    <h6>Happy Sell</h6>
+  </div>
+  <div class="fe-box">
+    <img src="/feature-img/support.png" alt="" />
+    <h6>24x7 support</h6>
+  </div>
+</section>
+
+<section id="products">
+  <h2>Featured Products</h2>
+  <p>Summer Collection New Morden Design</p>
+  <div class="pro-container">
+    {{#each products}}
+    <div class="pro">
+      <img  src="product-images/{{this._id}}.jpg" alt="" />
+      <div class="des">
+        <span>{{this.Name}}</span>
+        <h5>Cartoon Astronaut T-Shirt</h5>
+        <div class="star">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>Rs : 200</h4>
+      </div>
+      <button class="whlist"><i class="fas fa-heart"></i></button>
+      <button onclick="addToCart('{{this._id}}')" class="cart"><i class="fas fa-shopping-cart"></i></button>
+    </div>
+    {{/each}}
+  </div>
+</section>
+
+<section id="banner">
+  <h4>Repair Service</h4>
+  <h2>Save upto <span>70% off</span> - All t-shirts & Accessiories</h2>
+  <button>Explore More</button>
+</section>
+
+<section id="products">
+  <h2>New Arrivals</h2>
+  <p>Summer Collection New Morden Design</p>
+  <div class="pro-container">
+    <div class="pro">
+      <img src="/images/shirt.jpg" alt="" />
+      <div class="des">
+        <span>addidas</span>
+        <h5>Cartoon Astronaut T-Shirt</h5>
+        <div class="star">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>Rs : 200</h4>
+      </div>
+      <button class="whlist"><i class="fas fa-heart"></i></button>
+      <button class="cart"><i class="fas fa-shopping-cart"></i></button>
+    </div>
+    <div class="pro">
+      <img src="/images/shirt.jpg" alt="" />
+      <div class="des">
+        <span>addidas</span>
+        <h5>Cartoon Astronaut T-Shirt</h5>
+        <div class="star">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>Rs : 200</h4>
+      </div>
+      <button class="whlist"><i class="fas fa-heart"></i></button>
+      <button class="cart"><i class="fas fa-shopping-cart"></i></button>
+    </div>
+    <div class="pro">
+      <img src="/images/shirt.jpg" alt="" />
+      <div class="des">
+        <span>addidas</span>
+        <h5>Cartoon Astronaut T-Shirt</h5>
+        <div class="star">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>Rs : 200</h4>
+      </div>
+      <button class="whlist"><i class="fas fa-heart"></i></button>
+      <button class="cart"><i class="fas fa-shopping-cart"></i></button>
+    </div>
+    <div class="pro">
+      <img src="/images/shirt.jpg" alt="" />
+      <div class="des">
+        <span>addidas</span>
+        <h5>Cartoon Astronaut T-Shirt</h5>
+        <div class="star">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>Rs : 200</h4>
+      </div>
+      <button class="whlist"><i class="fas fa-heart"></i></button>
+      <button class="cart"><i class="fas fa-shopping-cart"></i></button>
+    </div>
+    <div class="pro">
+      <img src="/images/shirt.jpg" alt="" />
+      <div class="des">
+        <span>addidas</span>
+        <h5>Cartoon Astronaut T-Shirt</h5>
+        <div class="star">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>Rs : 200</h4>
+      </div>
+      <button class="whlist"><i class="fas fa-heart"></i></button>
+      <button class="cart"><i class="fas fa-shopping-cart"></i></button>
+    </div>
+    <div class="pro">
+      <img src="/images/shirt.jpg" alt="" />
+      <div class="des">
+        <span>addidas</span>
+        <h5>Cartoon Astronaut T-Shirt</h5>
+        <div class="star">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>Rs : 200</h4>
+      </div>
+      <button class="whlist"><i class="fas fa-heart"></i></button>
+      <button class="cart"><i class="fas fa-shopping-cart"></i></button>
+    </div>
+    <div class="pro">
+      <img src="/images/shirt.jpg" alt="" />
+      <div class="des">
+        <span>addidas</span>
+        <h5>Cartoon Astronaut T-Shirt</h5>
+        <div class="star">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>Rs : 200</h4>
+      </div>
+      <button class="whlist"><i class="fas fa-heart"></i></button>
+      <button class="cart"><i class="fas fa-shopping-cart"></i></button>
+    </div>
+    <div class="pro">
+      <img src="/images/shirt.jpg" alt="" />
+      <div class="des">
+        <span>addidas</span>
+        <h5>Cartoon Astronaut T-Shirt</h5>
+        <div class="star">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>Rs : 200</h4>
+      </div>
+      <button class="whlist"><i class="fas fa-heart"></i></button>
+      <button class="cart"><i class="fas fa-shopping-cart"></i></button>
+    </div>
+
+  </div>
+</section>
+
+<section id="sm-banner">
+  <div class="banner-box">
+    <img src="/banner/banner2.jpg" alt="" />
+    <div class="banner-condent">
+      <h4>Crazy Deal !</h4>
+      <h2>BYE 1 GET 1 FREE</h2>
+      <h4>The best classic dress is on sales at YOK</h4>
+      <button>Learn More</button>
+    </div>
+  </div>
+  <div class="banner-box">
+    <img src="/banner/banner3.jpg" alt="" />
+    <div class="banner-condent2">
+      <h4>Spring & Summer</h4>
+      <h2>Upcomming Season</h2>
+      <h4>The best classic dress is on<br /> sales at YOK</h4>
+      <button>Learn More</button>
+    </div>
+  </div>
+</section>
+
+<section id="lst-banner">
+  <div class="img-banner">
+    <img src="/bottom-banner/pic1.jpg" alt="" />
+    <div class="banner-text">
+      <h2>SEASONAL CHANGE</h2>
+      <h3>WINTER COLLECTION 50% OFF...</h3>
+    </div>
+  </div>
+  <div class="img-banner">
+    <img src="/bottom-banner/pic2.jpg" alt="" />
+    <div class="banner-text">
+      <h2>SEASONAL CHANGE</h2>
+      <h3>WINTER COLLECTION 50% OFF...</h3>
+    </div>
+  </div>
+  <div class="img-banner">
+    <img src="/bottom-banner/pic3.jpg" alt="" />
+    <div class="banner-text">
+      <h2>SEASONAL CHANGE</h2>
+      <h3>WINTER COLLECTION 50% OFF...</h3>
+    </div>
+  </div>
+</section>
+
+<section id="newsletter">
+  <div class="newstext">
+    <h4>Sign Up For Newsletters</h4>
+    <p>Get E-Mail Update about our latest shop and
+      <span>special offers</span></p>
+  </div>
+  <div class="form">
+    <input type="text" placeholder="Your email address" />
+    <button>Sign Up</button>
+  </div>
+</section>
+
+<footer>
+  <div class="col">
+    <img src="/logo-img/logo.png" alt="" />
+    <h4>Contact</h4>
+    <p><strong>Address :
+      </strong>adaaddadadaddaadaddadaddadadadadadadadadadaddadadadad</p>
+    <p><strong>Phone : </strong>(+91)00000000000,54863223654789865</p>
+    <p><strong>Hours : </strong>9:00AM - 6:00PM, Mon - Fri </p>
+    <div class="social">
+      <h4>Follow us</h4>
+      <div class="icon">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-youtube"></i>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <h4>About US</h4>
+    <a href="">About us</a>
+    <a href="">Delivery Information</a>
+    <a href="">Privacy Policy</a>
+    <a href="">Term & Condition</a>
+    <a href="">Contact Us</a>
+  </div>
+
+  <div class="col">
+    <h4>My Account</h4>
+    <a href="">sign In</a>
+    <a href="">View Cart</a>
+    <a href="">My Wishlist</a>
+    <a href="">Track My Order</a>
+    <a href="">Help</a>
+  </div>
+
+  <div class="col install">
+    <h4>Install App</h4>
+    <p>From App Store or Google Play</p>
+    <div class="row">
+      <img src="/pay/apple2.png" alt="" />
+      <img src="/pay/play.png" alt="" />
+    </div>
+    <p>Secure Payment Gateways</p>
+  </div>
+
+</footer>

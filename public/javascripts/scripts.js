@@ -3,7 +3,13 @@
 const viewImage = (event)=>{
     document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])    
 }
- 
+
+
+ const menuToggle=()=>{
+     const toggleMenu = document.querySelector('.menu')
+     toggleMenu.classList.toggle('active')
+
+ } 
 
 const addToCart=(proId)=>{
     $.ajax({
