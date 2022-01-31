@@ -59,6 +59,11 @@ body {
     bottom: -4px;
     left: 20px;
 }
+/* .second nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+} */
 #nav2 {
     display: flex;
     align-items: center;
@@ -159,8 +164,14 @@ body {
     transition: 0.5s;       
 }
 .userhead .menu ul li a:hover{
-    color: #005d5d;
+    color: #06b3b3;
     text-decoration: none;
+}
+#mobile {
+    display: none;
+}
+#close {
+    display: none;
 }
 
 
@@ -1178,3 +1189,61 @@ th:last-child{
 
 
 /* *********Cart Page*********** */
+
+
+
+
+
+/* ************Media Query**************** */
+
+@media (max-width:799px) {
+    #nav1 {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: fixed;
+        top: 0;
+        left: -300px;
+        height: 90vh;
+        width: 300px;
+        background-color: #E3E6f3;
+        box-shadow: 0 40px 60px rgba(0, 0, 0 ,0.01);
+        padding: 80px 0 0 20px;
+        transition: 0.4s;
+        
+    }
+    #nav1.active {
+        left: 0px;
+    }
+    #header img {
+        display: none;
+    }
+    #nav1 li {
+        margin-bottom: 28px;
+    }
+    #nav1 li a {
+        color: #1a1a1a;
+        font-weight: 600;
+    }
+    #mobile {
+        display: contents;
+    }
+    #mobile i {
+        color: #d3d6d6;
+        font-size: 23px;
+    }
+    #close {
+        display: flex;
+        position: absolute;
+        top: 25px;
+        bottom: 15px;
+        left: 40px;
+        color: #1a1a1a;
+        font-size: 28px;
+    }
+    
+}
+
+
+

@@ -1,51 +1,57 @@
 <section id="header">
-  <a href=""><img  src="/logo-img/logo.png" alt=""></a>
+  <div id="mobile">
+    <i id="bar" class="fas fa-bars"></i>
+  </div>
+
+  <a href="/"><img src="/logo-img/logo.png" alt="" /></a>
   <div>
     <ul id="nav1">
-      <li><a class="active" href="">Home</a></li>
+      <li><a class="active" href="/">Home</a></li>
       <li><a href="">Mens</a></li>
       <li><a href="">Womens</a></li>
       <li><a href="">Childrens</a></li>
       {{#if user}}
-      <li><a href="">Orders</a></li>
+        <li><a href="">Orders</a></li>
       {{/if}}
+      <a href="#" id="close"><i class="fas fa-times"></i></a>
     </ul>
   </div>
-  <div>
+  <div class="second nav">
     <ul id="nav2">
       <li><a href=""><i class="far fa-heart"></i></a></li>
-      {{!-- <li><a href=""><i class="far fa-user"></i></a></li> --}}
+      {{! <li><a href=""><i class="far fa-user"></i></a></li> }}
       <li><a href="/cart"><i class="fas fa-shopping-cart">
-        {{#if user}}
-        <span id="cart-count">{{cartCount}}</span>
-        {{/if}}
-        </i></a></li>  
+            {{#if user}}
+              <span id="cart-count">{{cartCount}}</span>
+            {{/if}}
+          </i></a></li>   
     </ul>
   </div>
 
-  <div class="userhead"  onclick="menuToggle()" > 
+  <div class="userhead" onclick="menuToggle()">
     {{#if user}}
-    <span> Hi, {{user.Name}}</span>
-        {{else}}
+      <span> Hi, {{user.Name}}</span>
+    {{else}}
       <i class="far fa-user avtar-head"></i>
-      {{/if}}
-      <div class="menu">
-        <ul>
-       {{#if user}}
-        <li><a href="">Profile</a></li>
-        <li><a href="">Settings</a></li>
-        <li><a href="/logout">Logout</a></li>
+    {{/if}}
+    <div class="menu">
+      <ul>
+        {{#if user}}
+          <li><a href="">Profile</a></li>
+          <li><a href="">Settings</a></li>
+          <li><a href="/logout">Logout</a></li>
         {{else}}
-         <li><a href="/login">Login</a></li>
-         {{/if}}
-        </ul>
-      </div>   
-  </div>
-      
+          <li><a href="/login">Login</a></li>
+        {{/if}}
+      </ul>
+    </div>
+  </div> 
+
+
 </section>
+
+
  
-
-
 
 
 {{!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark"> <button class="navbar-toggler" type="button" data-target="#navigation"> <span class="navbar-toggler-icon"></span> </button>
