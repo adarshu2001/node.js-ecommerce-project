@@ -43,11 +43,13 @@ body {
     font-size: 23px;
     font-weight: 400;
     color: #d3d6d6;
-    transition: 0.3s ease;
+    transition: 0.4s ease;
 }
 #nav1 li a:hover,
 #nav1 li a.active {
     color: #039BE5;
+    font-weight: bold;
+    font-size: 26px;
 }
 #nav1 li a.active::after,
 #nav1 li a:hover::after {
@@ -234,7 +236,7 @@ body {
 
 
 
-/* ***********Card Design************ */
+/* ***********Home Page************ */
 
 
 
@@ -481,6 +483,7 @@ body {
 #sm-banner {
     margin: 80px 0;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
 }
 #sm-banner .banner-box {
@@ -1205,7 +1208,7 @@ th:last-child{
         position: fixed;
         top: 0;
         left: -300px;
-        height: 90vh;
+        height: 80vh;
         width: 300px;
         background-color: #E3E6f3;
         box-shadow: 0 40px 60px rgba(0, 0, 0 ,0.01);
@@ -1234,7 +1237,7 @@ th:last-child{
         font-size: 23px;
     }
     #close {
-        display: flex;
+        display: initial;
         position: absolute;
         top: 25px;
         bottom: 15px;
@@ -1242,6 +1245,145 @@ th:last-child{
         color: #1a1a1a;
         font-size: 28px;
     }
+    #hero {
+        padding: 0 80px;
+        height: 70vh;
+        background-position: top 30% right 30%;
+    }
+    #feature {
+        justify-content: center;
+        padding: 40px 40px;
+    }
+    #feature .fe-box {
+        margin: 15px 15px;
+    }
+    #products .pro-container {
+        justify-content: center;
+    }
+    #products .pro {
+        margin: 15px; 
+    }
+    #banner {
+        height: 20vh;
+    }
+    #sm-banner .banner-box img {
+        width: 480px;
+        height: 30vh;
+    }
+    #sm-banner .banner-condent {
+        top: 20%;
+        left: 25px;  
+    }
+    #lst-banner {
+        display: flex;
+        background-color: #dbd8d8;
+    }
+    #lst-banner .img-banner {
+        padding-top: 10px;
+        margin: 15px 0;
+    }
+    #lst-banner .img-banner img {
+        width: 200px;
+        height: 15vh;
+    }
+    #lst-banner .banner-text h2 {
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+    }
+    #lst-banner .banner-text h3 {
+        color: white;
+        font-size: 10px;
+        font-weight: 600;
+    }
+    #newsletter .form {
+        width: 70%;
+    }
+    
+}
+
+
+
+@media (max-width:477px) {
+    #header {
+        padding: 15px 30px;  
+    }
+    .userhead {
+       margin-left: 13px;
+    }
+    #hero {
+        padding: 0 20px;
+        background-position: left 35%
+    }
+    #hero h2 {
+        font-size: 32px;
+    }
+    #hero h1 {
+        font-size: 36px;
+    }
+    #hero p {
+        margin-top: 75px;
+        padding-left: 40px;
+        color: #0a0a0a;
+    }
+    #hero button {
+        width: 120px;
+        height: 45px;
+        font-weight: bold;
+        position: absolute;
+        bottom: 30%;
+        right: 35%;        
+    }
+    #feature {
+        padding: 20px;
+        justify-content: space-between;
+    }
+    #feature .fe-box {
+        width: 150px;
+        margin: 0 0 15px 0;
+    }
+    #products {
+        padding: 20px;
+    }
+    #products h2 {
+        font-weight: bold;
+        font-size: 30px;
+    }
+    #products .pro {
+        width: 100%;
+    }
+    #banner {
+        height: 35vh;
+    }
+    #sm-banner .banner-box img {
+        width: 350px;
+        height: 30vh;
+    }
+    #sm-banner .banner-condent2 h2 {
+        font-size: 20px;
+    }
+    #sm-banner .banner-condent2 h4 {
+        color: #d1e8f2;
+        font-size: 18px;
+        font-weight: 300;
+    }
+    #lst-banner .img-banner {
+        padding-top: 5px;
+        margin: 5px 0;
+    }
+    #newsletter {
+        padding: 40px 20px;
+    }
+    #newsletter .form {
+        width: 100%;
+    }
+    footer {
+        padding: 20px;
+    }
+    
+    
+
+    
     
 }
 
