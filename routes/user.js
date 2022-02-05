@@ -129,5 +129,8 @@ router.post('/verify-payment',(req,res)=>{
    res.json({status:false})
  })
 })
+router.get('/single-product',(req,res)=>{
+  res.render('users/single-product')
+})
 
 module.exports = router;
