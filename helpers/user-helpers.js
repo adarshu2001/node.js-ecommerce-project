@@ -43,18 +43,58 @@ module.exports = {
             }
         })
     },
-    addToCart:(proId,userId)=>{
+    // addToCart:(proId,userId)=>{
+    //     let proObj = {
+    //         items:objectId(proId),
+    //         quantity:1
+    //     }
+    //     return new Promise(async(resolve,reject)=>{
+    //         let userCart = await db.get().collection(collection.CART_COLLECTION).findOne({user:objectId(userId)})
+    //         if (userCart){
+    //             let proExist = userCart.products.findIndex(product => product.items==proId)             
+    //             if (proExist !=-1) {
+    //                 db.get().collection(collection.CART_COLLECTION)
+    //                 .updateOne({user:objectId(userId),'products.items':objectId(proId)},
+    //                 {
+    //                     $inc:{'products.$.quantity':1}
+    //                 }
+    //                 ).then(()=>{
+    //                     resolve()
+    //                 })
+    //             }else{
+    //                 db.get().collection(collection.CART_COLLECTION)
+    //                 .updateOne({user:objectId(userId)},
+    //                 {
+    //                     $push:{products:proObj}
+    //                 }
+    //                 ).then((response)=>{
+    //                     resolve()
+    //                 })            
+    //             }            
+    //         }else{              
+    //             let cartObj = {
+    //                 user:objectId(userId),
+    //                 products:[proObj]
+    //             }
+    //             db.get().collection(collection.CART_COLLECTION).insertOne(cartObj).then((response)=>{
+    //                 resolve()
+    //             })
+    //         }
+    //     })
+    // },
+    addToCart:(details,userId)=>{
         let proObj = {
-            items:objectId(proId),
+            items:objectId(details.product),
+            size:details.size,
             quantity:1
         }
         return new Promise(async(resolve,reject)=>{
             let userCart = await db.get().collection(collection.CART_COLLECTION).findOne({user:objectId(userId)})
             if (userCart){
-                let proExist = userCart.products.findIndex(product => product.items==proId)             
+                let proExist = userCart.products.findIndex(product => product.items==details.product)             
                 if (proExist !=-1) {
                     db.get().collection(collection.CART_COLLECTION)
-                    .updateOne({user:objectId(userId),'products.items':objectId(proId)},
+                    .updateOne({user:objectId(userId),'products.items':objectId(details.product)},
                     {
                         $inc:{'products.$.quantity':1}
                     }
@@ -114,7 +154,7 @@ module.exports = {
             resolve(cartItems)
         })
     },
-    getCartCount:(userId)=>{     
+    getCartCount:(userId)=>{    
         return new Promise(async(resolve,reject)=>{
             let count = 0
             let cart = await db.get().collection(collection.CART_COLLECTION).findOne({user:objectId(userId)})
@@ -318,9 +358,14 @@ module.exports = {
                 resolve()
             })
         })
-
+    },
+    singleProduct:(proId)=>{
+        return new Promise(async(resolve,reject)=>{
+            let product = await db.get().collection(collection.PRODUCT_COLLECTION).findOne({_id:objectId(proId)})
+            resolve(product)
+        })
     }
-   
     
+   
 
 }

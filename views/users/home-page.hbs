@@ -81,8 +81,8 @@
   <p>Summer Collection New Morden Design</p>
   <div class="pro-container">
     {{#each products}}
-    <div class="pro" onclick="window.location.href='/single-product'">
-      <img  src="product-images/{{this._id}}.jpg" alt="" />
+    <div class="pro">
+      <img  src="product-images/{{this._id}}.jpg" alt="" onclick=" window.location.href='/single-product/{{this._id}}'" />
       <div class="des">
         <span>{{this.Name}}</span>
         <h5>Cartoon Astronaut T-Shirt</h5>
@@ -96,7 +96,7 @@
         <h4>Rs : {{this.Price}}</h4>
       </div>
       <button class="whlist"><i class="fas fa-heart"></i></button>
-      <button onclick="addToCart('{{this._id}}')" class="cart"><i class="fas fa-shopping-cart"></i></button>
+      {{!-- <button onclick="addToCart('{{this._id}}')" class="cart"><i class="fas fa-shopping-cart"></i></button> --}}
     </div>
     {{/each}}
   </div>

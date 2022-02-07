@@ -23,28 +23,48 @@ const nav = document.getElementById('nav1')
 const menuToggle=()=>{
     const toggleMenu = document.querySelector('.menu')
     toggleMenu.classList.toggle('active')
- } 
-
-
+ }
+ 
+ 
  var mainImg = document.getElementById('mainImg');
- var smallImg = document.getElementsByClassName('small-img');
+    var smallImg = document.getElementsByClassName('small-img');
+   
+    smallImg[0].onclick = () => {
+        mainImg.src = smallImg[0].src
+    }
+    smallImg[1].onclick = () => {
+        mainImg.src = smallImg[1].src
+    }
+    smallImg[2].onclick = () => {
+        mainImg.src = smallImg[2].src
+    }
+    smallImg[3].onclick = () => {
+        mainImg.src = smallImg[3].src
+    }
 
- smallImg[0].onclick = () => {
-     mainImg.src = smallImg[0].src
- }
- smallImg[1].onclick = () => {
-     mainImg.src = smallImg[1].src
- }
- smallImg[2].onclick = () => {
-     mainImg.src = smallImg[2].src
- }
- smallImg[3].onclick = () => {
-     mainImg.src = smallImg[3].src
- }
 
+
+// const addToCart=(proId)=>{
+//     $.ajax({
+//         url:'/add-to-cart/'+proId,
+//         method:'get',
+//         success:(response)=>{
+//             if (response.status){
+//                 let count = $('#cart-count').html()
+//                 count = parseInt(count)+1
+//                 $('#cart-count').html(count)
+//             }
+//         }
+//     })   
+// }
 const addToCart=(proId)=>{
+    let proSize=(document.getElementById('size').innerHTML)
     $.ajax({
-        url:'/add-to-cart/'+proId,
+        url:'/add-to-cart',
+        data:{
+            product:proId,
+            size:proSize      
+        },
         method:'get',
         success:(response)=>{
             if (response.status){

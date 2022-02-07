@@ -84,7 +84,6 @@ body {
     text-align: center; 
     border-radius: 35px;
     font-size: 18px;
-   
     bottom: 20px;
 }
 #nav2 li a {
@@ -438,6 +437,9 @@ body {
     bottom: 20px;
     right: 70px; 
     cursor: pointer;
+}
+#products .pro .cart:focus {
+    outline: none;
 }
 #banner {
     margin: 80px 0;
@@ -1236,6 +1238,20 @@ th:last-child{
     color: white;
     cursor: pointer;
     transition: 0.4s ease;  
+}
+#proDetails .single-pro-details .btn-wishlist,
+#proDetails .single-pro-details .btn-addtocart:focus{
+    outline: none;
+}
+#proDetails .single-pro-details select {
+    width: 110px;
+    height: 35px;
+    color: black;
+    margin: 30px 0;
+    text-align: center;
+}
+#proDetails .single-pro-details select:focus {
+    outline: none;
 }
 #proDetails .single-pro-details span {
     line-height: 25px;

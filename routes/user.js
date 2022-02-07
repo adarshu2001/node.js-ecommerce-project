@@ -67,10 +67,16 @@ router.get('/cart',verifyLogin,async(req,res)=>{
     res.render('users/cart-empty',{user:req.session.user})
   }
 })
-router.get('/add-to-cart/:id',(req,res)=>{
-  userHelpers.addToCart(req.params.id,req.session.user._id).then((response)=>{
-    res.json({status:true})
-  })
+// router.get('/add-to-cart/:id',(req,res)=>{
+//   userHelpers.addToCart(req.params.id,req.session.user._id).then((response)=>{
+//     res.json({status:true})
+//   })
+// })
+router.get('/add-to-cart',(req,res)=>{
+  console.log("details" + req.body);
+  userHelpers.addToCart(req.body,req.session.user._id).then((response)=>{
+     res.json({status:true})
+    })
 })
 router.post('/change-product-quantity',(req,res)=>{
   console.log(req.body);
@@ -129,8 +135,13 @@ router.post('/verify-payment',(req,res)=>{
    res.json({status:false})
  })
 })
-router.get('/single-product',(req,res)=>{
-  res.render('users/single-product')
+router.get('/single-product/:id',verifyLogin,async(req,res)=>{
+  console.log("Product Id" + req.params.id);
+  let product = await userHelpers.singleProduct(req.params.id)
+  console.log(product);
+  let cartCount = null
+   cartCount = await userHelpers.getCartCount(req.session.user._id)
+  res.render('users/single-product',{user:req.session.user,product,cartCount})
 })
 
 module.exports = router;
