@@ -29,11 +29,10 @@
     <h4>Men's Fashion T Shirt</h4>
     <h2>Rs : {{product.Price}}</h2>
     <select id="size">
-      <option>Size</option>
-      <option>M</option>
-      <option>L</option>
-      <option>XL</option>
-      <option>XXL</option>
+      <option value="M">M</option>
+      <option value="L">L</option>
+      <option value="XL">XL</option>
+      <option value="XXL">XXL</option>
     </select>
     <button class="btn-wishlist">Wishlist +</button>
     <button onclick="addToCart('{{product._id}}')" class="btn-addtocart">Add To Cart</button>
@@ -185,3 +184,21 @@
   </div>
 
 </footer>
+
+<script>
+  var mainImg = document.getElementById('mainImg');
+    var smallImg = document.getElementsByClassName('small-img');
+   
+    smallImg[0].onclick=() => {
+        mainImg.src = smallImg[0].src
+    }
+    smallImg[1].onclick=() => {
+        mainImg.src = smallImg[1].src
+    }
+    smallImg[2].onclick=() => {
+        mainImg.src = smallImg[2].src
+    }
+    smallImg[3].onclick=() => {
+        mainImg.src = smallImg[3].src
+    }
+</script>

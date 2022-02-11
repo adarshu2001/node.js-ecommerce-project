@@ -58,11 +58,11 @@ router.get('/logout',(req,res)=>{
   res.redirect('/')
 })
 router.get('/cart',verifyLogin,async(req,res)=>{
+  let cartCount = await userHelpers.getCartCount(req.session.user._id)
   let products = await userHelpers.getCartProduct(req.session.user._id)
-  console.log(products);
   if (products.length>0){
      let totalSum = await userHelpers.getTotalAmount(req.session.user._id)  
-     res.render('users/cart',{user:req.session.user,products,totalSum})
+     res.render('users/cart',{user:req.session.user,products,totalSum,cartCount})
   }else{
     res.render('users/cart-empty',{user:req.session.user})
   }
@@ -73,8 +73,9 @@ router.get('/cart',verifyLogin,async(req,res)=>{
 //   })
 // })
 router.get('/add-to-cart',(req,res)=>{
-  console.log("details" + req.body);
-  userHelpers.addToCart(req.body,req.session.user._id).then((response)=>{
+  console.log(req.query);
+  console.log(req.session.user._id);
+  userHelpers.addToCart(req.query,req.session.user._id).then((response)=>{
      res.json({status:true})
     })
 })

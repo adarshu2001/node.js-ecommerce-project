@@ -82,19 +82,22 @@ module.exports = {
     //         }
     //     })
     // },
-    addToCart:(details,userId)=>{
+    addToCart:({product:proId,size},userId)=>{
+        // console.log(product);
+        // console.log("SiZe " +size);
+        // console.log("userId" + userId);
         let proObj = {
-            items:objectId(details.product),
-            size:details.size,
+            items:objectId(proId),
+            size:size,
             quantity:1
         }
         return new Promise(async(resolve,reject)=>{
             let userCart = await db.get().collection(collection.CART_COLLECTION).findOne({user:objectId(userId)})
             if (userCart){
-                let proExist = userCart.products.findIndex(product => product.items==details.product)             
+                let proExist = userCart.products.findIndex(product => product.items==proId)             
                 if (proExist !=-1) {
                     db.get().collection(collection.CART_COLLECTION)
-                    .updateOne({user:objectId(userId),'products.items':objectId(details.product)},
+                    .updateOne({user:objectId(userId),'products.items':objectId(proId)},
                     {
                         $inc:{'products.$.quantity':1}
                     }
@@ -122,7 +125,41 @@ module.exports = {
             }
         })
     },
+    // getCartProduct:(userId)=>{
+    //     return new Promise(async(resolve,reject)=>{
+    //         let cartItems = await db.get().collection(collection.CART_COLLECTION).aggregate([
+    //             {
+    //                 $match:{user:objectId(userId)}
+    //             },
+    //             {
+    //                 $unwind:'$products'
+    //             },
+    //             {
+    //                 $project:{
+    //                     items:'$products.items',
+    //                     quantity:'$products.quantity'
+    //                 }
+    //             },
+    //             {
+    //                 $lookup:{
+    //                     from:collection.PRODUCT_COLLECTION,
+    //                     localField:'items',
+    //                     foreignField:'_id',
+    //                     as:'product'
+    //                 }
+    //             },
+    //             {
+    //                 $project:{
+    //                     items:1,quantity:1,product:{$arrayElemAt:['$product',0]}
+    //                 }
+    //             }                                                  
+    //         ]).toArray()
+    //         resolve(cartItems)
+    //     })
+    // },
+    
     getCartProduct:(userId)=>{
+        console.log("ghgg "+userId);
         return new Promise(async(resolve,reject)=>{
             let cartItems = await db.get().collection(collection.CART_COLLECTION).aggregate([
                 {
@@ -134,7 +171,8 @@ module.exports = {
                 {
                     $project:{
                         items:'$products.items',
-                        quantity:'$products.quantity'
+                        quantity:'$products.quantity',
+                        size:'$products.size'
                     }
                 },
                 {
@@ -147,10 +185,11 @@ module.exports = {
                 },
                 {
                     $project:{
-                        items:1,quantity:1,product:{$arrayElemAt:['$product',0]}
+                        items:1,quantity:1,size:1,product:{$arrayElemAt:['$product',0]}
                     }
                 }                                                  
             ]).toArray()
+            console.log(cartItems);
             resolve(cartItems)
         })
     },

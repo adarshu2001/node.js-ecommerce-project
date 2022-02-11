@@ -1,4 +1,4 @@
-<div class="container">
+{{!-- <div class="container">
  <div class="small-container cart-page">
     <table class="cart-table">
         <tr>
@@ -13,7 +13,7 @@
                     <img class="cart-img"  src="product-images/{{this.product._id}}.jpg" alt="">
                     <div>
                         <p>{{this.product.Name}}</p>
-                        <small>Size : {{this.product.Size}}</small>
+                        <small>Size : {{this.size}}</small>
                         <br>
                         <button onclick="removeProduct('{{this._id}}','{{this.product._id}}')" class="cart-remove">Remove</button>
                     </div>
@@ -41,4 +41,120 @@
     </div>
     
  </div>
-</div>
+</div> --}}
+
+
+
+<section id="cart">
+    <table width="100%">
+        <thead>
+            <tr>
+                <td>Remove</td>
+                <td>Image</td>
+                <td>Product</td>
+                <td>Size</td>
+                <td>Quantity</td>             
+                <td>Price</td>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+            <tr>
+                <td><button class="remove" onclick="removeProduct('{{this._id}}','{{this.product._id}}')" ><i class="far fa-times-circle"></i></button></td>
+                <td><img src="product-images/{{this.product._id}}.jpg" alt=""></td>
+                <td>{{this.product.Name}}</td>
+                <td>{{this.size}}</td>
+                <td>
+                    <button class="quantity" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)">-</button>
+                    <span id="{{this.product._id}}">{{this.quantity}}</span>
+                    <button class="quantity" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">+</button>
+                </td>
+                <td>{{this.product.Price}}</td>  
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>
+
+<section id="cart-add">
+    <div id="coupon">
+        <h3>Apply Coupon</h3>
+        <div>
+            <input type="text" placeholder="Enter Your Coupon">
+            <button>Apply</button>
+        </div>
+    </div>
+
+    <div id="subtotal">
+        <h3>Cart Totals</h3>
+        <table>
+            <tr>
+                <td>Cart Subtotal</td>
+                <td>Rs : <span id="totalsum">{{totalSum}}</span></td>
+            </tr>
+            <tr>
+                <td>Shipping</td>
+                <td>Free</td>           
+            </tr>
+            <tr>
+                <td><strong>Total</strong></td>
+                <td><strong>Rs : <span id="totalsum">{{totalSum}}</span></strong></td>
+            </tr>
+        </table>
+        <a href="/place-order">PLACE ORDER</a>
+    </div>
+</section>
+
+
+
+
+
+
+
+<footer>
+  <div class="col">
+    <img src="/logo-img/logo.png" alt="" />
+    <h4>Contact</h4>
+    <p><strong>Address :
+      </strong>adaaddadadaddaadaddadaddadadadadadadadadadaddadadadad</p>
+    <p><strong>Phone : </strong>(+91)00000000000,54863223654789865</p>
+    <p><strong>Hours : </strong>9:00AM - 6:00PM, Mon - Fri </p>
+    <div class="social">
+      <h4>Follow us</h4>
+      <div class="icon">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-youtube"></i>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <h4>About US</h4>
+    <a href="">About us</a>
+    <a href="">Delivery Information</a>
+    <a href="">Privacy Policy</a>
+    <a href="">Term & Condition</a>
+    <a href="">Contact Us</a>
+  </div>
+
+  <div class="col">
+    <h4>My Account</h4>
+    <a href="">sign In</a>
+    <a href="">View Cart</a>
+    <a href="">My Wishlist</a>
+    <a href="">Track My Order</a>
+    <a href="">Help</a>
+  </div>
+
+  <div class="col install">
+    <h4>Install App</h4>
+    <p>From App Store or Google Play</p>
+    <div class="row">
+      <img src="/pay/apple2.png" alt="" />
+      <img src="/pay/play.png" alt="" />
+    </div>
+    <p>Secure Payment Gateways</p>
+  </div>
+
+</footer>

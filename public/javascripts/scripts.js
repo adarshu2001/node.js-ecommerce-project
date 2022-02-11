@@ -5,44 +5,6 @@ const viewImage = (event)=>{
 }
 
 
-const bar = document.getElementById('bar')
-const close = document.getElementById('close')
-const nav = document.getElementById('nav1')
-
-   if (bar) {
-        bar.addEventListener('click', () => {
-            nav.classList.add('active')
-        })
-    }
-   if (close) {
-        close.addEventListener('click', () => {
-            nav.classList.remove('active')
-        })
-    }
-
-const menuToggle=()=>{
-    const toggleMenu = document.querySelector('.menu')
-    toggleMenu.classList.toggle('active')
- }
- 
- 
- var mainImg = document.getElementById('mainImg');
-    var smallImg = document.getElementsByClassName('small-img');
-   
-    smallImg[0].onclick = () => {
-        mainImg.src = smallImg[0].src
-    }
-    smallImg[1].onclick = () => {
-        mainImg.src = smallImg[1].src
-    }
-    smallImg[2].onclick = () => {
-        mainImg.src = smallImg[2].src
-    }
-    smallImg[3].onclick = () => {
-        mainImg.src = smallImg[3].src
-    }
-
-
 
 // const addToCart=(proId)=>{
 //     $.ajax({
@@ -58,7 +20,7 @@ const menuToggle=()=>{
 //     })   
 // }
 const addToCart=(proId)=>{
-    let proSize=(document.getElementById('size').innerHTML)
+    let proSize=document.getElementById('size').value;
     $.ajax({
         url:'/add-to-cart',
         data:{
@@ -77,6 +39,7 @@ const addToCart=(proId)=>{
 }
 
 const changeQuantity=(cartId,proId,userId,count)=>{
+    console.log(cartId,proId,userId,count);
     let quantity = parseInt(document.getElementById(proId).innerHTML)
     $.ajax({
         url:'/change-product-quantity',
