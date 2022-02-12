@@ -76,15 +76,20 @@ body {
     padding: 0 40px;
     position: relative;
 }
-#nav2 li span {
-    width: 25px;
-    height: 25px;
-    background: green;
+#nav2 #cart-count {
+    color: white;
     position: absolute;
     text-align: center; 
-    border-radius: 35px;
     font-size: 18px;
-    bottom: 20px;
+    bottom: 25px;     
+}
+#nav2 #whishlist-count {
+    color: white;
+    position: absolute;
+    text-align: center; 
+    font-size: 19px;
+    font-weight: 700;
+    bottom: 20px;  
 }
 #nav2 li a {
     text-decoration: none;
@@ -417,13 +422,17 @@ body {
     height: 45px;
     line-height: 40px;
     border-radius: 50px;    
-    font-weight: 500;
+    font-weight: 700;
+    font-size: 20px;
     color: #eb0c0c;
     border: 1px solid #cce7d2; 
     position: absolute;
     bottom: 20px;
     right: 10px;
     cursor: pointer;
+}
+#products .pro .whlist:focus {
+    outline: none;
 }
 #products .pro .cart {
     width: 45px;
@@ -1024,17 +1033,18 @@ p.exist a {
     width: 70px;
 }
 #cart .remove {
-    background-color: rgb(38, 97, 114);
-    color: white;
-    width: 30px;
+    color: rgb(64, 143, 165);;
+    border: none;
+    background: none;
+    font-size: 20px;
+    /* width: 30px;
     height: 30px;
     border: none;
-    border-radius: 50px;
-    font-weight: 600;    
+    border-radius: 50px; */
+    font-weight: 700;    
 }
 #cart .remove:hover {
     cursor: pointer;
-    background-color: rgb(64, 143, 165);
 }
 #cart .remove:focus {
     outline: none;

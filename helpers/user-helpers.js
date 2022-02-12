@@ -5,6 +5,7 @@ const async = require('hbs/lib/async')
 var objectId = require('mongodb').ObjectId
 const Razorpay = require('razorpay')
 const { resolve } = require('path')
+const { response } = require('../app')
 var instance = new Razorpay({
     key_id: 'rzp_test_r5p0n7ioSfr096',
     key_secret: 'Xn5Z95nZRUwtCubL4SdoAS58',
@@ -83,9 +84,6 @@ module.exports = {
     //     })
     // },
     addToCart:({product:proId,size},userId)=>{
-        // console.log(product);
-        // console.log("SiZe " +size);
-        // console.log("userId" + userId);
         let proObj = {
             items:objectId(proId),
             size:size,
@@ -124,6 +122,35 @@ module.exports = {
                 })
             }
         })
+    },
+    addToWhishlist:(proId,userId)=>{
+        let proObj = {
+            items:objectId(proId),
+            quantity:1
+        }
+        return new Promise(async(resolve,reject)=>{
+            let userWhishlist = await db.get().collection(collection.WHISHLIST_COLLECTION).findOne({user:objectId(userId)})
+            if (userWhishlist) {
+                db.get().collection(collection.WHISHLIST_COLLECTION)
+                .updateOne({user:objectId(userId)},
+                {
+                    $push:{products:proObj}
+                }
+                ).then((response)=>{
+                    resolve()
+                })
+
+            }else {
+                let whishlistobj = {
+                    user:objectId(userId),
+                    products:[proObj]
+                }
+                db.get().collection(collection.WHISHLIST_COLLECTION).insertOne(whishlistobj).then((response)=>{
+                    resolve()
+                })
+            }
+        })
+        
     },
     // getCartProduct:(userId)=>{
     //     return new Promise(async(resolve,reject)=>{
@@ -193,6 +220,7 @@ module.exports = {
             resolve(cartItems)
         })
     },
+
     getCartCount:(userId)=>{    
         return new Promise(async(resolve,reject)=>{
             let count = 0
@@ -200,6 +228,17 @@ module.exports = {
             if (cart){
                 count = cart.products.length
             }
+            resolve(count)
+        })
+    },
+    getWhishlistCount:(userId)=>{    
+        return new Promise(async(resolve,reject)=>{
+            let count = 0
+            let cart = await db.get().collection(collection.WHISHLIST_COLLECTION).findOne({user:objectId(userId)})
+            if (cart){
+                count = cart.products.length
+            }
+            console.log("count   " + count);
             resolve(count)
         })
     },

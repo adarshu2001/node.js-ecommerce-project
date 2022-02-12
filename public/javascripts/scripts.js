@@ -38,6 +38,24 @@ const addToCart=(proId)=>{
     })   
 }
 
+const addToWhishlist=(proId)=>{
+    console.log(proId);
+        $.ajax({
+            url:'/add-to-whishlist',
+            data:{
+                product:proId
+            },
+            method:'get',
+            success:(response)=>{
+                if (response.status){
+                    let count = $('#whishlist-count').html()
+                    count = parseInt(count)+1
+                    $('#whishlist-count').html(count)
+                }
+            }
+        })   
+    }
+
 const changeQuantity=(cartId,proId,userId,count)=>{
     console.log(cartId,proId,userId,count);
     let quantity = parseInt(document.getElementById(proId).innerHTML)

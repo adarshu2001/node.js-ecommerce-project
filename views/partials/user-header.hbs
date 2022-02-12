@@ -18,7 +18,11 @@
   </div>
   <div class="second nav">
     <ul id="nav2">
-      <li><a href=""><i class="far fa-heart"></i></a></li>
+      <li><a href="/whishlist"><i class="fas fa-heart"></i>
+        {{#if user}}
+        <span id="whishlist-count">{{whishlistCount}}</span>
+        {{/if}}
+      </i></a></li>
       {{! <li><a href=""><i class="far fa-user"></i></a></li> }}
       <li><a href="/cart"><i class="fas fa-shopping-cart">
             {{#if user}}
@@ -46,8 +50,6 @@
       </ul>
     </div>
   </div> 
-
-
 </section>
 
 <script>

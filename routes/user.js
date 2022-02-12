@@ -16,11 +16,13 @@ const verifyLogin = (req,res,next)=>{
 router.get('/',async function(req, res, next) {
   let user = req.session.user
   let cartCount = null
+  let whishlistCount = null
   if (req.session.userLoggedIn){
+    whishlistCount = await userHelpers.getWhishlistCount(req.session.user._id)
     cartCount = await userHelpers.getCartCount(req.session.user._id)
   }
   productHelpers.getAllProducts().then((products)=>{
-    res.render('users/home-page',{products, admin:false,user,cartCount})
+    res.render('users/home-page',{products, admin:false,user,cartCount,whishlistCount})
   })
 });
 router.get('/login',(req,res)=>{
@@ -67,6 +69,10 @@ router.get('/cart',verifyLogin,async(req,res)=>{
     res.render('users/cart-empty',{user:req.session.user})
   }
 })
+router.get('/whishlist',verifyLogin,async(req,res)=>{
+  
+  res.render('users/whishlist')
+})
 // router.get('/add-to-cart/:id',(req,res)=>{
 //   userHelpers.addToCart(req.params.id,req.session.user._id).then((response)=>{
 //     res.json({status:true})
@@ -78,6 +84,13 @@ router.get('/add-to-cart',(req,res)=>{
   userHelpers.addToCart(req.query,req.session.user._id).then((response)=>{
      res.json({status:true})
     })
+})
+router.get('/add-to-whishlist',(req,res)=>{
+  console.log(req.query);
+  console.log(req.session.user._id);
+  userHelpers.addToWhishlist(req.params.id,req.session.user._id).then((response)=>{
+    res.json({status:true}) 
+  })
 })
 router.post('/change-product-quantity',(req,res)=>{
   console.log(req.body);

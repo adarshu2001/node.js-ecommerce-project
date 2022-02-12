@@ -61,7 +61,7 @@
             {{#each products}}
             <tr>
                 <td><button class="remove" onclick="removeProduct('{{this._id}}','{{this.product._id}}')" ><i class="far fa-times-circle"></i></button></td>
-                <td><img src="product-images/{{this.product._id}}.jpg" alt=""></td>
+                <td><img onclick=" window.location.href='/single-product/{{this.product._id}}'" src="product-images/{{this.product._id}}.jpg" alt=""></td>
                 <td>{{this.product.Name}}</td>
                 <td>{{this.size}}</td>
                 <td>
@@ -104,9 +104,6 @@
         <a href="/place-order">PLACE ORDER</a>
     </div>
 </section>
-
-
-
 
 
 
