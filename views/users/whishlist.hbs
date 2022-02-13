@@ -1,1 +1,22 @@
-<h1>Whisjsdsjxchscfhdvhdvh</h1>
+<section id="whishlist">
+    <table width="100%">
+        <thead>
+            <tr>
+                <td>Remove</td>
+                <td>Image</td>
+                <td>Product</td>           
+                <td>Price</td>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+            <tr>
+                <td><button class="remove"><i class="far fa-times-circle"></i></button></td>
+                <td><img src="product-images/{{this.product._id}}.jpg" alt="" /></td>
+                <td>{{this.product.Name}}</td>
+                <td>{{this. product.Price}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>

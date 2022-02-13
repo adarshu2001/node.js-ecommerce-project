@@ -1177,97 +1177,74 @@ p.exist a {
     background-color: rgb(64, 143, 165);
 }
 
-/* .cart-page{
-    margin: 80px auto;
+/* *********Cart Page*********** */
+
+
+
+
+
+
+/* *********Whishlist********** */
+
+#whishlist{
+    margin: 80px 80px;
+    overflow-x: auto;
 }
-.cart-table{
+#whishlist table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
+    white-space: nowrap;
 }
-.cart-info{
-    display: flex;
-    flex-wrap: wrap;
-}
-.cart-head{
-    text-align: left;
-    padding: 7px;
-    color: white;
-    background: rgb(246, 95, 40);
-    font-weight: bold;   
-}
-.cart-remove{
-    width: 80px;
-    height: 30px;
+#whishlist .remove {
+    color: rgb(64, 143, 165);;
     border: none;
-    border-radius: 15px;
-    color: white;
-    background: rgb(246, 95, 40);
+    background: none;
+    font-size: 20px;
+    font-weight: 700;    
+}
+
+#whishlist table img {
+    width: 70px;
+}
+
+#whishlist table td:nth-child(1) {
+    width: 100px;
     text-align: center;
-    font-size: 400;
-   
-margin-top: 10px;}
-.cart-remove:hover{
-    background: rgb(243, 124, 73);
 }
-.cart-td{
-    padding: 10px 5px;
-}
-.cart-count{
-    padding-left: 15px;
-}
-.cart-item-count{
-    width: 25px;
-}
-.cart-img{
-    width: 110px;
-    height: 110px;
-    margin-right: 10px;
-}
-.total-price{
-    display: flex;
-    justify-content: flex-end;
-}
-.total-price table{
-    border-top: 3px solid rgb(246, 95, 40);
-    width: 25%;
-    min-width: 350px;
-}
-td:last-child{
-    text-align: right;
-}
-th:last-child{
-    text-align: right;
-}
-.order{
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 70px;
-}
-.order a{
-    width: 105px;
-    height: 32px;
-    padding: 2px;
-    color: white;
-    background: rgb(246, 95, 40);
+#whishlist table td:nth-child(2) {
+    width: 150px;
     text-align: center;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: none;
-    border-radius: 5px;
-    box-shadow: none;
-    transition: all .5s ease;
-
 }
-.order a:hover{
-    background: rgb(243, 124, 73);
-    transform: scale(1.1);
+#whishlist table td:nth-child(3) {
+    width: 250px;
+    text-align: center;
+}
+#whishlist table td:nth-child(4){
+    width: 150px;
+    text-align: center;
+}
+#whishlist table thead {
+    border: 1px solid #e2e9e1;
+    border-left: none;
+    border-right: none;
+}
+#whishlist table thead td {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 18px 0;
+}
+#whishlist table tbody tr td {
+    padding-top: 18px;
+}
+#whishlist table tbody td {
+    font-size: 17px;
+}
 
-} */
 
 
-
-/* *********Cart Page*********** */
+/* *********Whishlist end********** */
 
 
 

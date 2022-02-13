@@ -70,8 +70,8 @@ router.get('/cart',verifyLogin,async(req,res)=>{
   }
 })
 router.get('/whishlist',verifyLogin,async(req,res)=>{
-  
-  res.render('users/whishlist')
+  let products = await userHelpers.getWhishProduct(req.session.user._id)
+  res.render('users/whishlist',{user:req.session.user,products})
 })
 // router.get('/add-to-cart/:id',(req,res)=>{
 //   userHelpers.addToCart(req.params.id,req.session.user._id).then((response)=>{
@@ -88,7 +88,7 @@ router.get('/add-to-cart',(req,res)=>{
 router.get('/add-to-whishlist',(req,res)=>{
   console.log(req.query);
   console.log(req.session.user._id);
-  userHelpers.addToWhishlist(req.params.id,req.session.user._id).then((response)=>{
+  userHelpers.addToWhishlist(req.query,req.session.user._id).then((response)=>{
     res.json({status:true}) 
   })
 })

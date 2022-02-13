@@ -6,6 +6,7 @@ var objectId = require('mongodb').ObjectId
 const Razorpay = require('razorpay')
 const { resolve } = require('path')
 const { response } = require('../app')
+const moment = require('moment')
 var instance = new Razorpay({
     key_id: 'rzp_test_r5p0n7ioSfr096',
     key_secret: 'Xn5Z95nZRUwtCubL4SdoAS58',
@@ -123,7 +124,7 @@ module.exports = {
             }
         })
     },
-    addToWhishlist:(proId,userId)=>{
+    addToWhishlist:({product:proId},userId)=>{
         let proObj = {
             items:objectId(proId),
             quantity:1
@@ -219,6 +220,41 @@ module.exports = {
             console.log(cartItems);
             resolve(cartItems)
         })
+    },
+    getWhishProduct:(userId)=>{
+        return new Promise(async(resolve,reject)=>{
+            let wishItem = await db.get().collection(collection.WHISHLIST_COLLECTION).aggregate([
+                {
+                    $match:{user:objectId(userId)}
+                },
+                {
+                    $unwind:'$products'
+                },
+                {
+                    $project:{
+                        items:'$products.items',
+                        quantity:'$products.quantity'
+                    }
+                },
+                {
+                    $lookup:{
+                        from:collection.PRODUCT_COLLECTION,
+                        localField:'items',
+                        foreignField:'_id',
+                        as:"product"
+                    }
+                },
+                {
+                    $project:{
+                        items:1,product:{$arrayElemAt:['$product',0]}
+                    }
+                }
+
+            ]).toArray()
+            console.log(wishItem);
+            resolve(wishItem)
+        })
+
     },
 
     getCartCount:(userId)=>{    
@@ -322,6 +358,9 @@ module.exports = {
         return new Promise((resolve,reject)=>{
             console.log(order,products,total);
             let status=order['payment-method']==='COD'?'placed':'pending'
+            let dateIso = new Date()
+            let date = moment(dateIso).format('MM/DD/YYYY')
+            let time = moment(dateIso).format('HH:mm:ss')
             let orderObj={
                 deliveryDetails:{
                     address:order.address,
@@ -333,7 +372,8 @@ module.exports = {
                 products:products,
                 totalAmount:total,
                 status:status,
-                date:new Date()
+                date:date,
+                time:time
             }
             db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj).then((response)=>{
                 db.get().collection(collection.CART_COLLECTION).deleteOne({user:objectId(order.userId)})            
