@@ -1,4 +1,4 @@
-<section>
+{{!-- <section>
     <div class="container mt-5">
         <form action="" id="checkout-form">
             <div class="row">
@@ -30,10 +30,51 @@
                             <button class="btn btn-success float-right" type="submit">Checkout</button>
 
                         </div>
-
                     </div>
                 </div>
             </div>
         </form>
     </div>
-</section>
+</section> --}}
+
+<Section id="checkout">
+     <form action="" id="checkout-form">
+    <div class="delivery-details">
+        <h3>Fill Address</h3>
+        <div>
+            {{!-- <form action="" > --}}
+                <input type="text" id="fname" name="Fname" placeholder="First Name"><br>
+                <input type="text" id="lname" name="Lname" placeholder="Last Name"><br>
+                <input type="text" id="house" name="House" placeholder="House"><br>
+                 <input type="text" id="town" name="Town" placeholder="Town"><br>
+                <input type="text" id="phone" name="Phone" placeholder="Phone"><br>     
+                <input type="text" id="pin" name="Pin" placeholder="Pin"><br>
+                <input type="text" id="" name="userId" value="{{user._id}}" hidden>
+                <a href="">Edit Address</a>
+            {{!-- </form> --}}
+        </div>
+        
+    </div>
+    <div id="payment">
+        <div>
+            <h5>Total Amount For Pay : <strong>963</strong></h5>
+            <hr>
+        </div>
+        <div class="pay">
+            <h5>Payment Method</h5>
+            <label class="radio-inline">
+                 <input type="radio" name="payment-method" value="COD" checked> COD
+             </label>
+             <br>    
+            <label class="radio-inline mt-2">
+                 <input type="radio" name="payment-method" value="ONLINE"> Razor Pay
+            </label>
+             <br>    
+            <label class="radio-inline mt-2">
+                 <input type="radio" name="payment-method" value=""> Pay Pal
+            </label>
+        </div>
+         <button type="submit">Checkout</button>
+    </div>
+     </form> 
+</Section>

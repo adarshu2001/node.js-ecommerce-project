@@ -363,9 +363,15 @@ module.exports = {
             let time = moment(dateIso).format('HH:mm:ss')
             let orderObj={
                 deliveryDetails:{
-                    address:order.address,
-                    mobile:order.mobile,
-                    pincode:order.pincode
+                    fname:order.Fname,
+                    lname:order.Lname,
+                    house:order.House,
+                    town:order.Town,
+                    phone:order.Phone,
+                    pincode:order.Pin
+                    // address:order.address,
+                    // mobile:order.mobile,
+                    // pincode:order.pincode
                 },
                 user:objectId(order.userId),
                 paymentMethod:order['payment-method'],

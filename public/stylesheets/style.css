@@ -1335,7 +1335,173 @@ p.exist a {
 
 
 
+/* ********Place Order********* */
+/* #cart-add {
+    padding: 80px 80px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#coupon {
+    width: 50%;
+    margin-bottom: 30px;
+}
+#coupon h3 {
+    padding-bottom: 15px;
+    font-weight: 600;
+}
+#coupon input {
+    padding: 10px 20px;
+    outline: none;
+    width: 60%;
+    margin-right: 10px;
+    border: 1px solid #e2e9e1;
+}
+#coupon button {
+    background-color: rgb(38, 97, 114);
+    color: white;
+    width: 100px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+}
+#coupon button:hover {
+    cursor: pointer;
+    background-color: rgb(64, 143, 165);
+}
+#coupon button:focus {
+    outline: none;
+}
+#subtotal {
+    width: 50%;
+    margin-bottom: 30px;
+    border: 1px solid #e2e9e1;
+    padding: 30px;
+}
+#subtotal h3 {
+    padding-bottom: 15px;
+}
+#subtotal table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+}
+#subtotal table td {
+    width: 50%;
+    border: 1px solid #e2e9e1;
+    padding: 10px;
+    font-size: 17px;
+}
+#subtotal a {
+    text-decoration: none;
+    background-color: rgb(38, 97, 114);
+    color: white;
+    width: 350px;
+    height: 150px;
+    padding: 10px 10px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+#subtotal a:hover {
+    cursor: pointer;
+    background-color: rgb(64, 143, 165);
+} */
 
+#checkout {
+    padding: 80px 80px;
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; */
+}
+#checkout  form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#checkout .delivery-details {
+    width: 50%;
+    margin-bottom: 30px;
+    border: 1px solid #e2e9e1;
+    padding: 40px;
+}
+#checkout .delivery-details h3 {
+    padding: 5px 0 15px 20px;
+    font-weight: 600;
+}
+#checkout .delivery-details input {
+    font-size: 18px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    outline: none;
+    width: 100%;
+    margin-right: 10px;
+    border-width: 0 0 2px 0;
+    border-color: #e2e9e1;
+}
+#checkout .delivery-details input:focus {
+    border-color: rgb(38, 97, 114);
+}
+#checkout .delivery-details a {
+    text-decoration: none;
+    background-color: rgb(38, 97, 114);
+    color: white;
+    width: 350px;
+    height: 150px;
+    padding: 10px 10px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+#checkout .delivery-details a:hover {
+    background-color: rgb(64, 143, 165);
+}
+#checkout #payment {
+    width: 30%;
+    height: 45vh;
+    margin-bottom: 30px;
+    border: 1px solid #e2e9e1;
+    box-shadow: 5px 15px 15px 0px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+#checkout #payment h5 {
+    font-size: 20px;
+    font-weight: 600;
+    padding-bottom: 15px;
+}
+#checkout #payment .pay h5 {
+    font-size: 20px;
+    font-weight: 500;
+    padding-bottom: 25px;
+}
+#checkout #payment  .pay label {
+    font-size: 18px;
+    padding-left: 15px;
+}
+#checkout #payment button {
+    margin: 30px 0 0 12px;
+    background-color: rgb(38, 97, 114);
+    color: white;
+    width: 130px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+}
+#checkout #payment button:focus {
+    outline: none;
+}
+#checkout #payment button:hover {
+    cursor: pointer;
+    background-color: rgb(64, 143, 165);
+}
+/* #checkout #payment input {
+    font-size: 25px;
+    margin-bottom: 20px;  
+} */
+
+
+/* ********Place Order End********* */
 
 
 
@@ -1448,6 +1614,20 @@ p.exist a {
     }
     #newsletter .form {
         width: 70%;
+    }
+    /* Place Order */
+    #checkout  form {
+       width: 100%;
+       flex-direction: column; 
+     }
+     #checkout .delivery-details {
+        width: 100%;
+        margin-bottom: 10px;
+        border: 1px solid #e2e9e1;
+    }
+    #checkout #payment {
+        width: 100%;
+        margin-top: 20px;
     }
     
 }
@@ -1573,7 +1753,18 @@ p.exist a {
         width: 100%;
         padding: 20px;
     }
-   
+
+    /* Place-Order */
+
+    #checkout {
+        padding: 5px 5px;
+    }
+    #checkout #payment {
+        width: 100%;
+        height: 50vh;
+        margin-top: 20px;
+    }
+    
 
 }
 

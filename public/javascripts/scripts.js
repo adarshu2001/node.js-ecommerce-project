@@ -116,6 +116,23 @@ $("#checkout-form").submit((e)=>{
 
     })
 })
+// $("#checkout-form").submit((e)=>{
+//     e.preventDefault()
+//     $.ajax({
+//         url:'/place-order',
+//         method:'post',
+//         data:$('#checkout-form').serialize(),
+//         success:(response)=>{
+//             alert(response)
+//             if(response.codSuccess){
+//                 location.href='/order-success'
+//             }else{
+//                 razorpayPayment(response)
+//             }
+//         }
+
+//     })
+// })
 const razorpayPayment = (order)=>{
     var options = {
         "key": "rzp_test_r5p0n7ioSfr096", // Enter the Key ID generated from the Dashboard
