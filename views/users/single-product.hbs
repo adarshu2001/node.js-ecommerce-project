@@ -1,12 +1,14 @@
 <section id="proDetails">
 
   <div class="single-pro-img">
-    <img
+    <div id="image-zoom">
+    <img 
       src="/product-images/{{product._id}}.jpg"
       width="100%"
       id="mainImg"
       alt=""
     />
+    </div>
 
     <div class="small-img-group">
       <div class="small-img-col">
@@ -201,4 +203,24 @@
     smallImg[3].onclick=() => {
         mainImg.src = smallImg[3].src
     }
+
+
+</script>
+
+
+<script>
+
+  var options = {
+    width: 400,
+    height: 250,
+    zoomWidth: 500,
+    offset: {vertical: 0, horizontal: 10},
+    scale: 1.5
+  }
+
+
+   new ImageZoom(document.getElementsById("image-zoom"), options );
+  
+
+
 </script>

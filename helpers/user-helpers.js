@@ -17,13 +17,18 @@ module.exports = {
     doSignUp:(userData)=>{
         return new Promise(async(resolve,reject)=>{
             userData.Password = await bcrypt.hash(userData.Password,10)
-            db.get().collection(collection.USER_COLLECTION).insertOne(userData).then((data)=>{
+            let user = {
+                name: userData.Name,
+                email: userData.Email,
+                mobile: userData.Phone,
+                password: userData.Password
+            }
+            db.get().collection(collection.USER_COLLECTION).insertOne(user).then((data)=>{
                 db.get().collection(collection.USER_COLLECTION).findOne({_id : objectId(data.insertedId)}).then((user)=>{
                     resolve(user)
                 })
             })
-        })
-        
+        }) 
     },
     doLogin:(userData)=>{            
         return new Promise(async(resolve,reject)=>{

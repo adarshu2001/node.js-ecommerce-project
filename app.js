@@ -12,6 +12,7 @@ var db = require('./config/connection')
 // var mdb = require('mdb-ui-kit')
 var app = express();
 var session = require('express-session')
+// var jsImageZoom = require("js-image-zoom")
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 // app.use("/css",express.static(path.join(__dirname,"node_modules/mdb-ui-kit/css")));
 // app.use("/js",express.static(path.join(__dirname,"node_modules/mdb-ui-kit/js")));
 app.use(fileUpload())

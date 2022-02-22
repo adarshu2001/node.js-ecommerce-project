@@ -180,71 +180,13 @@ body {
     display: none;
 }
 
-
-
-
-
-
-/* .navbar {
-    background: #131313;  
-    
-}
-
-.nav-item::after {
-    content: '';
-    display: block;
-    width: 0px;
-    height: 2px;
-    background: #fec400;
-    transition: 0.4s
-}
-
-.nav-item:hover::after {
-    width: 100%
-}
-
-.navbar-dark .navbar-nav .active>.nav-link,
-.navbar-dark .navbar-nav .nav-link.active,
-.navbar-dark .navbar-nav .nav-link.show,
-.navbar-dark .navbar-nav .show>.nav-link,
-.navbar-dark .navbar-nav .nav-link:focus,
-.navbar-dark .navbar-nav .nav-link:hover {
-    color: #fec400
-}
-
-.nav-link {
-    padding: 25px 5px;
-    transition: 0.2s
-}
-.account{
-    color: #0082be;
-    font-size: 15px;
-    font-weight: bold;
-    width: 100px;
-    height: 40px;
-    border: none;
-    border-radius: 20px;
-}
-.account:hover{
-    background-color: #0082be;
-    color: white;
-} */
-
 /************Navbar End**************/
 
 
 
 
 
-
-
-
-
 /* ***********Home Page************ */
-
-
-
-
 
 #hero{  
   background-image: url("/homecover/cover.jpg");  
@@ -839,7 +781,68 @@ footer .copyright {
 
 /**************  signup Form  **********/
 
-.row {
+#signup {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 80px 80px;
+}
+#signup .register-details {
+    width: 455px;
+    height: 589px;
+    margin-top: 60px;
+    border: 1px solid #e2e9e1;
+    padding: 40px;
+    box-shadow: 5px 15px 15px 0px rgba(0, 0, 0, 0.3);
+} 
+#signup .register-details h3 {
+    padding: 10px 0 15px 20px;
+    font-weight: 700;
+    color: rgb(38, 97, 114);;
+}
+#signup .register-details input {
+    font-size: 18px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    outline: none;
+    width: 100%;
+    margin-right: 10px;
+    border-width: 0 0 2px 0;
+    border-color: #e2e9e1;
+}
+#signup .register-details input:focus {
+    border-color: rgb(38, 97, 114);
+}
+#signup .register-details button {
+    background-color: rgb(38, 97, 114);
+    color: white;
+    width: 250px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+#signup .register-details button:hover {
+    cursor: pointer;
+    background-color: rgb(64, 143, 165);
+}
+#signup .register-details button:focus {
+    outline: none;
+}
+#signup .register-details .ac {
+    margin: 20px 0 0 10px;
+}
+#signup .register-details  a {
+    text-decoration: none;
+    color: rgb(38, 97, 114);
+}
+
+
+
+
+/* .row {
     width: 900px;
     border: none;
     border-radius: 0;
@@ -1004,7 +1007,7 @@ p.exist a {
     .footer {
         margin-top: 140px
     }
-}
+} */
 
 /**************  signup  Form End **********/
 
@@ -1335,78 +1338,9 @@ p.exist a {
 
 
 
+
+
 /* ********Place Order********* */
-/* #cart-add {
-    padding: 80px 80px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-#coupon {
-    width: 50%;
-    margin-bottom: 30px;
-}
-#coupon h3 {
-    padding-bottom: 15px;
-    font-weight: 600;
-}
-#coupon input {
-    padding: 10px 20px;
-    outline: none;
-    width: 60%;
-    margin-right: 10px;
-    border: 1px solid #e2e9e1;
-}
-#coupon button {
-    background-color: rgb(38, 97, 114);
-    color: white;
-    width: 100px;
-    height: 45px;
-    border: none;
-    border-radius: 5px;
-    font-weight: 600;
-}
-#coupon button:hover {
-    cursor: pointer;
-    background-color: rgb(64, 143, 165);
-}
-#coupon button:focus {
-    outline: none;
-}
-#subtotal {
-    width: 50%;
-    margin-bottom: 30px;
-    border: 1px solid #e2e9e1;
-    padding: 30px;
-}
-#subtotal h3 {
-    padding-bottom: 15px;
-}
-#subtotal table {
-    border-collapse: collapse;
-    width: 100%;
-    margin-bottom: 20px;
-}
-#subtotal table td {
-    width: 50%;
-    border: 1px solid #e2e9e1;
-    padding: 10px;
-    font-size: 17px;
-}
-#subtotal a {
-    text-decoration: none;
-    background-color: rgb(38, 97, 114);
-    color: white;
-    width: 350px;
-    height: 150px;
-    padding: 10px 10px;
-    border-radius: 5px;
-    font-weight: 600;
-}
-#subtotal a:hover {
-    cursor: pointer;
-    background-color: rgb(64, 143, 165);
-} */
 
 #checkout {
     padding: 80px 80px;
@@ -1629,6 +1563,12 @@ p.exist a {
         width: 100%;
         margin-top: 20px;
     }
+
+    /* sign up form */
+
+    #signup .register-details {
+       margin-top: 100px;
+    }
     
 }
 
@@ -1764,7 +1704,14 @@ p.exist a {
         height: 50vh;
         margin-top: 20px;
     }
-    
+
+
+    /* sign up form */
+
+    #signup .register-details {
+        margin-top: 50px;
+    }
+
 
 }
 

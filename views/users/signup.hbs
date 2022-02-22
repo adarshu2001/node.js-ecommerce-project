@@ -1,4 +1,4 @@
-<div class="container d-flex justify-content-center">
+{{!-- <div class="container d-flex justify-content-center">
     <div class="row my-5">
         <div class="col-md-6 text-left text-white lcol">
             <div class="greeting">
@@ -24,4 +24,23 @@
             <p class="exist mt-4">Existing user? <a href="/login">Login</a></p>
         </div>
     </div>
-</div>
+</div> --}}
+
+<section id="signup">
+    <div class="register-details">
+        <h3>Register Here..</h3>
+        <form  action="/signup" method="post">
+            <input type="text" id="name" name="Name" placeholder="Enter Your Name"><br>
+            <input type="email" id="email" name="Email" placeholder="Enter Your Email"><br>
+            <input type="text" id="phone" name="Phone" placeholder="Enter Your Mobile No:"><br>
+            <input type="password" id="password" name="Password" placeholder="Enter Your Password"><br>
+            <button type="submit">REGISTER</button>
+        </form>
+         <div class="ac">
+           <a href="/login">Already Have An Account ?</a>
+        </div>
+        
+    
+    </div>
+
+</section>
