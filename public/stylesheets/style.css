@@ -683,9 +683,99 @@ footer .copyright {
 
 
 
+
+
 /**************  Login Form  **********/
 
-.wrapper {
+#login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 120px 80px;
+}
+#login .log-box {
+    width: 455px;
+    height: 589px;
+    margin-top: 60px;
+    border: 1px solid #e2e9e1;
+    padding: 80px;
+    box-shadow: 5px 15px 15px 0px rgba(0, 0, 0, 0.3);
+}
+#login  .logo {
+    width: 80px;
+    margin: auto;
+}
+#login .logo img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0px 0px 3px #5f5f5f, 0px 0px 0px 5px #ecf0f3, 8px 8px 15px #a7aaa7, -8px -8px 15px #fff
+}
+#login .log-details {
+    position: relative;
+}
+#login .log-details h3 {
+    font-weight: 700;
+    color: rgb(38, 97, 114);
+    padding: 35px 0 25px 100px;
+}
+#login .log-details input {
+    font-size: 18px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    outline: none;
+    width: 100%;
+    margin-right: 10px;
+    border-width: 0 0 2px 0;
+    border-color: #e2e9e1;
+
+}
+#login .log-details span {
+    color: rgb(38, 97, 114);
+    font-size: 22px;
+    position: absolute;
+    left: -10%;
+    margin-top: 15px;
+}
+#login .log-details input:focus {
+    border-color: rgb(38, 97, 114);
+}
+#login .log-details button {
+    background-color: rgb(38, 97, 114);
+    color: white;
+    width: 250px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+#login .log-details button:hover {
+    cursor: pointer;
+    background-color: rgb(64, 143, 165);
+}
+#login .log-details button:focus {
+    outline: none;
+}
+#login .log-box .signotp {
+   padding: 20px 0 0 20px;
+}
+#login .log-box a {
+    text-decoration: none;
+    color: rgb(38, 97, 114);
+    font-size: 15px;
+    font-weight: 700;
+
+
+
+}
+
+
+/* .wrapper {
     max-width: 350px;
     min-height: 500px;
     margin: 80px auto;
@@ -768,7 +858,7 @@ footer .copyright {
         margin: 30px 20px;
         padding: 40px 15px 15px 15px
     }
-}
+} */
 
 /**************  Login Form End **********/
 
@@ -799,7 +889,7 @@ footer .copyright {
 #signup .register-details h3 {
     padding: 10px 0 15px 20px;
     font-weight: 700;
-    color: rgb(38, 97, 114);;
+    color: rgb(38, 97, 114);
 }
 #signup .register-details input {
     font-size: 18px;
@@ -839,179 +929,7 @@ footer .copyright {
     color: rgb(38, 97, 114);
 }
 
-
-
-
-/* .row {
-    width: 900px;
-    border: none;
-    border-radius: 0;
-    box-sizing: border-box
-}
-
-.lcol {
-
-    background: linear-gradient(to bottom, rgba(26, 111, 118, 1) 50%, rgba(40, 30, 101, 1) 100%, rgba(125, 185, 232, 1) 100%);
-    height: 550px;
-    padding: 0 35px
-}
-
-.rcol {
-    background: #fff;
-    padding: 80px;
-    height: 550px
-}
-
-span.txt {
-    color: #17C296
-}
-
-.greeting {
-    padding-top: 200px;
-    padding-right: 90px
-}
-
-h6.mt-3 {
-    padding-right: 115px
-}
-
-.footer {
-    margin-top: 220px
-}
-
-.footer span {
-    color: #B0A1E2;
-    font-size: 9px;
-    cursor: pointer
-}
-
-.fab {
-    color: #EDEDF5;
-    font-size: 10px;
-    margin-right: 20px;
-    padding-top: 3px;
-    cursor: pointer
-}
-
-h2.heading {
-    font-weight: bold
-}
-
-.form-control {
-    border: none;
-    border-radius: 0px;
-    border-bottom: 1px solid #F2F2F2
-}
-
-.form-control::placeholder {
-    font-size: 13px;
-    color: #C2C2CC
-}
-
-.form-control:focus {
-    box-shadow: none;
-    border-bottom: 1px solid #F2F2F2
-}
-
-.fone input {
-    padding-left: 20px
-}
-
-.fone {
-    position: relative
-}
-
-.fone .fas {
-    position: absolute;
-    left: 0;
-    top: 5px;
-    padding: 8px 0px;
-    color: #C2C2CC;
-    font-size: 12px
-}
-
-.fone .image {
-    position: absolute;
-    left: 275px;
-    top: 0px;
-    cursor: pointer
-}
-
-.form-check-input {
-    margin-top: 10px
-}
-
-.form-check-label {
-    font-size: 9px;
-    color: #C2C2CC
-}
-
-.addbtn {
-    padding: 7px 40px   ;
-    background: #11C892;
-    border: none;
-    border-radius: 30px;
-    font-size: 15px;
-    font-weight: bold;
-}
-
-.btn-success:hover {
-    background: #11C892
-}
-
-.btn-success:focus {
-    box-shadow: none
-}
-
-u {
-    cursor: pointer
-}
-
-p.exist {
-    font-size: 13px;
-    color: #C2C2CC
-}
-
-p.exist a {
-    cursor: pointer;
-    color: #4529f6;
-    font-size: 13px;
-}
-
-@media screen and (max-width: 993px) {
-    .fone .image {
-        position: absolute;
-        left: 180px
-    }
-
-    .footer {
-        margin-top: 170px
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .row {
-        width: 450px
-    }
-
-    .rcol {
-        padding: 60px 180px 60px 60px
-    }
-}
-
-@media screen and (max-width: 420px) {
-    .rcol {
-        padding: 60px 50px 60px 50px
-    }
-
-    .footer {
-        margin-top: 140px
-    }
-} */
-
 /**************  signup  Form End **********/
-
-
 
 
 

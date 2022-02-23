@@ -1,4 +1,4 @@
-<div class="wrapper">
+{{!-- <div class="wrapper">
   <div class="logo">
     <img
       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsknnF7jnlbmAf3aazRP8nkR4JJqJIfNe-Zw&usqp=CAU"
@@ -25,4 +25,30 @@
     or
     <a href="/signup">Sign up</a>
   </div>
-</div>
+</div> --}}
+
+<section id="login">
+  <div class="log-box">
+  <div class="logo">
+    <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsknnF7jnlbmAf3aazRP8nkR4JJqJIfNe-Zw&usqp=CAU" alt="">
+  </div>
+
+  <div class="log-details">
+    <h3>Login</h3>
+     {{#if loginErr}}
+    <p class="err text-center text-danger font-weight-bold">{{loginErr}}</p>
+  {{/if}}
+    <form action="/login" method="post">
+      <span><i class="fas fa-user"></i></span>
+      <input type="email" name="Email" placeholder="Enter Your Email"><br>
+      <span><i class="fas fa-lock"></i></span>
+      <input type="password" name="Password" placeholder="Enter Your Password"><br>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+    <div class="signotp">
+      <a href="/signup">Sign Up</a> or
+      <a href="">Login With OTP</a>
+    </div>
+  </div>
+</section>
