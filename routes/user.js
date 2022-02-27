@@ -12,6 +12,11 @@ const verifyLogin = (req,res,next)=>{
   }
 }
 
+const serviceSID = "VAa5825b37fce8ba7f9023f34ea97a84de"
+const accountSID = "AC02f399e851af5313a6e373d3a99f44ca"
+const authToken = "daf5133f4e7dd141918733332dec4a27"
+const client = require('twilio')(accountSID, authToken)
+
 /* GET home page. */
 router.get('/',async function(req, res, next) {
   let user = req.session.user
@@ -55,6 +60,61 @@ router.post('/login',(req,res)=>{
       res.redirect('/login')
     }
   })
+})
+
+router.get('/verifyMobile',(req,res)=>{
+  res.render('users/verifyMobile')
+})
+router.post('/verifyMobile',(req,res)=>{
+  let num = req.body.mobile
+  let number = `+91${num}`
+  console.log("num"+ number);
+  userHelpers.getUserDetails(number).then((user)=>{
+    if (user) {
+      req.session.user = user
+      client.verify
+      .services(serviceSID)
+      .verifications.create({
+        to: `+91${req.body.mobile}`,
+        channel: "sms"
+      }).then((resp)=>{
+        console.log(resp);
+        req.session.number = resp.to
+        res.redirect('/verifyOtp')
+      }).catch((err)=>{
+        console.log(err);
+      })
+    }else{
+      res.redirect('/verifyMobile')
+    }
+  })
+})
+router.get('/verifyOtp',(req,res)=>{
+  res.render('users/verifyOtp')
+})
+router.post('/verifyOtp',(req,res)=>{
+  let otp = req.body.otp
+  let number = req.session.number
+  client.verify
+  .services(serviceSID)
+  .verificationChecks.create({
+    to: number,
+    code: otp
+  }).then(async(resp)=>{
+    console.log(resp);
+    if (resp.valid) {
+      let user = await userHelpers.getUserDetails(number)
+      req.session.userLoggedIn = true
+      res.redirect('/')
+      req.session.user = user
+    }else {
+      res.redirect('/verifyOtp')
+    }
+  }).catch((err)=>{
+    console.log(err);
+    res.redirect('/verifyOtp')
+  })
+
 })
 router.get('/logout',(req,res)=>{
   req.session.user = null
@@ -160,5 +220,6 @@ router.get('/single-product/:id',verifyLogin,async(req,res)=>{
    cartCount = await userHelpers.getCartCount(req.session.user._id)
   res.render('users/single-product',{user:req.session.user,product,cartCount})
 })
+
 
 module.exports = router;

@@ -20,8 +20,9 @@ module.exports = {
             let user = {
                 name: userData.Name,
                 email: userData.Email,
-                mobile: userData.Phone,
-                password: userData.Password
+                mobile: `+91${userData.Phone}`,
+                password: userData.Password,
+                status: true
             }
             db.get().collection(collection.USER_COLLECTION).insertOne(user).then((data)=>{
                 db.get().collection(collection.USER_COLLECTION).findOne({_id : objectId(data.insertedId)}).then((user)=>{
@@ -30,13 +31,14 @@ module.exports = {
             })
         }) 
     },
-    doLogin:(userData)=>{            
+    doLogin:(userData)=>{       
         return new Promise(async(resolve,reject)=>{
-            let logginStatus = false
+            let logginStatus = true
+            let Umobile=`+91${userData.Mobile}`
             let response={}
-            let user=await db.get().collection(collection.USER_COLLECTION).findOne({Email:userData.Email})               
+            let user=await db.get().collection(collection.USER_COLLECTION).findOne({mobile: Umobile})               
             if(user){
-                bcrypt.compare(userData.Password,user.Password).then((status)=>{
+                bcrypt.compare(userData.Password,user.password).then((status)=>{
                     if(status){                       
                     response.user=user
                     response.status=true
@@ -48,6 +50,12 @@ module.exports = {
             }else{
                 resolve({status:false})
             }
+        })
+    },
+    getUserDetails:(number)=>{
+        return new Promise(async(resolve,reject)=>{
+            let user = await db.get().collection(collection.USER_COLLECTION).findOne({mobile:number})
+            resolve(user)
         })
     },
     // addToCart:(proId,userId)=>{

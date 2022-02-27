@@ -936,6 +936,125 @@ footer .copyright {
 
 
 
+/* ***************OTP*************** */
+
+#verifyMobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 150px 80px;
+  
+}
+#verifyMobile .verify {
+    width: 350px;
+    height: 300px;
+    border: 1px solid #e2e9e1;
+    box-shadow: 5px 15px 15px 0px rgba(0, 0, 0, 0.3);
+    padding: 55px;
+}
+#verifyMobile .verify h3 {
+    font-weight: 500;
+    padding-bottom: 20px;
+    color: rgb(38, 97, 114);
+}
+#verifyMobile .verify input {
+    font-size: 18px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    outline: none;
+    width: 100%;
+    margin-right: 10px;
+    border-width: 0 0 2px 0;
+    border-color: #e2e9e1;
+}
+#verifyMobile .verify input:focus {
+    border-color: rgb(38, 97, 114);
+}
+#verifyMobile .verify button {
+    background-color: rgb(38, 97, 114);
+    color: white;
+    width: 250px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+#verifyMobile .verify button:hover {
+    cursor: pointer;
+    background-color: rgb(64, 143, 165);
+}
+#verifyMobile .verify button:focus {
+    outline: none;
+}
+
+
+
+#verifyOtp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 150px 80px;
+
+}
+#verifyOtp .verify {
+    width: 350px;
+    height: 350px;
+    border: 1px solid #e2e9e1;
+    box-shadow: 5px 15px 15px 0px rgba(0, 0, 0, 0.3);
+    padding: 55px;
+}
+#verifyOtp .verify h3 {
+    font-weight: 500;
+    padding-bottom: 20px;
+    color: rgb(38, 97, 114);
+}
+#verifyOtp .verify input {
+    font-size: 18px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    outline: none;
+    width: 100%;
+    margin-right: 10px;
+    border-width: 0 0 2px 0;
+    border-color: #e2e9e1;
+}
+#verifyOtp .verify input:focus {
+    border-color: rgb(38, 97, 114);
+}
+#verifyOtp .verify button {
+    background-color: rgb(38, 97, 114);
+    color: white;
+    width: 250px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+#verifyOtp .verify button:hover {
+    cursor: pointer;
+    background-color: rgb(64, 143, 165);
+}
+#verifyOtp .verify button:focus {
+    outline: none;
+}
+#verifyOtp .verify a {
+    text-decoration: none;
+    color: rgb(38, 97, 114);;
+}
+
+
+
+/* ***************OTP END*************** */
+
+
+
+
+
+
 
 
 /* *********Cart Page*********** */
@@ -1487,6 +1606,8 @@ footer .copyright {
     #signup .register-details {
        margin-top: 100px;
     }
+
+   
     
 }
 
@@ -1629,6 +1750,20 @@ footer .copyright {
     #signup .register-details {
         margin-top: 50px;
     }
+
+     /* Login Form */
+
+     #login {
+        padding: 80px 10px;
+    }
+    #login  .logo {
+        width: 80px;
+        margin: auto;
+        margin-right: 110px;
+    }
+    
+
+    
 
 
 }
