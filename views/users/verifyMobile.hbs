@@ -1,5 +1,10 @@
 <section id="verifyMobile">
     <div class="verify">
+        <div class="invalid">
+             {{#if invalidNumber}}
+        <p>Invalid Number</p>
+        {{/if}}
+        </div>
         <form action="/verifyMobile" method="post">
             <h3>Mobile Verification</h3>
             <input type="text" name="mobile" placeholder="Enter Your Mobile No:"><br>

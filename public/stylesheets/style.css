@@ -700,6 +700,7 @@ footer .copyright {
     height: 589px;
     margin-top: 60px;
     border: 1px solid #e2e9e1;
+    flex-wrap: wrap;
     padding: 80px;
     box-shadow: 5px 15px 15px 0px rgba(0, 0, 0, 0.3);
 }
@@ -762,16 +763,17 @@ footer .copyright {
     outline: none;
 }
 #login .log-box .signotp {
-   padding: 20px 0 0 20px;
+   /* padding: 20px 0 0 20px; */
+   padding: 40px;
+   display: flex;
+   justify-content: space-between;
+
 }
 #login .log-box a {
     text-decoration: none;
     color: rgb(38, 97, 114);
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 700;
-
-
-
 }
 
 
@@ -887,7 +889,7 @@ footer .copyright {
     box-shadow: 5px 15px 15px 0px rgba(0, 0, 0, 0.3);
 } 
 #signup .register-details h3 {
-    padding: 10px 0 15px 20px;
+    padding: 10px 0 15px 80px;
     font-weight: 700;
     color: rgb(38, 97, 114);
 }
@@ -913,6 +915,7 @@ footer .copyright {
     border-radius: 5px;
     font-weight: 600;
     margin-top: 20px;
+    margin-left: 60px;
 }
 #signup .register-details button:hover {
     cursor: pointer;
@@ -922,7 +925,7 @@ footer .copyright {
     outline: none;
 }
 #signup .register-details .ac {
-    margin: 20px 0 0 10px;
+    margin: 20px 0 0 90px;
 }
 #signup .register-details  a {
     text-decoration: none;
@@ -952,6 +955,14 @@ footer .copyright {
     border: 1px solid #e2e9e1;
     box-shadow: 5px 15px 15px 0px rgba(0, 0, 0, 0.3);
     padding: 55px;
+    position: relative;
+}
+#verifyMobile .verify .invalid {
+    position: absolute;
+    top: 33%;
+    left: 100px;
+    color: red;
+    font-weight: 600;
 }
 #verifyMobile .verify h3 {
     font-weight: 500;
@@ -1005,6 +1016,14 @@ footer .copyright {
     border: 1px solid #e2e9e1;
     box-shadow: 5px 15px 15px 0px rgba(0, 0, 0, 0.3);
     padding: 55px;
+    position: relative;
+}
+#verifyOtp .verify .invalid {
+    position: absolute;
+    top: 28%;
+    left: 100px;
+    color: red;
+    font-weight: 600;
 }
 #verifyOtp .verify h3 {
     font-weight: 500;
@@ -1479,6 +1498,103 @@ footer .copyright {
 
 
 
+/************User Profile*************/
+
+#user-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 150px 20px;
+    flex-wrap: wrap;
+}
+#user-profile .nav {
+    flex-direction: column;
+    width: 15%;
+    height: 60vh;
+    margin-bottom: 30px;
+    border: 1px solid #e2e9e1;
+    padding: 40px;
+    background-color: rgb(38, 97, 114);
+    color: #d3d6d6;
+    box-shadow: 5px 15px 15px 0px rgb(38, 97, 114, 0.3);
+}
+#user-profile .nav .phn {
+    display: none;
+}
+#user-profile .nav .user {
+  font-size: 100px;
+  padding-left: 50px;
+  color: #d3d6d6;
+}
+#user-profile .nav h3 {
+    margin: 20px 0 20px 50px;
+}
+#user-profile .nav ul {
+   padding: 10px 0 10px 70px;
+}
+#user-profile .nav li {
+    list-style: none; 
+    margin-bottom: 40px;
+}
+#user-profile .nav li a {
+    text-decoration: none;
+    color: #d3d6d6;
+    font-size: 18px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+#user-profile .nav li a:hover {
+    color: #b5da3b;
+    font-size: 15px;
+}
+#user-profile .profile {
+    width: 35%;
+    height: 60vh;
+    border: 1px solid #e2e9e1;
+    margin-bottom: 26px;
+    background-color: rgb(38, 97, 114);
+    box-shadow: 5px 15px 15px 0px rgb(38, 97, 114, 0.3);
+    margin-left: 10px;
+    padding: 40px;
+   
+}
+#user-profile .profile .new-add {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#user-profile .profile .new-add a {
+    text-decoration: none;
+    color: #d3d6d6;
+    font-size: 18px;
+    font-weight: 600;
+}
+#user-profile .profile h1 {
+    color: #d3d6d6;
+    font-weight: bold;
+
+}
+#user-profile .content {
+    display: flex;
+    padding-top: 60px;
+}
+#user-profile .content h5 {
+    color: #d3d6d6;
+    font-weight: bold;
+}
+#user-profile .content p {
+    padding-left: 40px;
+    color: #d3d6d6;
+    font-size: 18px;
+}
+
+/************User Profile End*************/
+
+
+
+
+
+
 
 
 
@@ -1606,9 +1722,46 @@ footer .copyright {
     #signup .register-details {
        margin-top: 100px;
     }
+     
+
+    /* User-Profile */
+
+    #user-profile {
+       padding: 100px 5px;
+    }
+    #user-profile .nav {
+        flex-direction: column;
+        width: 10%;
+        height: 60vh;  
+    }
+    #user-profile .nav .user {
+        display: none;
+    }
+    #user-profile .nav h3 {
+        display: none;
+    }
+    #user-profile .nav ul {
+        padding: 35px 5px;
+        margin-left: -25px;
+    }
+    #user-profile .nav ul li {
+        display: none;
+    }
+    #user-profile .nav ul .phn {
+        display: contents;
+        display: block;
+        padding-bottom: 50px;
+        font-size: 20px;
+        color: #d3d6d6;
+        padding-bottom: 100px;
+    }
+    #user-profile .profile {
+        padding: 40px;
+        margin-left: 1px;
+        width: 80%;
+    }
 
    
-    
 }
 
 
@@ -1755,16 +1908,31 @@ footer .copyright {
 
      #login {
         padding: 80px 10px;
+      
     }
     #login  .logo {
-        width: 80px;
+        width: 70px;
         margin: auto;
         margin-right: 110px;
     }
-    
+
+    #login .log-box .signotp {
+        padding: 25px;
+    }
+
+    /* user profile */
+
+    #user-profile .nav {
+       display: none;
+    }
+    #user-profile .profile {
+        padding: 20px;
+        margin-left: 1px;
+        width: 100%;
+        height: 70vh;
+    }
 
     
-
 
 }
 

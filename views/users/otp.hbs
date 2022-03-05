@@ -1,15 +1,10 @@
 <section id="verifyOtp">
     <div class="verify">
-         <div class="invalid">
-             {{#if invalidOtp}}
-        <p>Invalid OTP</p>
-        {{/if}}
-        </div>
-        <form action="/verifyOtp" method="post">
+        <form action="/otp" method="post">
             <h3>OTP Verification</h3>
             <input type="text" name="otp" placeholder="Enter Your OTP"><br>
             <div>
-                <a href="resendlogin-otp">Resend OTP</a>
+                <a href="resend-otp">Resend OTP</a>
             </div>
             <button type="submit">Validate</button> 
         </form>

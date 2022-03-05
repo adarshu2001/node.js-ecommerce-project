@@ -14,7 +14,7 @@ const verifyLogin = (req,res,next)=>{
 
 const serviceSID = "VAa5825b37fce8ba7f9023f34ea97a84de"
 const accountSID = "AC02f399e851af5313a6e373d3a99f44ca"
-const authToken = "daf5133f4e7dd141918733332dec4a27"
+const authToken = "9275c2c560bc77d925e48c170d523a71"
 const client = require('twilio')(accountSID, authToken)
 
 /* GET home page. */
@@ -41,13 +41,61 @@ router.get('/signup',(req,res)=>{
   res.render('users/signup')
 })
 router.post('/signup',(req,res)=>{
-  console.log(req.body);
-  userHelpers.doSignUp(req.body).then((response)=>{
-    req.session.user=response
-    req.session.userLoggedIn = true
-    res.redirect('/')
+  let num = req.body.Phone
+  let mobile = `+91${num}`
+  userHelpers.getUserDetails(mobile).then((user)=>{
+    if (user) {
+      req.session.userExist = true
+      res.redirect('/signup')
+    }else {
+      userHelpers.doSignUp(req.body).then((user)=>{
+        client.verify
+        .services(serviceSID)
+        .verifications.create({
+          to: `+91${num}`,
+          channel: "sms"
+        }).then((resp)=>{
+          req.session.number = resp.to
+          res.redirect('/otp')
+        }).catch((err)=>{
+          console.log(err);
+        })   
+      })
+    }
+  }) 
+})
+
+router.get('/otp',(req,res)=>{
+  res.render('users/otp')
+})
+
+router.post('/otp',(req,res)=>{
+  let otp = req.body.otp
+  let number = req.session.number
+  client.verify
+  .services(serviceSID)
+  .verificationChecks.create({
+    to: number,
+    code: otp
+  }).then(async(resp)=>{
+    if (resp.valid) {
+      let user = await userHelpers.getUserDetails(number)
+      req.session.userLoggedIn = true
+      req.session.user = user
+      res.redirect('/')
+    }else {
+      redirect('/otp')
+    }
   })
 })
+// router.post('/signup',(req,res)=>{
+//   console.log(req.body);
+//   userHelpers.doSignUp(req.body).then((response)=>{
+//     req.session.user=response
+//     req.session.userLoggedIn = true
+//     res.redirect('/')
+//   })
+// })
 router.post('/login',(req,res)=>{
   console.log(req.body);
   userHelpers.doLogin(req.body).then((response)=>{
@@ -63,7 +111,8 @@ router.post('/login',(req,res)=>{
 })
 
 router.get('/verifyMobile',(req,res)=>{
-  res.render('users/verifyMobile')
+  res.render('users/verifyMobile',{"invalidNumber": req.session.invalidNumber})
+  req.session.invalidNumber = false
 })
 router.post('/verifyMobile',(req,res)=>{
   let num = req.body.mobile
@@ -75,7 +124,7 @@ router.post('/verifyMobile',(req,res)=>{
       client.verify
       .services(serviceSID)
       .verifications.create({
-        to: `+91${req.body.mobile}`,
+        to: `+91${num}`,
         channel: "sms"
       }).then((resp)=>{
         console.log(resp);
@@ -85,12 +134,14 @@ router.post('/verifyMobile',(req,res)=>{
         console.log(err);
       })
     }else{
+      req.session.invalidNumber = true
       res.redirect('/verifyMobile')
     }
   })
 })
 router.get('/verifyOtp',(req,res)=>{
-  res.render('users/verifyOtp')
+  res.render('users/verifyOtp',{"invalidOtp": req.session.invalidOtp})
+  req.session.invalidOtp = false
 })
 router.post('/verifyOtp',(req,res)=>{
   let otp = req.body.otp
@@ -108,19 +159,55 @@ router.post('/verifyOtp',(req,res)=>{
       res.redirect('/')
       req.session.user = user
     }else {
+      req.session.invalidOtp = true
       res.redirect('/verifyOtp')
     }
   }).catch((err)=>{
     console.log(err);
+    req.session.invalidOtp = true
     res.redirect('/verifyOtp')
   })
-
 })
 router.get('/logout',(req,res)=>{
   req.session.user = null
   req.session.userLoggedIn=false
   res.redirect('/')
 })
+
+router.get('/resend-otp',(req,res)=>{
+  let number = req.session.number
+  console.log(number);
+  client.verify
+  .services(serviceSID)
+  .verifications.create({
+    to: `${number}`,
+    channel: "sms"
+  }).then((response)=>{
+    req.session.user = response.user
+    req.session.resend = true
+    res.redirect('/otp')
+  }).catch((err)=>{
+    req.session.invalidOtp = true
+    res.redirect('/signup')
+  })
+})
+router.get('/resendlogin-otp',(req,res)=>{
+  let number = req.session.number
+  client.verify
+  .services(serviceSID)
+  .verifications.create({
+    to: `${number}`,
+    channel: "sms"
+  }).then((response)=>{
+    req.session.user = response.user
+    req.session.resend = true
+    res.redirect('/verifyOtp')
+  }).catch((err)=>{
+    req.session.invalidOtp = true
+    res.redirect('/login')
+  })
+})
+
 router.get('/cart',verifyLogin,async(req,res)=>{
   let cartCount = await userHelpers.getCartCount(req.session.user._id)
   let products = await userHelpers.getCartProduct(req.session.user._id)
@@ -219,6 +306,12 @@ router.get('/single-product/:id',verifyLogin,async(req,res)=>{
   let cartCount = null
    cartCount = await userHelpers.getCartCount(req.session.user._id)
   res.render('users/single-product',{user:req.session.user,product,cartCount})
+})
+router.get('/user-profile',async(req,res)=>{
+  let id = req.session.user._id
+  let user = await userHelpers.userProfile(id)
+  console.log(user);
+ res.render('users/user-profile',{user})
 })
 
 
