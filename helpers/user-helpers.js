@@ -7,6 +7,7 @@ const Razorpay = require('razorpay')
 const { resolve } = require('path')
 const { response } = require('../app')
 const moment = require('moment')
+const { log } = require('console')
 var instance = new Razorpay({
     key_id: 'rzp_test_r5p0n7ioSfr096',
     key_secret: 'Xn5Z95nZRUwtCubL4SdoAS58',
@@ -523,8 +524,101 @@ module.exports = {
                 resolve(response)
             })
         })
+    },
+    addNewAddress:(details)=>{
+        console.log(details);
+        return new Promise(async(resolve,reject)=>{
+            let user = await db.get().collection(collection.USER_COLLECTION).findOne({_id:objectId(details.userId)})
+            details._id = objectId()
+            if (user.address) {
+                db.get().collection(collection.USER_COLLECTION).updateOne({_id:objectId(details.userId)},
+                {
+                    $push: {
+                        address: details
+                    }
+                }
+                ).then(()=>{
+                    resolve()
+                })
+            }else {
+                let addr = [details]
+                db.get().collection(collection.USER_COLLECTION).updateOne({_id:objectId(details.userId)},
+                {
+                    $set: {
+                        address: addr
+                    }
+                }
+                ).then((user)=>{
+                    resolve(user)
+                })
+            }
+        })
+    },
+    addressChecker:(userId)=>{
+        return new Promise(async(resolve,reject)=>{
+            let status = {}
+            let user = await db.get().collection(collection.USER_COLLECTION).findOne({_id:objectId(userId)})
+            if (user.address) {
+                status.address = true
+            }
+            resolve(status)
+        })
+    },
+    getUserAddress:(userId)=>{
+        return new Promise(async(resolve,reject)=>{
+            let user = await db.get().collection(collection.USER_COLLECTION).findOne({_id:objectId(userId)})
+            let address = user.address
+            resolve(address)
+        })
+    },
+    singleAddress:(userId,addId)=>{
+        return new Promise(async(resolve,reject)=>{
+            let user = await db.get().collection(collection.USER_COLLECTION).aggregate([
+
+                {
+                    $match: {
+                        _id:objectId(userId)
+                    }
+                },
+                {
+                    $unwind:"$address"
+                },
+                {
+                    $match: {
+                        'address._id' :objectId(addId)
+                    }
+                },
+                {
+                    $project: {
+                        address:1,
+                        _id:0
+                    }
+                }
+            ]).toArray()
+            console.log(user);
+            resolve(user)
+        })
+    },
+    updateAddress:(addId,userId,details)=>{
+        return new Promise(async(resolve,reject)=>{
+            let user = await db.get().collection(collection.USER_COLLECTION).findOne({_id: objectId(userId)})
+            if (user) {
+                db.get().collection(collection.USER_COLLECTION)
+                .updateOne({ address: {$elemMatch: {_id: objectId(addId)}}},
+                {
+                    $set: {
+                        "address.$.Fname": details.Fname,
+                        "address.$.Lname": details.Lname,
+                        "address.$.House": details.House,
+                        "address.$.Town": details.Town,
+                        "address.$.Phone": details.Phone,
+                        "address.$.Pin": details.Pin,
+                    }
+                }).then((response)=>{
+                    resolve(response)
+                })
+            }
+        })
     }
     
-   
-
 }

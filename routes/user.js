@@ -14,7 +14,7 @@ const verifyLogin = (req,res,next)=>{
 
 const serviceSID = "VAa5825b37fce8ba7f9023f34ea97a84de"
 const accountSID = "AC02f399e851af5313a6e373d3a99f44ca"
-const authToken = "9275c2c560bc77d925e48c170d523a71"
+const authToken = "2a53bd69ed5c5c3e249c40f1e50b4aeb"
 const client = require('twilio')(accountSID, authToken)
 
 /* GET home page. */
@@ -310,8 +310,42 @@ router.get('/single-product/:id',verifyLogin,async(req,res)=>{
 router.get('/user-profile',async(req,res)=>{
   let id = req.session.user._id
   let user = await userHelpers.userProfile(id)
-  console.log(user);
- res.render('users/user-profile',{user})
+  let status = await userHelpers.addressChecker(id)
+  var address = null
+  if (status.address) {
+    let addrs = await userHelpers.getUserAddress(id)
+    let length = addrs.length
+    address = addrs.slice(length -2, length)
+    console.log("sdddd"+ address);
+    res.render('users/user-profile',{user,user:req.session.user,address})
+  }else {
+    res.render('users/user-profile',{user,user:req.session.user})
+  }
+
+})
+router.get('/add-new-profile-addrs',(req,res)=>{
+  res.render('users/addProfileAddress',{user:req.session.user})
+})
+router.post('/add-new-profile-addrs',(req,res)=>{
+  userHelpers.addNewAddress(req.body).then((response)=>{
+    res.redirect('/user-profile')
+  })
+})
+router.get('/edit-U-addrs/:id',async(req,res)=>{
+  let addId = req.params.id
+  let userId = req.session.user._id
+
+  let address = await userHelpers.singleAddress(userId,addId)
+  res.render('users/edit-address',{address,user:req.session.user})
+})
+router.post('/edit-U-addrs/:id',(req,res)=>{
+  let addId = req.params.id
+  let userId = req.session.user._id
+
+  userHelpers.updateAddress(addId,userId,req.body).then((response)=>{
+    res.redirect('/user-profile')
+  })
+ 
 })
 
 

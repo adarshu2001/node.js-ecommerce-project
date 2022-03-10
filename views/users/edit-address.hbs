@@ -1,0 +1,21 @@
+<section id="add-new-addrs">
+    {{#each address}}
+    <form action="/edit-U-addrs/{{this.address._id}}" method="post">
+         <div class="address-details">
+        <h3>Edit Address</h3>
+        <div>
+                <input type="text" id="fname" name="Fname" value="{{this.address.Fname}}" ><br>
+                <input type="text" id="lname" name="Lname" value="{{this.address.Lname}}" ><br>
+                <input type="text" id="house" name="House" value="{{this.address.House}}" ><br>
+                <input type="text" id="town" name="Town" value="{{this.address.Town}}" ><br>
+                <input type="text" id="phone" name="Phone" value="{{this.address.Phone}}"><br>     
+                <input type="text" id="pin" name="Pin" value="{{this.address.Pin}}"><br>
+                {{!-- <input type="text" id="" name="userId" value="{{user._id}}" hidden> --}}
+                <div>
+                <button type="submit">Update</button>
+                </div>
+        </div>  
+    </div>
+    </form>
+    {{/each}}
+</section>

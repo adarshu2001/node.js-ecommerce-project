@@ -1505,7 +1505,6 @@ footer .copyright {
     justify-content: center;
     align-items: center;
     padding: 150px 20px;
-    flex-wrap: wrap;
 }
 #user-profile .nav {
     flex-direction: column;
@@ -1548,14 +1547,15 @@ footer .copyright {
     font-size: 15px;
 }
 #user-profile .profile {
-    width: 35%;
-    height: 60vh;
+    width: 40%;
+    height: 70vh;
     border: 1px solid #e2e9e1;
     margin-bottom: 26px;
     background-color: rgb(38, 97, 114);
     box-shadow: 5px 15px 15px 0px rgb(38, 97, 114, 0.3);
-    margin-left: 10px;
+    margin-left: 5px;
     padding: 40px;
+    flex-wrap: wrap;
    
 }
 #user-profile .profile .new-add {
@@ -1586,9 +1586,131 @@ footer .copyright {
     padding-left: 40px;
     color: #d3d6d6;
     font-size: 18px;
+}  
+#user-profile .profile .edit-delete i {
+    color: #d3d6d6;
+    margin: 5px 15px;
+    padding-bottom: 10px;
 }
 
 /************User Profile End*************/
+
+
+
+/* 
+#checkout {
+    padding: 80px 80px;
+     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+}
+#checkout form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#checkout .delivery-details {
+    width: 50%;
+    margin-bottom: 30px;
+    border: 1px solid #e2e9e1;
+    padding: 40px;
+}
+#checkout .delivery-details h3 {
+    padding: 5px 0 15px 20px;
+    font-weight: 600;
+}
+#checkout .delivery-details input {
+    font-size: 18px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    outline: none;
+    width: 100%;
+    margin-right: 10px;
+    border-width: 0 0 2px 0;
+    border-color: #e2e9e1;
+}
+#checkout .delivery-details input:focus {
+    border-color: rgb(38, 97, 114);
+}
+#checkout .delivery-details a {
+    text-decoration: none;
+    background-color: rgb(38, 97, 114);
+    color: white;
+    width: 350px;
+    height: 150px;
+    padding: 10px 10px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+#checkout .delivery-details a:hover {
+    background-color: rgb(64, 143, 165);
+} */
+
+
+
+
+
+
+/*************Add New Adress***************/
+ 
+
+#add-new-addrs {
+    display: flex;
+    justify-content: center;
+    padding: 80px 80px;
+    flex-wrap: wrap;
+}
+#add-new-addrs form {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#add-new-addrs .address-details {
+    width: 100%;
+    margin-bottom: 30px;
+    border: 1px solid #e2e9e1;
+    padding: 40px;
+}
+#add-new-addrs .address-details h3 {
+    padding: 20px 250px;
+    font-weight: 600;
+    color:  rgb(38, 97, 114);
+    font-size: 30px;
+}
+#add-new-addrs .address-details input {
+    font-size: 18px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    outline: none;
+    width: 100%;
+    margin-right: 10px;
+    border-width: 0 0 2px 0;
+    border-color: #e2e9e1;
+}
+#add-new-addrs .address-details button:focus {
+    outline: none;
+}
+#add-new-addrs .address-details button {
+    background-color: rgb(38, 97, 114);
+    color: white;
+    width: 300px;
+    height: 50px;
+    padding: 10px 10px;
+    margin: 20px 250px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+}
+#add-new-addrs .address-details button:hover {
+    cursor: pointer;
+    background-color: rgb(64, 143, 165);
+}
+
+
+
+/*************Add New Adress End***************/
 
 
 
@@ -1931,8 +2053,10 @@ footer .copyright {
         width: 100%;
         height: 70vh;
     }
-
-    
+    #user-profile .content {
+        display: flex;
+        padding-top: 60px;
+    }
 
 }
 
