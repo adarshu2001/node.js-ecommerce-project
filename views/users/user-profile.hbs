@@ -48,12 +48,12 @@
                 {{#if address}}
                 {{#each address}}
                 <div class="address">
-                    <p>{{this.House}}, {{this.Town}}, {{this.Pin}}</p><br>
+                    <p>{{this.House}}, {{this.Town}}, {{this.Pin}}</p>
                          
                 </div>
                 <div class="edit-delete">
                     <a href="/edit-U-addrs/{{this._id}}"><i class="fas fa-pen"></i></a>
-                    <a href=""><i class="fas fa-trash"></i></a> 
+                    <a href="/delete-U-addrs/{{this._id}}"><i class="fas fa-trash"></i></a> 
                 </div>
                 {{/each}}
                 {{/if}}

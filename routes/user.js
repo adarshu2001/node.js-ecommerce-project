@@ -14,7 +14,7 @@ const verifyLogin = (req,res,next)=>{
 
 const serviceSID = "VAa5825b37fce8ba7f9023f34ea97a84de"
 const accountSID = "AC02f399e851af5313a6e373d3a99f44ca"
-const authToken = "2a53bd69ed5c5c3e249c40f1e50b4aeb"
+const authToken = "c166afb38ca0188b05682331f0d86539"
 const client = require('twilio')(accountSID, authToken)
 
 /* GET home page. */
@@ -104,7 +104,7 @@ router.post('/login',(req,res)=>{
       req.session.userLoggedIn = true
       res.redirect('/')
     }else{
-      req.session.userLoginErr = "Invalid Email or Password"
+      req.session.userLoginErr = "Invalid Number or Password"
       res.redirect('/login')
     }
   })
@@ -208,6 +208,40 @@ router.get('/resendlogin-otp',(req,res)=>{
   })
 })
 
+router.get('/forgotpswd',(req,res)=>{
+  res.render('users/forgot-mobile')
+})
+router.get('/resetPswd',(req,res)=>{
+  res.render('users/resetPassword')
+})
+router.post('/resetPswd',(req,res)=>{
+  let No = `+91${req.body.mobile}`
+  req.session.mobileNumber = No
+  userHelpers.getUserDetails(No).then((user)=>{
+    if (user) {
+      res.redirect('/resetPswd')
+    }else {
+      // req.session.NoUser = true
+      res.redirect('/forgotpswd')
+    }
+  })
+})
+
+router.post('/forgotSubmit',(req,res)=>{
+  let number = req.session.mobileNumber
+  let firstPassword = req.body.firstPswd
+  let confirmPassword = req.body.confirmPswd
+
+  if (firstPassword === confirmPassword) {
+    userHelpers.setPassword(number,firstPassword).then((response)=>{
+      res.redirect('/login')
+    })
+  }else {
+    res.redirect('/resetPswd')
+  }
+
+})
+
 router.get('/cart',verifyLogin,async(req,res)=>{
   let cartCount = await userHelpers.getCartCount(req.session.user._id)
   let products = await userHelpers.getCartProduct(req.session.user._id)
@@ -256,7 +290,22 @@ router.post('/cart-product-remove',(req,res)=>{
 })
 router.get('/place-order',verifyLogin ,async(req,res)=>{
   let total = await userHelpers.getTotalAmount(req.session.user._id)
-  res.render('users/place-order',{user:req.session.user,total})
+  var address = null
+  let status = await userHelpers.addressChecker(req.session.user._id)
+  var address = null
+  if (status.address) {
+    let addrs = await userHelpers.getUserAddress(req.session.user._id)
+    let length = addrs.length
+    address = addrs.slice(length -2, length)
+    console.log("sdddd"+ address);
+    res.render('users/place-order',{user:req.session.user,total,address})
+  }
+  //  let addrs = userHelpers.getUserAddress(req.session.user._id)
+  //   console.log(addrs);
+  //  let len = addrs.length
+  //    address = addrs.slice(len - 2, len)
+  //    res.render('users/place-order',{user:req.session.user,total})
+
 })
 router.post('/place-order',async(req,res)=>{
   let products = await userHelpers.getCartProList(req.body.userId)
@@ -334,19 +383,24 @@ router.post('/add-new-profile-addrs',(req,res)=>{
 router.get('/edit-U-addrs/:id',async(req,res)=>{
   let addId = req.params.id
   let userId = req.session.user._id
-
   let address = await userHelpers.singleAddress(userId,addId)
   res.render('users/edit-address',{address,user:req.session.user})
 })
 router.post('/edit-U-addrs/:id',(req,res)=>{
   let addId = req.params.id
   let userId = req.session.user._id
-
   userHelpers.updateAddress(addId,userId,req.body).then((response)=>{
     res.redirect('/user-profile')
-  })
- 
+  }) 
 })
+router.get('/delete-U-addrs/:id',(req,res)=>{
+  let id = req.params.id
+  userId = req.session.user._id
+  userHelpers.deleteAddress(id,userId).then(() => {
+    res.redirect('/user-profile')
+  })
+})
+
 
 
 module.exports = router;

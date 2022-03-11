@@ -697,7 +697,7 @@ footer .copyright {
 }
 #login .log-box {
     width: 455px;
-    height: 589px;
+    height: 70vh;
     margin-top: 60px;
     border: 1px solid #e2e9e1;
     flex-wrap: wrap;
@@ -717,6 +717,12 @@ footer .copyright {
 }
 #login .log-details {
     position: relative;
+}
+#login .log-details .logErr p {
+    margin-left: 30px;
+    color: rgb(173, 0, 0);
+    font-size: 18px;
+    font-weight: 700;
 }
 #login .log-details h3 {
     font-weight: 700;
@@ -761,6 +767,10 @@ footer .copyright {
 }
 #login .log-details button:focus {
     outline: none;
+}
+#login .log-details .forgot {
+    padding: 5px 60px;
+   
 }
 #login .log-box .signotp {
    /* padding: 20px 0 0 20px; */
@@ -1419,6 +1429,7 @@ footer .copyright {
 #checkout .delivery-details h3 {
     padding: 5px 0 15px 20px;
     font-weight: 600;
+    color: rgb(38, 97, 114);
 }
 #checkout .delivery-details input {
     font-size: 18px;
@@ -1458,11 +1469,13 @@ footer .copyright {
     font-size: 20px;
     font-weight: 600;
     padding-bottom: 15px;
+    color: rgb(38, 97, 114);
 }
 #checkout #payment .pay h5 {
     font-size: 20px;
     font-weight: 500;
     padding-bottom: 25px;
+    color: rgb(38, 97, 114);
 }
 #checkout #payment  .pay label {
     font-size: 18px;
@@ -1492,6 +1505,69 @@ footer .copyright {
 
 
 /* ********Place Order End********* */
+
+
+
+
+
+
+
+
+/* ********Auto Fill Address********* */
+
+#address {
+    padding: 80px 80px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+#address .delivery-details {
+    width: 30%;
+    margin-bottom: 30px;
+    border: 1px solid #e2e9e1;
+    padding: 40px;
+}
+#address .delivery-details h3 {
+    padding: 5px 0 15px 20px;
+    font-weight: 600;
+}
+#address .delivery-details input {
+    font-size: 18px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    outline: none;
+    width: 100%;
+    margin-right: 10px;
+    border-width: 0 0 2px 0;
+    border-color: #e2e9e1;
+}
+#address .delivery-details input:focus {
+    border-color: rgb(38, 97, 114);
+}
+#address .delivery-details button {
+    text-decoration: none;
+    background-color: rgb(38, 97, 114);
+    color: white;
+    width: 130px;
+    height: 40px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+}
+#address .delivery-details button:hover {
+    background-color: rgb(64, 143, 165);
+    cursor: pointer;
+}
+#address .delivery-details button:focus {
+    outline: none;
+    
+}
+
+
+/* ********Auto Fill Address End********* */
+
+
 
 
 
@@ -1577,6 +1653,9 @@ footer .copyright {
 #user-profile .content {
     display: flex;
     padding-top: 60px;
+}
+#user-profile .content .address {
+    width: 100%;
 }
 #user-profile .content h5 {
     color: #d3d6d6;
@@ -1708,9 +1787,74 @@ footer .copyright {
     background-color: rgb(64, 143, 165);
 }
 
-
-
 /*************Add New Adress End***************/
+
+
+
+
+
+/* ***************Forgot*************** */
+
+#forgotMobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 150px 80px;
+  
+}
+#forgotMobile .verify {
+    width: 350px;
+    height: 380px;
+    border: 1px solid #e2e9e1;
+    box-shadow: 5px 15px 15px 0px rgba(0, 0, 0, 0.3);
+    padding: 55px;
+    position: relative;
+}
+#forgotMobile .verify .invalid {
+    position: absolute;
+    top: 33%;
+    left: 100px;
+    color: red;
+    font-weight: 600;
+}
+#forgotMobile .verify h3 {
+    font-weight: 500;
+    padding-bottom: 20px;
+    color: rgb(38, 97, 114);
+}
+#forgotMobile .verify input {
+    font-size: 18px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    outline: none;
+    width: 100%;
+    margin-right: 10px;
+    border-width: 0 0 2px 0;
+    border-color: #e2e9e1;
+}
+#forgotMobile .verify input:focus {
+    border-color: rgb(38, 97, 114);
+}
+#forgotMobile .verify button {
+    background-color: rgb(38, 97, 114);
+    color: white;
+    width: 250px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+#forgotMobile .verify button:hover {
+    cursor: pointer;
+    background-color: rgb(64, 143, 165);
+}
+#forgotMobile .verify button:focus {
+    outline: none;
+}
+
+
 
 
 

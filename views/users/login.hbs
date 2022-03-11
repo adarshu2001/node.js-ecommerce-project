@@ -35,21 +35,22 @@
 
   <div class="log-details">
     <h3>Login</h3>
-     {{#if loginErr}}
-    <p class="err text-center text-danger font-weight-bold">{{loginErr}}</p>
-  {{/if}}
+        {{#if loginErr}}
+       <div class="logErr"><p>{{loginErr}}</p></div>
+        {{/if}}
     <form action="/login" method="post">
       <span><i class="fas fa-user"></i></span>
       <input type="text" name="Mobile" placeholder="Enter Your Phone Number"><br>
       <span><i class="fas fa-lock"></i></span>
       <input type="password" name="Password" placeholder="Enter Your Password"><br>
       <button type="submit">Login</button>
+        <div class="forgot">
+           <a href="/forgotpswd">Forgot Password ?</a>
+        </div>
     </form>
   </div>
     <div class="signotp">
-      {{!-- <a href="/signup">Sign Up</a> <strong> Or  </strong>
-      <a href="/verifyMobile">Login With OTP</a> --}}
-      <div><a href="/signup">Sign Up</a></div> 
+      <div><a href="/signup">Sign Up</a></div>
       <div><a href="/verifyMobile">Login With OTP</a></div>
     </div>
   </div>

@@ -52,7 +52,8 @@ module.exports = {
             let logginStatus = true
             let Umobile=`+91${userData.Mobile}`
             let response={}
-            let user=await db.get().collection(collection.USER_COLLECTION).findOne({mobile: Umobile})               
+            let user=await db.get().collection(collection.USER_COLLECTION).findOne({mobile: Umobile})
+            console.log(user);               
             if(user){
                 bcrypt.compare(userData.Password,user.password).then((status)=>{
                     if(status){                       
@@ -618,6 +619,38 @@ module.exports = {
                     resolve(response)
                 })
             }
+        })
+    },
+     deleteAddress:(id,userId)=>{
+        return new Promise(async(resolve,reject)=>{
+            let user = await db.get().collection(collection.USER_COLLECTION).findOne({_id:objectId(userId)})
+            if (user.address) {
+                db.get().collection(collection.USER_COLLECTION).updateOne({_id:(objectId(userId))},
+                {
+                    $pull: {
+                        address: {_id:objectId(id)}
+                    }
+                }
+                ).then(()=>{
+                    resolve()
+                })
+            }
+        })
+
+    },
+    setPassword:(number,firstPassword)=>{
+        return new Promise(async(resolve,reject)=>{
+            let password = await bcrypt.hash(firstPassword,10)
+            db.get().collection(collection.USER_COLLECTION)
+            .updateOne({mobile:number},
+                {
+                    $set: {
+                        password:password
+                    }
+                }).then((response)=>{
+                    resolve(response)
+                })
+
         })
     }
     

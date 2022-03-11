@@ -40,7 +40,7 @@
 <Section id="checkout">
      <form action="" id="checkout-form">
     <div class="delivery-details">
-        <h3>Fill Address</h3>
+        <h3>Billing Address</h3>
         <div>
             {{!-- <form action="" > --}}
                 <input type="text" id="fname" name="Fname" placeholder="First Name"><br>
@@ -50,14 +50,14 @@
                 <input type="text" id="phone" name="Phone" placeholder="Phone"><br>     
                 <input type="text" id="pin" name="Pin" placeholder="Pin"><br>
                 <input type="text" id="" name="userId" value="{{user._id}}" hidden>
-                <a href="">Edit Address</a>
+                {{!-- <a href="">Add Address</a> --}}
             {{!-- </form> --}}
         </div>
         
     </div>
     <div id="payment">
         <div>
-            <h5>Total Amount For Pay : <strong>963</strong></h5>
+            <h5>Total Amount For Pay : <strong>{{total}}</strong></h5>
             <hr>
         </div>
         <div class="pay">
@@ -76,5 +76,41 @@
         </div>
          <button type="submit">Checkout</button>
     </div>
-     </form> 
+     </form>
+
+     <div id="address">
+         {{#each address}}
+         <div class="delivery-details">
+          <h3>Address</h3>
+          <div>
+            {{!-- <form action="" > --}}
+                <input type="text"  name="Fname" placeholder="First Name"  value="{{this.Fname}}"><br>
+                <input type="text"  name="Lname" placeholder="Last Name"   value="{{this.Lname}}"><br>
+                <input type="text"  name="House" placeholder="House"       value="{{this.House}}"><br>
+                <input type="text"  name="Town"  placeholder="Town"        value="{{this.Town}}"><br>
+                <input type="text"  name="Phone" placeholder="Phone"       value="{{this.Phone}}"><br>     
+                <input type="text"  name="Pin"   placeholder="Pin"        value="{{this.Pin}}"><br>
+                {{!-- <input type="text" id="" name="userId" value="{{user._id}}" hidden> --}}
+                <button onclick="autoFill('{{this.Fname}}','{{this.Lname}}','{{this.House}}','{{this.Town}}','{{this.Phone}}','{{this.Pin}}')">Auto Fill</button>
+            {{!-- </form> --}}
+          </div>
+       </div>
+       {{/each}}
+           
+     </div> 
 </Section>
+
+
+<script>
+
+    function autoFill(fname,lname,house,town,phone,pin) {
+        document.getElementById('fname').value = fname
+        document.getElementById('lname').value = lname
+        document.getElementById('house').value = house
+        document.getElementById('town').value  = town
+        document.getElementById('phone').value = phone
+        document.getElementById('pin').value   = pin
+    }
+
+
+</script>
