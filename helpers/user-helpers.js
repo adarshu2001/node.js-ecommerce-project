@@ -387,7 +387,7 @@ module.exports = {
     placeOrder:(order,products,total)=>{
         return new Promise((resolve,reject)=>{
             console.log(order,products,total);
-            let status=order['payment-method']==='COD'?'placed':'pending'
+            let status=order['payment-method']==='COD'?'Placed':'Pending'
             let dateIso = new Date()
             let date = moment(dateIso).format('MM/DD/YYYY')
             let time = moment(dateIso).format('HH:mm:ss')
@@ -428,7 +428,6 @@ module.exports = {
         return new Promise(async(resolve,reject)=>{
             let orders = await db.get().collection(collection.ORDER_COLLECTION).find({user:objectId(userId)}).toArray()        
             resolve(orders)
-           
         })
     },
     getOrderProducts:(orderId)=>{

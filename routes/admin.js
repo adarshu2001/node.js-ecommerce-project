@@ -8,16 +8,22 @@ var router = express.Router();
 
 /* GET admin listing. */
 router.get('/', function(req, res, next) {
-  if (req.session.adminLoggedIn){
-    productHelpers.getAllProducts().then((products)=>{
-      res.render('admin/view-products',{products, admin:true})
-    })
 
-  }else{
-    res.redirect('/admin/admin-login')
-  }
- 
+    productHelpers.getAllProducts().then((products)=>{
+      res.render('admin/dashboard',{products, admin:true})
+    })
 });
+// router.get('/', function(req, res, next) {
+//   if (req.session.adminLoggedIn){
+//     productHelpers.getAllProducts().then((products)=>{
+//       res.render('admin/view-products',{products, admin:true})
+//     })
+
+//   }else{
+//     res.redirect('/admin/admin-login')
+//   }
+ 
+// });
 router.get('/add-product',(req,res)=>{
   res.render('admin/add-product',{admin:true})
 })

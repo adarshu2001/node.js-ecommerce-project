@@ -22,6 +22,7 @@
     "morgan": "~1.9.1",
     "nodemon": "^2.0.15",
     "razorpay": "^2.8.0",
+    "sweetalert2": "^11.4.4",
     "twilio": "^3.75.0"
   }
 }

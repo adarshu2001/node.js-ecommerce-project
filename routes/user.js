@@ -14,7 +14,7 @@ const verifyLogin = (req,res,next)=>{
 
 const serviceSID = "VAa5825b37fce8ba7f9023f34ea97a84de"
 const accountSID = "AC02f399e851af5313a6e373d3a99f44ca"
-const authToken = "c166afb38ca0188b05682331f0d86539"
+const authToken = "94661f2c7dae0d11e84620691316c8e4"
 const client = require('twilio')(accountSID, authToken)
 
 /* GET home page. */
@@ -207,6 +207,62 @@ router.get('/resendlogin-otp',(req,res)=>{
     res.redirect('/login')
   })
 })
+router.post('/resetPswd',(req,res)=>{
+  let num = req.body.mobile
+  let No = `+91${req.body.mobile}`
+  req.session.mobileNumber = No
+  userHelpers.getUserDetails(No).then((user)=>{
+    if (user) {
+      client.verify
+      .services(serviceSID)
+      .verifications.create({
+        to: `+91${num}`,
+        channel: "sms"
+      }).then((resp)=>{
+        console.log(resp);
+        req.session.number = resp.to
+        res.redirect('/forgotOtp')
+      }).catch((err)=>{
+        console.log(err);
+      })
+      // res.redirect('/resetPswd')
+    }else {
+      // req.session.NoUser = true
+      res.redirect('/forgotpswd')
+    }
+  })
+})
+
+router.post('/forgotOtp',(req,res)=>{
+  let number = req.session.number
+  let otp = req.body.otp
+  client.verify
+  .services(serviceSID)
+  .verificationChecks.create({
+    to: number,
+    code: otp
+  }).then(async(resp)=>{
+    console.log(resp);
+    if (resp.valid) {
+      res.redirect('/resetPswd')
+      // let user = await userHelpers.getUserDetails(number)
+      // req.session.userLoggedIn = true
+      // res.redirect('/')
+      // req.session.user = user
+    }else {
+      // req.session.invalidOtp = true
+      res.redirect('/forgotOtp')
+    }
+  }).catch((err)=>{
+    console.log(err);
+    // req.session.invalidOtp = true
+    res.redirect('/forgotOtp')
+  })
+})
+
+router.get('/forgotOtp',(req,res)=>{
+  res.render('users/forgotOtp')
+})
 
 router.get('/forgotpswd',(req,res)=>{
   res.render('users/forgot-mobile')
@@ -214,18 +270,18 @@ router.get('/forgotpswd',(req,res)=>{
 router.get('/resetPswd',(req,res)=>{
   res.render('users/resetPassword')
 })
-router.post('/resetPswd',(req,res)=>{
-  let No = `+91${req.body.mobile}`
-  req.session.mobileNumber = No
-  userHelpers.getUserDetails(No).then((user)=>{
-    if (user) {
-      res.redirect('/resetPswd')
-    }else {
-      // req.session.NoUser = true
-      res.redirect('/forgotpswd')
-    }
-  })
-})
+// router.post('/resetPswd',(req,res)=>{
+//   let No = `+91${req.body.mobile}`
+//   req.session.mobileNumber = No
+//   userHelpers.getUserDetails(No).then((user)=>{
+//     if (user) {
+//       res.redirect('/resetPswd')
+//     }else {
+//       // req.session.NoUser = true
+//       res.redirect('/forgotpswd')
+//     }
+//   })
+// })
 
 router.post('/forgotSubmit',(req,res)=>{
   let number = req.session.mobileNumber
@@ -309,7 +365,6 @@ router.get('/place-order',verifyLogin ,async(req,res)=>{
 })
 router.post('/place-order',async(req,res)=>{
   let products = await userHelpers.getCartProList(req.body.userId)
-  console.log("dot"+ products);
   let totalPrice = await userHelpers.getTotalAmount(req.body.userId)
   console.log(req.body);
   userHelpers.placeOrder(req.body,products,totalPrice).then((orderId)=>{
@@ -329,6 +384,7 @@ router.get('/order-success',(req,res)=>{
 })
 router.get('/orders',verifyLogin,async(req,res)=>{
   let orders = await userHelpers.getUserOrders(req.session.user._id)
+  console.log(orders);
   res.render('users/orders',{user:req.session.user,orders})
 })
 router.get('/view-order-products/:id',async(req,res)=>{

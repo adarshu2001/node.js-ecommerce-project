@@ -1,4 +1,4 @@
-<section>
+{{!-- <section>
   <div class="container col-md-8 mt-5">
       <table class="table mt-5">
         <thead>
@@ -33,4 +33,88 @@
         </tbody>
       </table>
   </div>
+</section> --}}
+
+
+<section id="order">
+  {{#each orders}}
+
+  <div class="address">
+    <h3>DELIVERY DETAILS</h3>
+    <div class="details">
+      <div>
+        <h5>Order Id</h5>
+      </div>
+      <div>
+        <p>{{this._id}}</p> 
+      </div>
+    </div>
+    <div class="details">
+      <div>
+        <h5>Name</h5>
+      </div>
+      <div>
+        <p>{{this.deliveryDetails.fname}} {{this.deliveryDetails.lname}}</p>
+      </div>
+    </div>
+    <div class="details">
+      <div>
+        <h5>House</h5>
+      </div>
+      <div>
+        <p>{{this.deliveryDetails.house}}</p>
+      </div>
+    </div>
+    <div class="details">
+      <div>
+        <h5>City</h5>
+      </div>
+      <div>
+       <p>{{this.deliveryDetails.town}}, {{this.deliveryDetails.pincode}}</p>
+      </div>
+    </div>
+    <div class="details">
+      <div>
+        <h5>Mobile</h5>
+      </div>
+      <div>
+        <p>{{this.deliveryDetails.phone}}</p>
+      </div>
+    </div>
+    <div class="details">
+      <div>
+        <h5>Total</h5>
+      </div>
+      <div>
+        <p>{{this.totalAmount}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="payment">
+    <div class="method">
+      <div>
+        <h5>Order Status :</h5>
+      </div>
+      <div>
+        <p>{{this.status}}</p>
+      </div>
+    </div>
+    <div class="method">
+      <div>
+        <h5>Date :</h5><br>
+        <a href="">View Product</a>
+      </div>
+      <div>
+        <p>{{this.date}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="status">
+    <p>Delivered</p>
+  </div>
+   
+   {{/each}}
+
 </section>
+

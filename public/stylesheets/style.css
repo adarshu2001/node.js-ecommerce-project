@@ -1801,7 +1801,6 @@ footer .copyright {
     align-items: center;
     flex-wrap: wrap;
     margin: 150px 80px;
-  
 }
 #forgotMobile .verify {
     width: 350px;
@@ -1853,6 +1852,73 @@ footer .copyright {
 #forgotMobile .verify button:focus {
     outline: none;
 }
+
+
+
+
+
+
+/* ********Orders Page******** */
+
+#order {
+    display: flex;
+    justify-content: space-around;
+    padding: 80px 80px;
+    flex-wrap: wrap;
+    /* border-width: 0 0 2px 0;
+    border-color:  rgb(38, 97, 114); */
+}
+#order .address {
+    width: 40%;
+    padding-bottom: 100px;
+}
+
+#order .address h3 {
+    padding-bottom: 25px;
+}
+#order .details {
+    display: flex;
+    padding: 5px 20px;
+    align-items: center;
+    width: 100%;
+}
+#order .details h5 {
+    font-weight: 600;
+    text-align: center;
+}
+#order .details p {
+    font-size: 18px;
+    text-align: center;
+    padding-left: 55px;
+}
+#order .payment {
+    width: 20%;
+    padding: 0 25px;
+}
+#order .method {
+    display: flex;
+    justify-content: space-between;
+}
+#order .method p {
+    padding-left: 35px;
+}
+#order .method a {
+    text-decoration: none;
+    background-color: rgb(38, 97, 114);
+    color: white;
+    width: 200px;
+    height: 80px;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 700;
+}
+#order .status {
+    width: 30%;
+    padding: 0 45px;
+}
+
+/* ********Orders Page End******** */
 
 
 

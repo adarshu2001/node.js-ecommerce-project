@@ -81,7 +81,7 @@ const changeQuantity=(cartId,proId,userId,count)=>{
         }
     })
 }
-
+  
 const removeProduct = (cartId,proId)=>{
     $.ajax({
         url:'/cart-product-remove',
