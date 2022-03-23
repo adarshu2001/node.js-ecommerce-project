@@ -88,9 +88,46 @@ module.exports = {
 
 
         })
-    }
-    
+    },
+    getAllUsers:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let allUsers = await db.get().collection(collection.USER_COLLECTION).find().toArray()
+            resolve(allUsers)
+        })
+    },
+    blockUser:(userId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.USER_COLLECTION).updateOne({_id: objectId(userId)},
+            {
+                $set: {
+                    status:false
+                }
+            }
+            ).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
+    unblockUser:(userId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.USER_COLLECTION).updateOne({_id: objectId(userId)},
+            {
+                $set: {
+                    status:true
+                }
+            }
+            ).then((response)=>{
+                resolve(response)
+            })
+        })
 
+    },
+    getBlockedUSers: () =>{
+        return new Promise(async(resolve,reject)=>{
+           let blockedUsers = await db.get().collection(collection.USER_COLLECTION).find({status:false}).toArray()
+           resolve(blockedUSers)
+        })
+    }
     
 
 

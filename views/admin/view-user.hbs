@@ -1,0 +1,45 @@
+<section id="all-users">
+    <h3>All Users</h3>
+    <div class="board">
+        <table width="100%">      
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Phone</td>
+                    <td>Status</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each allUsers }}
+                <tr>
+                    <td class="people">
+                        <i class="fas fa-user"></i>
+                        <div class="p-details">
+                            <h5>{{this.name}}</h5>
+                            <p>{{this.email}}</p>
+                        </div>
+                    </td>
+                    <td class="phone">
+                        <p>{{this.mobile}}</p>
+                    </td>
+                    <td class="status">
+                        {{#if this.status}}
+                        <p>Active</p>
+                        {{else}}
+                        <p>Blocked</p>
+                        {{/if}}
+                    </td>
+                    <td class="action">
+                        {{#if this.status}}
+                        <a href="/admin/block-user/{{this._id}}">Block</a>
+                        {{else}}
+                        <a class="unblock" href="/admin/unblock-user/{{this._id}}">Unblock</a>
+                        {{/if}}
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section>

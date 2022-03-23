@@ -161,11 +161,204 @@ body {
     color: #fff;
 }
 #navbar .nav .profile img {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     object-fit: cover;
     border-radius: 50%;
 }
 
 
 /* **********Admin Header End********** */
+
+
+
+/* **********Dashboard********** */
+
+
+
+#dashboard {
+    position: fixed;
+    top: 15%;
+    left: 30%;
+    
+}
+#dashboard .head {
+    color: #444a53;
+    padding: 30px 30px 0 30px;
+    margin-left: 20px;
+    
+}
+#dashboard .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#dashboard .values {
+    padding: 30px 30px 0 30px;
+}
+#dashboard .values .val-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: #eeeded;
+    width: 235px;
+    padding: 16px 20px;
+    border-radius: 5px;
+}
+#dashboard .values .val-box i {
+    font-size: 28px;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    color: #fff;
+    align-items: center;
+    padding-left: 13px;
+    margin-right: 18px;
+    background: rgb(3, 109, 151);
+}
+/* #dashboard .values .val-box:nth-child(1) i {
+    background: #7B74EC;
+}
+#dashboard .values .val-box:nth-child(2) i {
+    background: #5C8AF0;
+}
+#dashboard .values .val-box:nth-child(3) i {
+    background: #E45D99;
+}
+#dashboard .values .val-box:nth-child(4) i {
+    background: #74daec;
+} */
+#dashboard .values .val-box h3 {
+    font-size: 20px;
+    font-weight: 600;
+}
+#dashboard .values .val-box span {
+    font-size: 18px;
+    color: #828997;
+
+}
+
+
+/* **********Dashboard End********** */
+
+
+
+
+/* **********User-View********* */
+
+#all-users {
+    position: fixed;
+    top: 15%;
+    left: 30%;
+    width: 85%;
+}
+#all-users h3 {
+    font-weight: 600;
+}
+#all-users  .board{
+    width: 70%;
+    margin: 50px 0 30px 0;
+    background: #f0f0f0;
+    overflow: auto;
+    border-radius: 8px;
+    padding: 30px;
+}
+#all-users  .board i {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgb(3, 109, 151);
+    color: #fff;
+    text-align: center;
+    padding: 13px 0;
+
+}
+#all-users  .board h5 {
+    font-size: 14px;
+    font-weight: 600;
+}
+#all-users  .board h5 p {
+    font-size: 13px;
+    font-weight: 400;
+
+}
+#all-users  .board .people {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: start;
+    padding-top: 15px;
+}
+#all-users  .board .people .p-details {
+    margin: 20px 0 5px 18px;
+}
+#all-users table {
+    border-collapse: collapse;
+
+}
+/* #all-users tr {
+    border-bottom: 1px solid #444a53;
+} */
+#all-users thead td {
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    background: #F9FAFB;
+    padding: 5px;
+    text-align: start;
+}
+#all-users tbody tr td {
+    padding: 10px 15px;
+}
+#all-users .phone p {
+    font-size: 16px;
+}
+#all-users .status p {
+    background: #d7fada;
+    padding: 2px 10px;
+    display: inline-block;
+    border-radius: 30px;
+    color: #2b2b2b;
+    font-size: 16px;
+    font-weight: 600;
+}
+#all-users .action a {
+    width: 80px;
+    height: 60px;
+    border-radius: 10px;
+    text-decoration: none;
+    background: red;
+    padding: 10px 10px;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+   
+}
+#all-users .action .unblock {
+    width: 100px;
+    height: 60px;
+    border-radius: 10px;
+    text-decoration: none;
+    background: green;
+    padding: 10px 10px;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+
+}
+
+
+
+/* **********User-View End********* */
+
+
+
+
+
+
+
+
+
+
+

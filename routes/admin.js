@@ -2,17 +2,15 @@ var express = require('express');
 const async = require('hbs/lib/async');
 const { response } = require('../app');
 const productHelpers = require('../helpers/product-helpers');
+const userHelpers = require('../helpers/user-helpers');
 const { route } = require('./user');
 var router = express.Router();
 
 
 /* GET admin listing. */
 router.get('/', function(req, res, next) {
-
-    productHelpers.getAllProducts().then((products)=>{
-      res.render('admin/dashboard',{products, admin:true})
-    })
-});
+      res.render('admin/dashboard',{admin:true})
+})
 // router.get('/', function(req, res, next) {
 //   if (req.session.adminLoggedIn){
 //     productHelpers.getAllProducts().then((products)=>{
@@ -91,6 +89,38 @@ router.post('/admin-login',(req,res)=>{
     }
   })
 })
+
+router.get('/view-user',async(req,res)=>{
+  let allUsers = await productHelpers.getAllUsers()
+  console.log(allUsers);
+  res.render('admin/view-user',{admin:true,allUsers})
+})
+
+router.get('/block-user/:id',(req,res)=>{
+  let id = req.params.id
+  productHelpers.blockUser(id).then((response)=>{
+    res.redirect('/admin/view-user')
+  })
+})
+
+router.get('/unblock-user/:id',(req,res)=>{
+  let id = req.params.id
+  productHelpers.unblockUser(id).then((response)=>{
+    res.redirect('/admin/view-user')
+  })
+})
+
+router.get('/blocked-users',(req,res)=>{
+  productHelpers.getBlockedUSers().then((blockedUsers)=>{
+    console.log(blockedUsers);
+    res.render('admin/blocked-users',{admin:true,blockedUsers})
+  })
+})
+
+
+
+
+
 
 
 module.exports = router;
