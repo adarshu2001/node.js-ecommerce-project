@@ -1,0 +1,36 @@
+<section id="view-brand">
+    <h3>All Brand</h3>
+    <div class="board">
+         <div class="add">
+       <a href="/admin/add-brand">Add New Brand</a>
+    </div>
+        <table width="100%">      
+            <thead>
+                <tr>
+                    <td>Logo</td>
+                    <td>Name</td>
+                    <td>Edit</td>
+                    <td>Remove</td>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each brand}}
+                <tr>
+                    <td class="people">
+                        <img src="/brand-img/{{this._id}}.jpg" alt="">
+                    </td>
+                    <td class="name">
+                       <h5>{{this.Name}}</h5>
+                    </td>
+                    <td class="edit">
+                        <span><a href="/admin/edit-brand/{{this._id}}"><i class="fas fa-pen"></i></a></span>
+                    </td>
+                    <td class="remove">
+                        <a href=""><i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+                 {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section>

@@ -22,12 +22,70 @@ router.get('/', function(req, res, next) {
 //   }
  
 // });
+
+router.get('/view-brand',async(req,res)=>{
+  let brand = await productHelpers.getAllBrand()
+  res.render('admin/view-brand',{admin:true,brand})
+})
+
+router.get('/add-brand',(req,res)=>{
+  res.render('admin/add-brand',{admin:true})
+})
+router.post('/add-brand',(req,res)=>{
+  console.log(req.body);
+  console.log(req.files.Image);
+  productHelpers.addBrand(req.body).then((id) => {
+    let image = req.files.Image
+    image.mv('public/brand-img/' + id + '.jpg', (err,done) => {
+      if (!err) {
+        res.redirect('/admin/view-brand')
+      }else {
+        res.redirect('/admin/add-brand')
+      }
+    })
+  })
+})
+
+router.get('/edit-brand/:id',async(req,res)=>{
+  let id = req.params.id
+  let edit = await productHelpers.editBrand(id)
+  res.render('admin/edit-brand',{admin:true,edit})
+})
+
+router.post('/edit-brand/:id',(req,res)=>{
+  let id = req.params.id
+  productHelpers.updateBrand(req.body,id).then(()=>{
+    res.redirect('/admin/view-brand')
+    if (req.files.Image) {
+      let image = req.files.Image
+      image.mv('public/brand-img/' + id + '.jpg')
+    }
+  })
+})
+// router.get('delete-brand',(req,res)=>{
+  
+// })
+
+router.get('/view-category',(req,res)=>{
+  productHelpers.categoryDetails().then((categories)=> {
+    res.render('admin/view-category',{admin:true,categories})
+  })
+})
+router.get('/add-category',(req,res)=>{
+  res.render('admin/add-category',{admin:true})
+})
+router.post('/add-category',(req,res)=>{
+  productHelpers.addCategory(req.body).then((response)=>{
+    res.redirect('/admin/view-category')
+  })
+})
+
+
+
 router.get('/add-product',(req,res)=>{
   res.render('admin/add-product',{admin:true})
 })
 router.post('/add-product',(req,res)=>{
-  // console.log(req.body);
-  // console.log(req.files.Image);
   productHelpers.addProduct(req.body).then((id)=>{
     let image = req.files.Image
     image.mv('./public/product-images/'+id+'.jpg',(err,done)=>{

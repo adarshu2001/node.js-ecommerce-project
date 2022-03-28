@@ -1,0 +1,42 @@
+<section id="view-category">
+    <h3>All Category</h3>
+    <div class="board">
+         <div class="add">
+       <a href="/admin/add-category">Add New</a>
+    </div>
+        <table width="100%">      
+            <thead>
+                <tr>
+                    <td>Category</td>
+                    <td>Sub Category</td>
+                    <td>Edit</td>
+                    <td>Remove</td>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each categories}}
+                <tr>
+                    <td class="cat">
+                        <h5>{{this.category}}</h5>
+                    </td>
+                    <td class="sub-cat">
+                        <ul>
+                            {{#each Scategory}}
+                            <li>
+                                {{this}}
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </td>
+                    <td class="edit">
+                        <span><a href=""><i class="fas fa-pen"></i></a></span>
+                    </td>
+                    <td class="remove">
+                        <span><a href=""><i class="fas fa-trash"></i></a></span>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section>

@@ -1,0 +1,19 @@
+<section id="addBrand">
+    <div class="brand">
+        <form action="/admin/edit-brand/{{edit._id}}" enctype="multipart/form-data" method="post">
+            <h3>Edit Brand</h3>
+            <input type="text" name="Name" value="{{edit.Name}}"><br>
+            <div class="img">
+            <input type="file" name="Image" onchange="viewImage(event)">
+            <img src="/brand-img/{{edit._id}}.jpg" alt="" id="imgview" >
+            </div>
+            <button type="submit">Update</button> 
+        </form>
+    </div>
+</section>
+
+<script>
+    function viewImage(event) {
+        document.getElementById('imgview').src=URL.createObjectURL(event.target.files[0])
+    }
+</script>

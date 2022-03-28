@@ -4,5 +4,7 @@ module.exports={
     CART_COLLECTION : 'cart',
     WHISHLIST_COLLECTION : 'whishlist',
     ORDER_COLLECTION:'order',
-    ADMIN_COLLECTION:'admin'
+    ADMIN_COLLECTION:'admin',
+    BRAND_COLLECTION: 'brand',
+    CATEGORY_COLLECTION: 'category'
 }

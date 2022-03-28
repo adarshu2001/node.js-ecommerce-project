@@ -11,6 +11,73 @@ const bcrypt = require('bcrypt')
 module.exports = {
 
 
+    addCategory:(data) => {
+        return new Promise(async(resolve,reject)=>{
+            let cat = await db.get().collection(collection.CATEGORY_COLLECTION).findOne({category: data.Name})
+            if (cat) {
+                await db.get().collection(collection.CATEGORY_COLLECTION)
+                .updateOne({category: data.Name},
+                    {
+                        $push: {Scategory: data.Sname}
+                    }
+                    )
+                    resolve()
+            }else{
+            db.get().collection(collection.CATEGORY_COLLECTION)
+            .insertOne({category: data.Name, Scategory: [data.Sname] }).then((response)=>{
+                resolve(response)
+            })
+          }
+        })
+    },
+    categoryDetails: () => {
+        return new Promise(async(resolve,reject)=>{
+            let categories = await db.get().collection(collection.CATEGORY_COLLECTION).find().toArray()
+            resolve(categories)
+        })
+
+    },
+
+
+
+
+    addBrand:(data) => {
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.BRAND_COLLECTION).insertOne(data).then((response)=>{
+                resolve(response.insertedId.toString())
+            })
+        })
+    },
+    getAllBrand:() =>{
+        return new Promise(async(resolve,reject)=>{
+            let brand = await db.get().collection(collection.BRAND_COLLECTION).find().toArray()
+            resolve(brand)
+        })
+    },
+    editBrand:(bId) => {
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.BRAND_COLLECTION).findOne({_id:objectId(bId)}).then((brand)=>{
+               resolve(brand)
+            })
+        })
+    },
+    updateBrand:(data,Uid) => {
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.BRAND_COLLECTION)
+            .updateOne({_id:objectId(Uid)},
+            {
+                $set: {
+                    Name : data.Name
+                }
+
+            }).then((response)=>{
+                resolve(response)
+            })
+        })
+
+    },
+
+
     addProduct:(product)=>{
         product.Price = parseInt(product.Price)
         return new Promise((resolve,reject)=>{

@@ -1,0 +1,20 @@
+<section id="addBrand">
+    <div class="brand">
+        <form action="/admin/add-brand" enctype="multipart/form-data" method="post">
+            <h3>Add New Brand</h3>
+            <input type="text" name="Name" placeholder="Add New Brand"><br>
+            <div class="img">
+            <input type="file" name="Image" onchange="viewImage(event)">
+            <img src="" alt="" id="imgview" >
+            </div>
+            <button type="submit">Add</button> 
+        </form>
+    </div>
+</section>
+
+
+<script>
+    function viewImage(event) {
+        document.getElementById('imgview').src=URL.createObjectURL(event.target.files[0])
+    }
+</script>
