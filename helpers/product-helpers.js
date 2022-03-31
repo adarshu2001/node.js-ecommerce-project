@@ -35,9 +35,8 @@ module.exports = {
             let categories = await db.get().collection(collection.CATEGORY_COLLECTION).find().toArray()
             resolve(categories)
         })
-
     },
-
+    
 
 
 

@@ -82,19 +82,44 @@ router.post('/add-category',(req,res)=>{
 
 
 
-router.get('/add-product',(req,res)=>{
-  res.render('admin/add-product',{admin:true})
+router.get('/add-product',async(req,res)=>{
+  let brand = await productHelpers.getAllBrand()
+  let category = await productHelpers.categoryDetails()
+  console.log(category);
+  res.render('admin/add-product',{admin:true,brand,category})
 })
+// router.post('/add-product',(req,res)=>{
+//   console.log(req.body);
+//   productHelpers.addProduct(req.body).then((id)=>{
+//     let img1 = req.files.img1
+//     let img2 = req.files.img2
+//     let img3 = req.files.img3
+//     let img4 = req.files.img4
+//     image.mv('./public/product-images/'+id+'.jpg',(err,done)=>{
+//       if (!err) {
+//         res.render('admin/add-product')
+//       }else{
+//         console.log(err);
+//       }
+//     })
+//   })
+// })
 router.post('/add-product',(req,res)=>{
+  console.log(req.body);
   productHelpers.addProduct(req.body).then((id)=>{
-    let image = req.files.Image
-    image.mv('./public/product-images/'+id+'.jpg',(err,done)=>{
-      if (!err) {
-        res.render('admin/add-product')
-      }else{
-        console.log(err);
-      }
-    })
+    let img1 = req.files.img1
+    let img2 = req.files.img2
+    let img3 = req.files.img3
+    let img4 = req.files.img4
+
+    img1.mv('public/product-images/' + id + 'a.jpg')
+    img2.mv('public/product-images/' + id + 'b.jpg')
+    img3.mv('public/product-images/' + id + 'c.jpg')
+    img4.mv('public/product-images/' + id + 'd.jpg')
+    res.redirect('/')
+
+  }).catch((err)=>{
+
   })
 })
 router.get('/delete-product/:id',(req,res)=>{

@@ -121,6 +121,9 @@ body {
     height: 11vh;
     background-color: rgb(61, 191, 243);
     position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
     margin-left: 350px;
 }
 #navbar .nav {
@@ -692,6 +695,168 @@ body {
 }
 
 /* **********Add Category End********* */
+
+
+
+
+
+
+/* **********Add Product********* */
+
+#add-pro {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 15%;
+    left: 30%;
+    width: 70%; 
+    height: 120vh;
+}
+#add-pro form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#add-pro .address-details {
+    width: 100%;
+    height: 50%;
+    margin-bottom: 30px;
+    /* border: 1px solid #e2e9e1; */
+    padding: 40px;
+}
+#add-pro .address-details h3 {
+    padding: 20px 250px;
+    font-weight: 600;
+    color: rgb(38, 97, 114);
+    font-size: 30px;
+}
+#add-pro .address-details input {
+    font-size: 18px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    outline: none;
+    width: 50%;
+    margin-right: 10px;
+    border-width: 0 0 2px 0;
+    border-color: #e2e9e1;
+}
+#add-pro .select {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    right: 23%;
+    top: -10%;
+}
+#add-pro .select .brand {
+    width: 200px;
+}
+#add-pro .select .brand select {
+    width: 100px;
+    height: 25px;
+    border-radius: 4px;
+    text-align: center;
+    border: none;
+    background: rgb(3, 109, 151);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+}
+#add-pro .select .brand option,
+#add-pro .select .cat option,
+#add-pro .select .subcat option {
+    background-color: #444a53;
+    color: #fff;
+}
+#add-pro .select .cat {
+    width: 200px;
+}
+#add-pro .select .cat select {
+    width: 120px;
+    height: 25px;
+    border-radius: 4px;
+    text-align: center;
+    border: none;
+    background: rgb(3, 109, 151);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+}
+#add-pro .select .subcat {
+    width: 200px;
+}
+#add-pro .select .subcat select {
+    width: 160px;
+    height: 25px;
+    border-radius: 4px;
+    text-align: center;
+    border: none;
+    background: rgb(3, 109, 151);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+}
+#add-pro .select .brand select:focus,
+#add-pro .select .cat select:focus,
+#add-pro .select .subcat select:focus {
+    outline: none;
+}
+#add-pro .pro-img {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    top: -5%;
+    right:3%;
+}
+#add-pro .pro-img .img1,
+#add-pro .pro-img .img2,
+#add-pro .pro-img .img3,
+#add-pro .pro-img .img4 {
+    width: 300px;
+    height: 200px;
+    padding: 5px 25px;
+    
+}
+#add-pro .pro-img img {
+    width: 180px;
+    height: 180px;
+    background: #828997;
+    margin-top: 25px;
+}
+
+
+
+#add-pro .address-details button:focus {
+    outline: none;
+}
+#add-pro .add-btn {
+    /* margin-right: 420px; */
+    position: relative;
+    top: 2%;
+    right: 30%;
+   
+}
+#add-pro .add-btn button {
+    background-color: rgb(3, 109, 151);
+    color: white;
+    width: 150px;
+    height: 50px;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+}
+#add-pro .add-btn button:hover {
+    cursor: pointer;
+    background-color:  rgb(32, 121, 156);
+}
+
+/* **********Add Product End********* */
+
 
 
 

@@ -331,6 +331,7 @@ body {
 }
 #products .pro img{
     width: 85%;
+    height: 70%;
     /* width: 350px;
     height: 480px; */
     border-radius: 20px;
