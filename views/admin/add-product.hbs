@@ -1,46 +1,3 @@
-{{!-- <section>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h2 class="text-center mt-3">Add Products</h2>
-        <form
-          action="/admin/add-product"
-          method="post"
-          enctype="multipart/form-data"
-          class="mt-5"
-        >
-       
-          <label for="" style="font-weight: bold;">Name</label>
-          <input type="text" name="Name" class="form-control" />
-
-          <label for="" style="font-weight: bold;">Category</label>
-          <input type="text" name="Category" class="form-control" />
-
-          <label for="" style="font-weight: bold;">Description</label>
-          <input type="text" name="Description" class="form-control" />
-
-          <label for="" style="font-weight: bold;">Size</label>
-          <input type="text" name="Size" class="form-control" />
-
-          <label for="" style="font-weight: bold;">Price</label>
-          <input type="text" name="Price" class="form-control" />
-          
-
-          <label for="" style="font-weight: bold;">Image</label>
-          <input type="file" name="Image" class="form-control" />
-
-  
-            <button style="width: 30%;"
-            type="submit"
-            class="btn btn-primary mt-3"
-          >Add</button>
-          
-        </form>
-      </div>
-    </div>
-  </div>
-</section> --}}
-
 
 
 <section id="add-pro">
@@ -52,8 +9,7 @@
                 <input type="text" id="lname" name="stock" placeholder="No Of Stock"><br>
                 <input type="text" id="house" name="about" placeholder="Write About Product"><br>
                 <input type="text" id="town" name="price"  placeholder="Product Price"><br>
-                
-               
+                   
            </div>
 
       </div>
@@ -92,27 +48,27 @@
 
             <div class="pro-img">
               <div class="img1">
-                <input type="file" name="img1">
-                <img src="" alt="">
+                <input type="file" name="img1" onchange="viewImage1(event)">
+                <img src="" alt="" id="imgview1">
                 
               </div>
 
               <div class="img2">
-                  <input type="file" name="img2">
-                <img src="" alt="">
+                  <input type="file" name="img2" onchange="viewImage2(event)">
+                <img src="" alt="" id="imgview2">
                 
 
               </div>
 
               <div class="img3">
-                  <input type="file" name="img3">
-                <img src="" alt="">
+                  <input type="file" name="img3" onchange="viewImage3(event)">
+                <img src="" alt="" id="imgview3">
 
               </div>
 
               <div class="img4">
-                  <input type="file" name="img4">
-                <img src="" alt="">
+                  <input type="file" name="img4" onchange="viewImage4(event)">
+                <img src="" alt="" id="imgview4">
 
               </div>
             </div>
@@ -123,4 +79,20 @@
 
     </form>
 </section>
+
+<script>
+    function viewImage1(event) {
+        document.getElementById('imgview1').src=URL.createObjectURL(event.target.files[0])
+    }
+    function viewImage2(event) {
+        document.getElementById('imgview2').src=URL.createObjectURL(event.target.files[0])
+    }
+    function viewImage3(event) {
+        document.getElementById('imgview3').src=URL.createObjectURL(event.target.files[0])
+    }
+    function viewImage4(event) {
+        document.getElementById('imgview4').src=URL.createObjectURL(event.target.files[0])
+    }
+</script>
+
 

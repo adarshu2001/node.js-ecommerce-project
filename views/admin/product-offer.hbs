@@ -1,0 +1,74 @@
+<section id="pOffer">
+    <div class="product">
+        <form action="/admin/product-offer" method="post">
+            <h3>PRODUCT OFFER</h3>
+            <select name="name" id="">
+                <option value="">Product</option>
+                {{#each products}}
+                <option value="{{this.name}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+            <input type="text" name="startDate" id="start" placeholder="Start Date"><br>
+            <input type="text" name="endDate" id="expire" placeholder="End Date"><br>
+            <input type="text" name="percentage" placeholder="Percentage"><br>
+            <button type="submit">Add Offer</button> 
+        </form>
+    </div>
+</section>
+
+
+
+
+<section id="view-pro">
+  <h3>All Product</h3>
+    <table width="100%">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Start Date</td>
+                <td>End Date</td>
+                <td>Percentage</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each getProductOffer}}
+            <tr>
+                <td>{{this.name}}</td>
+                <td>{{this.startDate}}</td>
+                <td>{{this.endDate}}</td>
+                <td>{{this.percentage}} %</td>
+                <td>
+                   <span><a href="/admin/edit-product/{{this._id}}"><i class="fas fa-pen"></i></a></span>
+                   <span><a href="/admin/deleteOffer/{{this._id}}"><i class="fas fa-trash"></i></a></span>
+                </td>  
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>
+
+
+<script>
+    $(document).ready(function () {
+        let today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() +1;
+        var yyyy = today.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+        today = yyyy + '-' + mm + '-' +dd;
+        $('#start').attr('min',today)
+
+        $('#start').change(function () {
+            let date = document.getElementById('start').value
+
+            $('expire').attr('min',date)
+        })
+    })
+</script>

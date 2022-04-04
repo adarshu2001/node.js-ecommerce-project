@@ -62,9 +62,12 @@ router.post('/edit-brand/:id',(req,res)=>{
     }
   })
 })
+
 // router.get('delete-brand',(req,res)=>{
   
 // })
+
+
 
 router.get('/view-category',(req,res)=>{
   productHelpers.categoryDetails().then((categories)=> {
@@ -80,12 +83,16 @@ router.post('/add-category',(req,res)=>{
   })
 })
 
-
+router.get('/view-products',(req,res)=>{
+  productHelpers.getAllProducts().then((products) => {
+    res.render('admin/view-products',{admin:true,products})
+  })
+  
+})
 
 router.get('/add-product',async(req,res)=>{
   let brand = await productHelpers.getAllBrand()
   let category = await productHelpers.categoryDetails()
-  console.log(category);
   res.render('admin/add-product',{admin:true,brand,category})
 })
 // router.post('/add-product',(req,res)=>{
@@ -116,13 +123,15 @@ router.post('/add-product',(req,res)=>{
     img2.mv('public/product-images/' + id + 'b.jpg')
     img3.mv('public/product-images/' + id + 'c.jpg')
     img4.mv('public/product-images/' + id + 'd.jpg')
-    res.redirect('/')
-
+    res.redirect('/admin/view-products')
   }).catch((err)=>{
+    if (err) {
+      res.redirect('/admin/add-product')
+    }
 
   })
 })
-router.get('/delete-product/:id',(req,res)=>{
+router.get('/delete-product/:id',async(req,res)=>{
   let proId = req.params.id
   productHelpers.deleteProduct(proId).then((response)=>{
     res.redirect('/admin/')
@@ -131,19 +140,41 @@ router.get('/delete-product/:id',(req,res)=>{
 })
 router.get('/edit-product/:id',async(req,res)=>{
   let proId = req.params.id
+  let brand = await productHelpers.getAllBrand()
+  let category = await productHelpers.categoryDetails()
   let product = await productHelpers.getEditProduct(proId)
-    res.render('admin/edit-product',{product})
-
+    res.render('admin/edit-product',{product,admin:true,category,brand})
 })
 router.post('/edit-product/:id',(req,res)=>{
   let id = req.params.id
   productHelpers.updateProduct(req.params.id,req.body).then(()=>{
-    res.redirect('/admin')
-    if(req.files.Image){
-      let image = req.files.Image
-      image.mv('./public/product-images/'+id+'.jpg')
+    // res.redirect('/admin')
+    if(req.files.img1){
+      let img1 = req.files.img1
+      img1.mv('./public/product-images/'+id+ 'a.jpg')
+    }else{
+      res.redirect('/admin/view-products')
+    }
+    if(req.files.img2){
+      let img2 = req.files.img2
+      img2.mv('./public/product-images/'+id+ 'b.jpg')
+    }else {
+      res.redirect('/admin/view-products')
+    }
+    if(req.files.img3){
+      let img3 = req.files.img3
+      img3.mv('./public/product-images/'+id+ 'c.jpg')
+    }else {
+      res.redirect('/admin/view-products')
+    }
+    if(req.files.img4){
+      let img4 = req.files.img4
+      img4.mv('./public/product-images/'+id+ 'd.jpg')
+    }else {
+      res.redirect('/admin/view-products')
     }
   })
+  res.redirect('/admin/view-products')
 })
 router.get('/admin-login',(req,res)=>{
   if (req.session.adminLoggedIn){
@@ -200,6 +231,25 @@ router.get('/blocked-users',(req,res)=>{
   })
 })
 
+router.get('/product-offer',async(req,res) => {
+  let products = await productHelpers.getAllProducts()
+  let getProductOffer = await productHelpers.getProductOffer()
+  console.log(getProductOffer);
+  res.render('admin/product-offer',{admin:true,products,getProductOffer})
+})
+router.post('/product-offer',(req,res) => {
+  productHelpers.productOffer(req.body).then(()=>{
+    res.redirect('/admin/product-offer')
+  })
+})
+router.get('/deleteOffer/:id',(req,res) => {
+  let offerId = req.params.id
+  productHelpers.deleteOffer(offerId).then(()=> {
+    res.redirect('/admin/product-offer')
+  })
+
+
+})
 
 
 

@@ -180,9 +180,10 @@ body {
 
 
 #dashboard {
-    position: fixed;
+    /* position: fixed;
     top: 15%;
-    left: 30%;
+    left: 30%; */
+    margin: 150px 450px;
     
 }
 #dashboard .head {
@@ -251,10 +252,12 @@ body {
 /* **********User-View********* */
 
 #all-users {
-    position: fixed;
+    /* position: fixed;
     top: 15%;
     left: 30%;
-    width: 85%;
+    width: 85%; */
+    margin: 150px 450px;
+    width: 100%;
 }
 #all-users h3 {
     font-weight: 600;
@@ -359,10 +362,12 @@ body {
 /* **********View Brand********* */
 
 #view-brand {
-    position: fixed;
+    /* position: fixed;
     top: 15%;
     left: 30%;
-    width: 85%;
+    width: 85%; */
+    margin: 150px 450px;
+    width: 100%;
 }
 #view-brand .add {
     display: flex;
@@ -537,10 +542,12 @@ body {
 
 /* **********View Category********* */
 #view-category {
-    position: fixed;
+    /* position: fixed;
     top: 15%;
     left: 30%;
-    width: 85%;
+    width: 85%; */
+    margin: 150px 450px;
+    width: 100%;
 }
 #view-category .add {
     display: flex;
@@ -712,6 +719,8 @@ body {
     left: 30%;
     width: 70%; 
     height: 120vh;
+    /* margin: 150px 450px;
+    width: 70%; */
 }
 #add-pro form {
     width: 100%;
@@ -749,6 +758,7 @@ body {
     position: relative;
     right: 23%;
     top: -10%;
+  
 }
 #add-pro .select .brand {
     width: 200px;
@@ -856,6 +866,178 @@ body {
 }
 
 /* **********Add Product End********* */
+
+
+
+
+
+/* **********View Product********* */
+
+#view-pro{
+    margin: 150px 450px;
+    overflow-x: auto;
+    width: 70%;
+}
+#view-pro h3 {
+    padding-bottom: 25px;
+    font-weight: 700;
+}
+#view-pro table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    white-space: nowrap;
+}
+#view-pro table img {
+    width: 70px;
+}
+
+#view-pro table td:nth-child(1) {
+    width: 100px;
+    text-align: center;
+}
+#view-pro table td:nth-child(2) {
+    width: 100px;
+    text-align: center;
+}
+#view-pro td:nth-child(3) {
+    width: 100px;
+    text-align: center;
+}
+#view-pro td:nth-child(4),
+#view-pro td:nth-child(5),
+#view-pro td:nth-child(6),
+#view-pro td:nth-child(7)  {
+    width: 100px;
+    text-align: center;
+}
+#view-pro table thead {
+    border: 1px solid #e2e9e1;
+    border-left: none;
+    border-right: none;
+}
+#view-pro table thead td {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 18px 0;
+}
+#view-pro table tbody tr span i {
+    margin: 0 14px;
+    font-size: 16px;
+    color: #828997;
+
+}
+#view-pro table tbody tr td {
+    padding-top: 18px;
+}
+#view-pro table tbody td {
+    font-size: 17px;
+}
+/* **********View Product End********* */
+
+
+
+
+
+
+/* **********Product-Offer********* */
+
+#pOffer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 150px 80px;
+}
+#pOffer .product {
+    width: 400px;
+    height: 520px;
+    border: 1px solid #e2e9e1;
+    box-shadow: 5px 15px 15px 0px rgba(0, 0, 0, 0.3);
+    padding: 55px;
+    position: relative;
+}
+#pOffer .product h3 {
+    font-weight: 500;
+    padding-bottom: 20px;
+    color: rgb(3, 31, 39);
+    margin-left: 20px;
+}
+#pOffer .product select {
+    width: 100px;
+    height: 25px;
+    border-radius: 4px;
+    text-align: center;
+    border: none;
+    background: rgb(3, 109, 151);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 10px 25px;
+}
+#pOffer .product option {
+    background-color: #444a53;
+    color: #fff;
+}
+#pOffer .product select:focus {
+    outline: none;
+}
+#pOffer .product input {
+    font-size: 18px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    outline: none;
+    width: 100%;
+    margin-right: 10px;
+    border-width: 0 0 2px 0;
+    border-color: #e2e9e1;
+    border-radius: 5px;
+}
+#pOffer .product input:focus {
+    border-color:  rgb(61, 191, 243);
+}
+#pOffer .product button {
+    background-color: rgb(61, 191, 243);
+    color: white;
+    width: 150px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    margin: 30px 60px;
+}
+#pOffer .product button:hover {
+    cursor: pointer;
+    background-color:  rgb(61, 191, 243);
+}
+#pOffer .product button:focus {
+    outline: none;
+}
+
+/* #add-pro .select .brand select {
+    width: 100px;
+    height: 25px;
+    border-radius: 4px;
+    text-align: center;
+    border: none;
+    background: rgb(3, 109, 151);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+}
+#add-pro .select .brand option,
+#add-pro .select .cat option,
+#add-pro .select .subcat option {
+    background-color: #444a53;
+    color: #fff;
+} */
+
+
+/* **********Product-Offer End********* */
+
+
+
 
 
 

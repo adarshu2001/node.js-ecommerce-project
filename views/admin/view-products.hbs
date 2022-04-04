@@ -1,35 +1,34 @@
-<section>
-  <div class="container col-md-8 mt-5">
-    <div class="row">
-      <a href="/admin/add-product" class="btn btn-success  ml-auto mt-2">Add Products</a>
-    </div>
-      <table class="table mt-5">
+
+
+<section id="view-pro">
+  <h3>All Product</h3>
+    <table width="100%">
         <thead>
-          <tr> 
-            
-            <th scope="col">Name</th>
-            <th scope="col">Category</th>
-            <th scope="col">Price</th>
-            <th scope="col">Size</th>
-            <th scope="col">Image</th>
-          </tr>
+            <tr>
+                <td>Items</td>
+                <td>Image</td>
+                <td>Price</td>
+                <td>Stock</td>
+                <td>Brand</td>             
+                <td>Category</td>
+                <td>Action</td>
+            </tr>
         </thead>
         <tbody>
-            {{#each products}}
-          <tr>
-            
-            <td>{{this.Name}}</td>
-            <td>{{this.Category}}</td>
-            <td>{{this.Price}}</td>
-            <td>{{this.Size}}</td>
-            <td> <img style="width: 60px; height:auto;" src="/product-images/{{this._id}}.jpg" alt=""></td>
-            <td>
-                <a class="btn btn-primary mr-3" href="admin/edit-product/{{this._id}}">Edit</a>
-                <a class="btn btn-danger" href="admin/delete-product/{{this._id}}" onclick="return confirm('Are You Want To Delet {{this.Name}} ?')">Delect</a>              
-                </td>
-          </tr>
-          {{/each}}
+          {{#each products}}
+            <tr>
+                <td>{{this.name}}</td>
+                <td><img  src="/product-images/{{this._id}}a.jpg" alt=""></td>
+                <td>{{this.price}}</td>
+                <td>{{this.stock}}</td>
+                <td>{{this.brand}}</td>
+                <td>{{this.Mcategory}}</td>
+                <td>
+                   <span><a href="/admin/edit-product/{{this._id}}"><i class="fas fa-pen"></i></a></span>
+                   <span><a href=""><i class="fas fa-trash"></i></a></span>
+                </td>  
+            </tr>
+            {{/each}} 
         </tbody>
-      </table>
-  </div>
+    </table>
 </section>

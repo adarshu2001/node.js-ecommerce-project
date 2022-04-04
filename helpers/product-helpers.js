@@ -78,7 +78,7 @@ module.exports = {
 
 
     addProduct:(product)=>{
-        product.Price = parseInt(product.Price)
+        product.price = parseInt(product.price)
         return new Promise((resolve,reject)=>{
             db.get().collection(collection.PRODUCT_COLLECTION).insertOne(product).then((data)=>{
                 resolve(data.insertedId)
@@ -108,14 +108,18 @@ module.exports = {
     },
     updateProduct:(proId,proDetails)=>{
         return new Promise((resolve,reject)=>{
+            proDetails.price = parseInt(proDetails.price)
+            proDetails.stock = parseInt(proDetails.stock)
             db.get().collection(collection.PRODUCT_COLLECTION)
             .updateOne({_id:objectId(proId)},{
                 $set : {
-                    Name : proDetails.Name,
-                    Category : proDetails.Category,
-                    Description : proDetails.Description,
-                    Size : proDetails.Size,
-                    Price : proDetails.Price
+                    name: proDetails.name,
+                    stock: proDetails.stock,
+                    about: proDetails.about,
+                    price: proDetails.price,
+                    brand: proDetails.brand,
+                    Mcategory: proDetails.Mcategory,
+                    Scategory: proDetails.Scategory
                 }
             }).then((response)=>{
                 resolve(response)
@@ -193,8 +197,65 @@ module.exports = {
            let blockedUsers = await db.get().collection(collection.USER_COLLECTION).find({status:false}).toArray()
            resolve(blockedUSers)
         })
+    },
+
+
+
+    productOffer: (data) => {
+        return new Promise(async(resolve,reject) => {
+            let product = await db.get().collection(collection.PRODUCT_COLLECTION).findOne({ name: data.name })
+            data.percentage = parseInt(data.percentage)
+            let actualPrice = product.price
+            let newPrice= (((product.price) * (data.percentage)) / 100)
+            newPrice = newPrice.toFixed()
+            db.get().collection(collection.PRODUCT_OFFER).insertOne(data).then((response) => {
+                db.get().collection(collection.PRODUCT_COLLECTION).updateOne({name: data.name},
+                    {
+                        $set: {
+                            proOffer: true,
+                            percentage: data.percentage,
+                            price: (actualPrice - newPrice),
+                            actualPrice: actualPrice
+                        }
+                    }).then((response)=>{
+                        resolve()
+                    })
+
+            })
+            
+        })
+
+    },
+    getProductOffer: () => {
+        return new Promise(async(resolve,reject) => {
+            let poffer = db.get().collection(collection.PRODUCT_OFFER).find().toArray()
+            resolve(poffer)
+        })
+    },
+    deleteOffer: (offerId) => {
+        return new Promise(async(resolve,reject) => {
+            let proOffer = await db.get().collection(collection.PRODUCT_OFFER).findOne({_id: objectId(offerId)})
+            let pname = proOffer.name
+            let product = await db.get().collection(collection.PRODUCT_COLLECTION).findOne({name: pname})
+            db.get().collection(collection.PRODUCT_OFFER).deleteOne({_id: objectId(offerId)}).then((response)=> {
+                db.get().collection(collection.PRODUCT_COLLECTION).updateOne({name : pname},
+                    {
+                        $set: {
+                            price: product.actualPrice
+                        },
+                        $unset: {
+                            proOffer: "",
+                            percentage: "",
+                            actualPrice: ""
+                        }
+                    }).then(()=> {
+                        resolve()
+                    })
+            })
+        })
     }
-    
+
+
 
 
 }
