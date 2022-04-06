@@ -248,7 +248,25 @@ router.get('/deleteOffer/:id',(req,res) => {
     res.redirect('/admin/product-offer')
   })
 
+})
 
+router.get('/coupon-offer',async(req,res)=> {
+  let coupon = await productHelpers.getAllCoupon()
+  console.log((coupon));
+  res.render('admin/coupon-offer',{admin: true,coupon})
+})
+router.post('/coupon-offer',(req,res) => {
+  productHelpers.addCoupon(req.body).then(() => {
+    res.redirect('/admin/coupon-offer')
+  })
+ 
+})
+router.get('/delete-coupon/:id',(req,res) => {
+  let id = req.params.id
+  productHelpers.deleteCoupon(id).then((response) => {
+    res.redirect('/admin/coupon-offer')
+  })
+ 
 })
 
 

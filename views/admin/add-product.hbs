@@ -26,7 +26,7 @@
              </div>
 
              <div class="cat">
-               <select name="Mcategory" id="">
+               <select name="Mcategory" id="" onchange="renderScategories(event)">
                  <option value="">Category</option>
                  {{#each category}}
                  <option value="{{this.category}}">{{this.category}}</option>
@@ -36,11 +36,8 @@
              </div>
 
              <div class="subcat">
-               <select name="Scategory" id="">
-                 <option value="">Sub Category</option>
-                {{#each category}}
-                 <option value="">{{this.Scategory}}</option>
-                 {{/each}}        
+               <select name="Scategory" id="scategoriesContainer">
+                 <option value="">Sub Category</option>         
                </select>
 
              </div>
@@ -81,6 +78,8 @@
 </section>
 
 <script>
+  const categories = {{json category}}
+
     function viewImage1(event) {
         document.getElementById('imgview1').src=URL.createObjectURL(event.target.files[0])
     }
@@ -92,6 +91,19 @@
     }
     function viewImage4(event) {
         document.getElementById('imgview4').src=URL.createObjectURL(event.target.files[0])
+    }
+
+    function renderScategories(event) {
+      const selectBox = document.getElementById('scategoriesContainer');
+      selectBox.innerHTML = '<option value="">Sub Category</option>';
+      const [selectedCategory] = categories.filter((category) => category.category === event.target.value);
+      
+      selectedCategory.Scategory.forEach((sc) => {
+        const option = document.createElement('option');
+        option.value = sc;
+        option.innerText = sc;
+        selectBox.appendChild(option);
+      });
     }
 </script>
 

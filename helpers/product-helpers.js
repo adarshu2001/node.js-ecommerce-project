@@ -253,6 +253,39 @@ module.exports = {
                     })
             })
         })
+    },
+
+    addCoupon: (Cdata) => {
+        return new Promise((resolve,reject) => {
+            let date = Cdata.startDate
+            let expire = Cdata.endDate
+            let data = {
+                coupon: Cdata.couponCode,
+                percentage: Cdata.percentage,
+                status: 1,
+                date: date,
+                EndDate: expire,
+                users:[]
+            }
+            db.get().collection(collection.COUPON_OFFER).insertOne(data).then((response) => {
+                resolve()
+            })
+            
+        })
+    },
+    getAllCoupon: () => {
+        return new Promise(async(resolve,reject) => {
+            let coupon = await db.get().collection(collection.COUPON_OFFER).find().toArray()
+            resolve(coupon)
+        })
+    },
+    deleteCoupon: (id) => {
+        return new Promise((resolve,reject) => {
+            db.get().collection(collection.COUPON_OFFER).deleteOne({_id: objectId(id)}).then((response) => {
+                resolve(response)
+            })
+        })
+
     }
 
 

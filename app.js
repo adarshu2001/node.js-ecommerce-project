@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var userRouter = require('./routes/user');
 var adminRouter = require('./routes/admin');
-const { engine : hbs } = require("express-handlebars");
+const { engine : hbs, create } = require("express-handlebars");
 const fileUpload = require('express-fileupload')
 var db = require('./config/connection')
 // var mdb = require('mdb-ui-kit')
@@ -23,6 +23,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+var expressHbs = create({});
+
+expressHbs.handlebars.registerHelper('json',function(obj) {
+  return new expressHbs.handlebars.SafeString(JSON.stringify(obj))
+})
 
 // app.use("/css",express.static(path.join(__dirname,"node_modules/mdb-ui-kit/css")));
 // app.use("/js",express.static(path.join(__dirname,"node_modules/mdb-ui-kit/js")));
