@@ -330,11 +330,11 @@ body {
     box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.08);  
 }
 #products .pro img{
-    width: 85%;
-    height: 70%;
+    width: 95%;
+    height: 75%;
     /* width: 350px;
     height: 480px; */
-    border-radius: 20px;
+    border-radius: 15px;
     margin: 15px 10px;
 }
 #products .pro .des {
@@ -1211,6 +1211,34 @@ footer .copyright {
 #coupon button:focus {
     outline: none;
 }
+#coupon .used {
+    color: red;
+    margin: 10px 0 0 150px;
+    display: none;
+    /* display: none; */
+}
+#coupon .invalid {
+    color: red;
+    margin: 10px 0 0 150px;
+    display: none;
+}
+#coupon .success {
+    color :rgb(38, 97, 114);
+    margin: 10px 0 0 150px;
+    font-size: bold;
+    display: none;
+}
+#coupon .expire {
+    color: red;
+    margin: 10px 0 0 150px;
+    font-size: bold;
+    display: none;
+}
+/* #coupon .expire {
+    color: red;
+    margin: 10px 0 0 150px;
+    font-size: bold;
+} */
 #subtotal {
     width: 50%;
     margin-bottom: 30px;
@@ -1338,6 +1366,10 @@ footer .copyright {
 .small-img-col {
     flex-basis: 24%;
     cursor: pointer;
+}
+.small-img-col img {
+    height: 210px;
+    width: 100%;
 }
 #proDetails .single-pro-details {
     width: 50%;

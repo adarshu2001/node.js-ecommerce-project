@@ -75,6 +75,7 @@ const changeQuantity=(cartId,proId,userId,count)=>{
                 location.reload()
             }else{
                 document.getElementById(proId).innerHTML=quantity+count
+                document.getElementById('totalCart').innerHTML=response.total
                 document.getElementById('totalsum').innerHTML=response.total
             }
             
@@ -138,7 +139,7 @@ const razorpayPayment = (order)=>{
         "key": "rzp_test_r5p0n7ioSfr096", // Enter the Key ID generated from the Dashboard
         "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         "currency": "INR",
-        "name": "YOC",
+        "name": "YOK",
         "description": "Test Transaction",
         "image": "",
         "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1

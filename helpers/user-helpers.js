@@ -376,7 +376,7 @@ module.exports = {
                 {
                     $group:{
                         _id:null,
-                        total:{$sum:{$multiply:['$quantity','$product.Price']}}
+                        total:{$sum:{$multiply:['$quantity','$product.price']}}
                     }
                 }                                                               
             ]).toArray()
@@ -650,6 +650,41 @@ module.exports = {
                     resolve(response)
                 })
 
+        })
+    },
+    couponValidate: (Cdata,userId) => {
+        return new Promise(async(resolve,reject) => {
+            let data = {}
+            let date = new Date()
+            date = moment(data).format('DD/MM/YYYY')
+            console.log(date);
+            let coupon = await db.get().collection(collection.COUPON_OFFER).findOne({coupon:Cdata.couponCode})
+            if (coupon) {
+                let users = coupon.users
+                let userChecker = users.includes(userId)
+                if (userChecker) {
+                    data.couponUsed=true
+                    resolve(data)
+                }else{
+                    if (date<=coupon.EndDate) {
+                        let total=parseInt(Cdata.Total)
+                        let percentage=parseInt(coupon.percentage)
+                        let discountAmt=((total*percentage)/100).toFixed()
+                        data.total=total-discountAmt
+                        let Cprice=data.total
+                        data.Success=true
+                        console.log(data.total);
+                        resolve(data)
+                    }else{
+                        data.couponExpire=true
+                        resolve(data)
+                    }
+                }
+            }else{
+                data.invalidCoupon=true
+                resolve(data)
+            }
+           
         })
     }
     

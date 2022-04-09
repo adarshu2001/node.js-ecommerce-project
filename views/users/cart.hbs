@@ -61,15 +61,15 @@
             {{#each products}}
             <tr>
                 <td><button class="remove" onclick="removeProduct('{{this._id}}','{{this.product._id}}')" ><i class="far fa-times-circle"></i></button></td>
-                <td><img onclick=" window.location.href='/single-product/{{this.product._id}}'" src="product-images/{{this.product._id}}.jpg" alt=""></td>
-                <td>{{this.product.Name}}</td>
+                <td><img onclick=" window.location.href='/single-product/{{this.product._id}}'" src="product-images/{{this.product._id}}a.jpg" alt=""></td>
+                <td>{{this.product.name}}</td>
                 <td>{{this.size}}</td>
                 <td>
                     <button class="quantity" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)">-</button>
                     <span id="{{this.product._id}}">{{this.quantity}}</span>
                     <button class="quantity" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">+</button>
                 </td>
-                <td>{{this.product.Price}}</td>  
+                <td>{{this.product.price}}</td>  
             </tr>
             {{/each}}
         </tbody>
@@ -80,9 +80,14 @@
     <div id="coupon">
         <h3>Apply Coupon</h3>
         <div>
-            <input type="text" placeholder="Enter Your Coupon">
-            <button>Apply</button>
+            <input type="text" id="couponTotal" value="{{totalSum}}" hidden>
+            <input type="text" id="couponInput" placeholder="Enter Your Coupon">
+            <button type="submit" id="couponBtn" onclick="couponApply()">Apply</button>
         </div>
+        <p class="used" id="couponUsed">This Coupon Has Been Used</p>
+        <p class="invalid" id="couponInvalid">This Coupon Is Invalid</p>
+        <p class="success" id="couponSuccess">Coupon Applied Successfully</p>
+        <p class="expire" id="couponExpire">Your Coupon Has Been Expired</p>
     </div>
 
     <div id="subtotal">
@@ -90,11 +95,15 @@
         <table>
             <tr>
                 <td>Cart Subtotal</td>
-                <td>Rs : <span id="totalsum">{{totalSum}}</span></td>
+                <td>Rs : <span id="totalCart">{{totalSum}}</span></td>
             </tr>
             <tr>
                 <td>Shipping</td>
                 <td>Free</td>           
+            </tr>
+            <tr>
+                <td>Discount</td>
+                <td> <span id="discount"></span> </td>           
             </tr>
             <tr>
                 <td><strong>Total</strong></td>
@@ -155,5 +164,36 @@
   </div>
 
 </footer>
+
+
+<script>
+    function couponApply() {
+        let couponCode = document.getElementById('couponInput').value
+
+        let couponTotal = document.getElementById('couponTotal').value
+
+
+         $.ajax({
+          url: '/couponSubmit',
+          data: {
+            couponCode,
+            Total:couponTotal
+        },
+        method: 'post',
+        success: (response) => {
+            if (response.couponSuccess) {
+                let oldAmt = parseInt(document.getElementById('totalsum').innerHTML)
+                let discount = oldAmt - parseInt(response.total)
+                document.getElementById('discount').innerText = discount
+                document.getElementById('totalsum').innerHTML = response.total
+                $('#couponSuccess').show()
+            }
+
+        }
+        
+    })
+
+    }
+</script>
 
 

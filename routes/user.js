@@ -456,6 +456,14 @@ router.get('/delete-U-addrs/:id',(req,res)=>{
     res.redirect('/user-profile')
   })
 })
+router.post('/couponSubmit',(req,res)=> {
+  let id = req.session.user._id
+  userHelpers.couponValidate(req.body,id).then((response) => {
+     if (response.Success) {
+       res.json({couponSuccess:true,total:response.total})
+     }
+  })
+})
 
 
 

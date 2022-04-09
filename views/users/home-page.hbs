@@ -82,10 +82,10 @@
   <div class="pro-container">
     {{#each products}}
     <div class="pro">
-      <img  src="product-images/{{this._id}}.jpg" alt="" onclick=" window.location.href='/single-product/{{this._id}}'" />
+      <img  src="product-images/{{this._id}}a.jpg" alt="" onclick=" window.location.href='/single-product/{{this._id}}'" />
       <div class="des">
-        <span>{{this.Name}}</span>
-        <h5>Cartoon Astronaut T-Shirt</h5>
+      <span>{{this.brand}}</span>
+        <h5>{{this.name}}</h5>
         <div class="star">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
@@ -93,7 +93,7 @@
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
         </div>
-        <h4>Rs : {{this.Price}}</h4>
+        <h4>Rs : {{this.price}}</h4>
       </div>
       <button onclick="addToWhishlist('{{this._id}}')" class="whlist"><i class="far fa-heart"></i></button>
       {{!-- <button onclick="addToCart('{{this._id}}')" class="cart"><i class="fas fa-shopping-cart"></i></button> --}}
