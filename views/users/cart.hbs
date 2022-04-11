@@ -188,6 +188,15 @@
                 document.getElementById('totalsum').innerHTML = response.total
                 $('#couponSuccess').show()
             }
+            if (response.couponUsed) {
+                $('#couponUSed').show()
+            }
+            if (response.couponUsed) {
+                $('#couponExpire').show()
+            }
+            if (response.couponUsed) {
+                $('#invalidCoupon').show()
+            }
 
         }
         

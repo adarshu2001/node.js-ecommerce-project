@@ -384,9 +384,10 @@ module.exports = {
         })
 
     },
-    placeOrder:(order,products,total)=>{
+    placeOrder:(order,products,total,coupon)=>{
         return new Promise((resolve,reject)=>{
-            console.log(order,products,total);
+            console.log(order,products,total,coupon);
+            let couponC = coupon
             let status=order['payment-method']==='COD'?'Placed':'Pending'
             let dateIso = new Date()
             let date = moment(dateIso).format('MM/DD/YYYY')
@@ -410,6 +411,18 @@ module.exports = {
                 status:status,
                 date:date,
                 time:time
+            }
+            let User = order.userId
+            if (couponC) {
+                db.get().collection(collection.COUPON_OFFER).updateOne({coupon:couponC},
+                    {
+                        $push: {
+                            users: User
+                        }
+                    }).then(()=>{
+                        resolve()
+                    })
+
             }
             db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj).then((response)=>{
                 db.get().collection(collection.CART_COLLECTION).deleteOne({user:objectId(order.userId)})            

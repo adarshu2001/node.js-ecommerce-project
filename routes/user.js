@@ -345,7 +345,12 @@ router.post('/cart-product-remove',(req,res)=>{
   })
 })
 router.get('/place-order',verifyLogin ,async(req,res)=>{
-  let total = await userHelpers.getTotalAmount(req.session.user._id)
+  let total = 0
+  if (req.session.Ctotal){
+    total = req.session.Ctotal
+  }else {
+    total = await userHelpers.getTotalAmount(req.session.user._id)
+  }
   var address = null
   let status = await userHelpers.addressChecker(req.session.user._id)
   var address = null
@@ -364,10 +369,15 @@ router.get('/place-order',verifyLogin ,async(req,res)=>{
 
 })
 router.post('/place-order',async(req,res)=>{
+  let couponCode = req.session.Ccode
   let products = await userHelpers.getCartProList(req.body.userId)
-  let totalPrice = await userHelpers.getTotalAmount(req.body.userId)
-  console.log(req.body);
-  userHelpers.placeOrder(req.body,products,totalPrice).then((orderId)=>{
+  let total = 0
+  if (req.session.Ctotal){
+    total = req.session.Ctotal
+  }else {
+    total = await userHelpers.getTotalAmount(req.session.user._id)
+  }
+  userHelpers.placeOrder(req.body,products,total,couponCode).then((orderId)=>{
     if(req.body['payment-method']==='COD'){
       res.json({codSuccess:true})
     }else{
@@ -458,9 +468,17 @@ router.get('/delete-U-addrs/:id',(req,res)=>{
 })
 router.post('/couponSubmit',(req,res)=> {
   let id = req.session.user._id
+  req.session.Ccode = req.body.couponCode
   userHelpers.couponValidate(req.body,id).then((response) => {
+    req.session.Ctotal = response.total
      if (response.Success) {
        res.json({couponSuccess:true,total:response.total})
+     }else if (response.couponUsed) {
+       res.json({couponUsed: true})
+     }else if (response.couponExpire) {
+       res.json({couponExpire: true})
+     }else if (response.invalidCoupon) {
+       res.json({invalidCoupon: true})
      }
   })
 })
