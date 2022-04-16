@@ -1,0 +1,84 @@
+<section id="orders">
+  <h3>All Orders</h3>
+  <table width="100%">
+    <thead>
+      <tr>
+        <td>Date</td>
+        <td>Time</td>
+        <td>User</td>
+        <td>Address</td>
+        <td>Amount</td>
+        <td>Status</td>
+        <td></td>
+       
+      </tr>
+    </thead>
+    <tbody>
+      {{#each orderList}}
+        <tr>
+          <td>{{this.date}}</td>
+          <td>{{this.time}}</td>
+          <td>{{this.user}}</td>
+          <td>{{this.deliveryDetails.fname}},
+            {{this.deliveryDetails.house}}
+            <br />{{this.deliveryDetails.town}}<br />Pin :
+            {{this.deliveryDetails.pincode}}
+            <br />
+            PH :
+            {{this.deliveryDetails.phone}}
+          </td>
+          <td>{{this.totalAmount}}</td>
+          <td>{{this.status}}</td>
+          <td>
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                onclick="statusChecker('{{this.status}}')"
+              >
+               <span id="status"> {{this.status}}</span>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="/admin/placed/{{this._id}}" id="{{this._id}}placed" >Placed</a>
+                <a class="dropdown-item" href="/admin/shipped/{{this._id}}" id="{{this._id}}shipped" >Shipped</a>
+                <a class="dropdown-item" href="/admin/delivered/{{this._id}}" id="{{this._id}}delivered" >Delivered</a>
+                <a class="dropdown-item" href="/admin/cancelled/{{this._id}}" id="{{this._id}}cancel" >Cancelled</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+      {{/each}}
+
+    </tbody>
+  </table>
+</section>
+
+
+<script>
+    function statusChecker(orderStatus) {
+        let status = document.getElementById('status').innerHTML
+        if (status === 'Placed') {
+            document.getElementById(orderId + 'placed').hidden = false;
+
+        }else if (status === 'Shipped') {
+            document.getElementById(orderId + 'placed').hidden = false;
+                
+        
+        }else if (status === 'Delivered') {
+            document.getElementById(orderId + 'placed').hidden = false;
+            document.getElementById(orderId + 'shipped').hidden = false;
+            document.getElementById(orderId + 'cancel').hidden = false;
+                
+        
+        }else if (status === 'Cancelled') {
+            document.getElementById(orderId + 'placed').style.display = "none"; 
+            document.getElementById(orderId + 'shipped').style.display = "none"; 
+            document.getElementById(orderId + 'delivered').style.display = "none"; 
+            
+        }
+    }
+</script>

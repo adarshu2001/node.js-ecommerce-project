@@ -269,6 +269,42 @@ router.get('/delete-coupon/:id',(req,res) => {
  
 })
 
+router.get('/orders',async(req,res) => {
+  let orderList = await productHelpers.getAllOrders()
+  res.render('admin/all-orders',{admin: true,orderList})
+})
+
+router.get('/placed/:id',(req,res) => {
+  let id = req.params.id
+  let status = 'Placed'
+  productHelpers.changeOrderStatus(id,status).then(() => {
+    res.redirect('/admin/orders')
+  }) 
+})
+
+router.get('/shipped/:id',(req,res) => {
+  let id = req.params.id
+  let status = 'Shipped'
+  productHelpers.changeOrderStatus(id,status).then(() => {
+    res.redirect('/admin/orders')
+  }) 
+})
+router.get('/delivered/:id',(req,res) => {
+  let id = req.params.id
+  let status = 'Delivered'
+  productHelpers.changeOrderStatus(id,status).then(() => {
+    res.redirect('/admin/orders')
+  }) 
+})
+router.get('/cancelled/:id',(req,res) => {
+  let id = req.params.id
+  let status = 'Cancelled'
+  productHelpers.changeOrderStatus(id,status).then(() => {
+    res.redirect('/admin/orders')
+  }) 
+})
+
+
 
 
 

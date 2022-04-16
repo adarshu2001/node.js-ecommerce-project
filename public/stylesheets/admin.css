@@ -1040,5 +1040,86 @@ body {
 
 
 
+/* **********All Orders********* */
+
+
+
+
+#orders{
+    margin: 150px 370px;
+    overflow-x: auto;
+    width: 70%;
+}
+#orders h3 {
+    padding-bottom: 35px;
+    margin-left: 80px;
+    font-weight: 700;
+}
+#orders table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    white-space: nowrap;
+}
+
+#orders table td:nth-child(1) {
+    width: 50px;
+    text-align: center;
+}
+#orders table td:nth-child(2) {
+    width: 50px;
+    text-align: center;
+}
+#orders td:nth-child(3) {
+    width: 100px;
+    text-align: center;
+}
+#orders td:nth-child(4){
+    width: 100px;
+    text-align: center;
+}
+#orders td:nth-child(5){
+    width: 80px;
+    text-align: center;
+}
+#orders td:nth-child(6)  {
+    width: 60px;
+    text-align: center;
+}
+#orders td:nth-child(7)  {
+    width: 50px;
+    text-align: center;
+}
+#orders table thead {
+    border: 1px solid #e2e9e1;
+    border-left: none;
+    border-right: none;
+}
+#orders table thead td {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 18px 0;
+}
+#orders table tbody tr span i {
+    margin: 0 14px;
+    font-size: 16px;
+    color: #828997;
+
+}
+#orders table tbody tr td {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+#orders table tbody td {
+    font-size: 17px;
+}
+
+
+/* **********All Orders Ends********* */
+
+
+
+
 
 
