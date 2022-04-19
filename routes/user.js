@@ -381,7 +381,7 @@ router.post('/place-order',async(req,res)=>{
     if(req.body['payment-method']==='COD'){
       res.json({codSuccess:true})
     }else{
-      userHelpers.generateRazorpay(orderId,totalPrice).then((response)=>{
+      userHelpers.generateRazorpay(orderId,total).then((response)=>{
         console.log("response"+response);
         res.json(response)
 

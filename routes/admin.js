@@ -8,8 +8,12 @@ var router = express.Router();
 
 
 /* GET admin listing. */
-router.get('/', function(req, res, next) {
-      res.render('admin/dashboard',{admin:true})
+router.get('/', async function(req, res, next) {
+  let userCount = await productHelpers.userCount()
+  let allMethods = await productHelpers.allMethods()
+  let orderStatus = await productHelpers.orderStatus()
+  console.log(userCount);
+    res.render('admin/dashboard',{admin:true,userCount,allMethods,orderStatus})
 })
 // router.get('/', function(req, res, next) {
 //   if (req.session.adminLoggedIn){

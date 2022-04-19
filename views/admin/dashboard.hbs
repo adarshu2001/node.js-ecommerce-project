@@ -5,7 +5,7 @@
         <div class="val-box">
             <i class="fas fa-users"></i>
             <div>
-                <h3>452</h3>
+                <h3>{{userCount}}</h3>
                 <span>Total Users</span>
             </div>
         </div>
@@ -37,5 +37,74 @@
             </div>
         </div>
     </div>
+    </div>
+    <div class="chart-box">
+        <div class="chartPay">
+            <h3>Payment Chart</h3>
+            <canvas id="myChart"></canvas>
+
+  <script>
+            var xValues = ["COD", "Razorpay", "Paypal"];
+            var yValues = [{{allMethods}}];
+            var barColors = [
+            	"#FFD700",
+                "#4682B4",
+                "#CD5C5C"
+
+            ];
+            new Chart('myChart', {
+                type: "doughnut",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: "Payment Methods"
+                    }
+                }
+            });
+        </script>
+ 
+
+        </div>
+        <div class="chartStat">
+            <h3>Order Chart</h3>
+             <canvas id="mySts" width="400" height="400"></canvas>
+
+  <script>
+            var xValues = ["Pending","Placed","Shipped","Delivered","Cancelled"];
+            var yValues = [{{orderStatus}}];
+            new Chart('mySts', {
+                type: "bar",
+                data: {
+                    labels: xValues, 
+                    datasets: [{
+                        fill: false,
+                        lineTension: 0,
+                        backgroundColor:  "#4682B4",
+                        borderColor: "rgba(0,0,255,0.1)",
+                        data: yValues
+                    }]
+                },
+                options: {
+                    legend: { display: false },
+                    scales: {
+                        yAxes: [{ ticks: { min: 0, max: 10 } }],
+                    },
+                   title: {
+                        display: true,
+                        text: "Payment Methods"
+                    }
+                },
+                
+            });
+        </script>
+
+        </div>
     </div>
 </section>

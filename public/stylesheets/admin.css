@@ -240,8 +240,33 @@ body {
 #dashboard .values .val-box span {
     font-size: 18px;
     color: #828997;
-
 }
+#dashboard .chart-box {
+    margin: 50px 0 0 40px;
+    display: flex;
+    width: 100%;
+    padding: 50px;
+}
+#dashboard .chart-box .chartPay {
+    width: 50%;
+    padding: 25px 50px 0 0;
+}
+#dashboard .chart-box .chartPay h3 {
+   margin: 30px 80px;
+   color: rgb(0, 183, 255);
+   font-weight: bold;
+   font-size: 30px;
+}
+#dashboard .chart-box .chartStat {
+    width: 50%;
+    padding: 25px 10px 0 50px;
+}
+#dashboard .chart-box .chartStat h3 {
+    margin: 30px 80px;
+    color: rgb(0, 183, 255);
+    font-weight: bold;
+    font-size: 30px;
+ }
 
 
 /* **********Dashboard End********** */

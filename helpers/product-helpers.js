@@ -305,6 +305,117 @@ module.exports = {
                 resolve()
             })
         })
+    },
+    allMethods:() => {
+        let methods = []
+        return new Promise(async(resolve,reject) => {
+            let codProduct = await db.get().collection(collection.ORDER_COLLECTION).aggregate([
+                {
+                    $match: {
+                        paymentMethod: 'COD'
+                    }
+                }
+            ]).toArray() 
+            let CODlen = codProduct.length
+            methods.push(CODlen)
+
+
+
+            let RazorPayProduct = await db.get().collection(collection.ORDER_COLLECTION).aggregate([
+                {
+                    $match: {
+                        paymentMethod: 'RazorPay'
+                    }
+                }
+            ]).toArray() 
+            let RazorPayLen = RazorPayProduct.length
+            methods.push(RazorPayLen)
+
+
+
+            let PayPalProduct = await db.get().collection(collection.ORDER_COLLECTION).aggregate([
+                {
+                    $match: {
+                        paymentMethod: 'PayPal'
+                    }
+                }
+            ]).toArray() 
+            let PayPalLen = PayPalProduct.length
+            methods.push(PayPalLen)
+
+
+            resolve(methods)
+
+        })
+    },
+    orderStatus:() => {
+        let status = []
+        return new Promise(async(resolve,reject) => {
+            let pending = await db.get().collection(collection.ORDER_COLLECTION).aggregate([
+                {
+                    $match: {
+                        status:"Pending"
+                    }
+                }
+            ]).toArray()
+            let pendingLen = pending.length
+            status.push(pendingLen)
+
+
+            let placed = await db.get().collection(collection.ORDER_COLLECTION).aggregate([
+                {
+                    $match: {
+                        status:"Placed"
+                    }
+                }
+            ]).toArray()
+            let placedLen = placed.length
+            status.push(placedLen)
+
+
+            let shipped = await db.get().collection(collection.ORDER_COLLECTION).aggregate([
+                {
+                    $match: {
+                        status:"Shipped"
+                    }
+                }
+            ]).toArray()
+            let shippedLen = shipped.length
+            status.push(shippedLen)
+
+
+            let delivered = await db.get().collection(collection.ORDER_COLLECTION).aggregate([
+                {
+                    $match: {
+                        status:"Delivered"
+                    }
+                }
+            ]).toArray()
+            let deliveredLen = delivered.length
+            status.push(deliveredLen)
+
+
+
+            let cancelled = await db.get().collection(collection.ORDER_COLLECTION).aggregate([
+                {
+                    $match: {
+                        status:"Cancelled"
+                    }
+                }
+            ]).toArray()
+            let cancelledLen = cancelled.length
+            status.push(cancelledLen)
+
+            resolve(status)
+
+        })
+
+    },
+    userCount:() => {
+        return new Promise(async(resolve,reject) => {
+            let Ucount = await db.get().collection(collection.USER_COLLECTION).count()
+            resolve(Ucount)
+        })
     }
     
 
