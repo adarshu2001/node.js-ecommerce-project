@@ -416,9 +416,44 @@ module.exports = {
             let Ucount = await db.get().collection(collection.USER_COLLECTION).count()
             resolve(Ucount)
         })
+    },
+    orderCount: () => {
+        return new Promise(async(resolve,reject) => {
+            let orderCount = await db.get().collection(collection.ORDER_COLLECTION).count()
+            resolve(orderCount)
+        })
+    },
+    productCount: () => {
+        return new Promise(async(resolve,reject) => {
+            let productCount = await db.get().collection(collection.PRODUCT_COLLECTION).count()
+            resolve(productCount)
+        })
+    },
+    totalProfit: () => {
+        return new Promise(async(resolve,reject) => {
+            let newTotal = 0
+            let total = await db.get().collection(collection.ORDER_COLLECTION).aggregate([
+                {
+                    $match: {
+                        status: "Delivered"
+                    }
+                },
+                {
+                    $group: {
+                        _id: null,
+                        total: { $sum: '$totalAmount' }
+
+                    }
+                }
+            ]).toArray()
+            if (total[0]) {
+                resolve(total[0].total)
+            }else {
+                resolve(newTotal)
+            }
+        })
     }
     
-
 
 
 

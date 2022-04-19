@@ -10,10 +10,12 @@ var router = express.Router();
 /* GET admin listing. */
 router.get('/', async function(req, res, next) {
   let userCount = await productHelpers.userCount()
+  let orderCount = await productHelpers.orderCount()
+  let productCount = await productHelpers.productCount()
+  let totalProfit = await productHelpers.totalProfit()
   let allMethods = await productHelpers.allMethods()
   let orderStatus = await productHelpers.orderStatus()
-  console.log(userCount);
-    res.render('admin/dashboard',{admin:true,userCount,allMethods,orderStatus})
+    res.render('admin/dashboard',{admin:true,userCount,orderCount,totalProfit,productCount,allMethods,orderStatus})
 })
 // router.get('/', function(req, res, next) {
 //   if (req.session.adminLoggedIn){
