@@ -66,6 +66,8 @@ router.post('/edit-brand/:id',(req,res)=>{
     if (req.files.Image) {
       let image = req.files.Image
       image.mv('public/brand-img/' + id + '.jpg')
+    }else{
+      res.redirect('/admin/view-brand') 
     }
   })
 })

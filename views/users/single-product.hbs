@@ -12,6 +12,9 @@
 
     <div class="small-img-group">
       <div class="small-img-col">
+        <img src="/product-images/{{product._id}}a.jpg" class="small-img" alt="" />
+      </div>
+      <div class="small-img-col">
         <img src="/product-images/{{product._id}}b.jpg" class="small-img" alt="" />
       </div>
       <div class="small-img-col">
@@ -20,16 +23,13 @@
       <div class="small-img-col">
         <img src="/product-images/{{product._id}}d.jpg" class="small-img" alt="" />
       </div>
-      {{!-- <div class="small-img-col">
-        <img src="/images/shirt.jpg" width="100%" class="small-img" alt="" />
-      </div> --}}
     </div>
   </div>
 
   <div class="single-pro-details">
-    <h6>{{product.Name}}</h6>
-    <h4>Men's Fashion T Shirt</h4>
-    <h2>Rs : {{product.Price}}</h2>
+    <h6>{{product.brand}}</h6>
+    <h4>{{product.name}}</h4>
+    <h2>Rs : {{product.price}}</h2>
     <select id="size">
       <option value="S">S</option>
       <option value="M">M</option>
