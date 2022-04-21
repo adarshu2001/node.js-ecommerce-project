@@ -314,7 +314,8 @@ body {
     text-decoration: underline; 
 }
 #products .pro {    
-    width: 23%;  
+    width: 23%;
+    min-height: 700px;
     min-width: 250px;
     padding: 10px 12px;
     border: 1px solid #cee7d0;
@@ -330,8 +331,8 @@ body {
     box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.08);  
 }
 #products .pro img{
-    width: 95%;
-    height: 75%;
+    width: 90%;
+    height: 70%;
     /* width: 350px;
     height: 480px; */
     border-radius: 15px;
@@ -339,16 +340,19 @@ body {
 }
 #products .pro .des {
     text-align: start;
-    padding: 10px 0;
+    /* padding: 10px 0px; */
+    padding: 10px 0 10px 20px;
 }
 #products .pro .des span {
     color: #606063;
     font-size: 20px;
+    font-weight: 700;
 }
 #products .pro .des h5 {
     padding-top: 10px;
-    color: #1a1a1a;
+    color: #464040;
     font-size: 20px;
+    font-weight: 700;
 }
 #products .pro .des i {
     font-size: 15px;
@@ -358,7 +362,24 @@ body {
     padding-top: 10px;
     font-size: 18px;
     font-weight: 700;
-    color: #535353;
+    color: rgb(38, 97, 114);
+}
+#products .offer {
+    display: flex;
+}
+#products .offer .offrPer p {
+    font-size: 14px;
+    padding: 10px 5px 0px 10px;
+    text-decoration: none;
+    color: rgb(38, 97, 114);
+}
+#products .offer .offrPrc h4 {
+    font-size: 18px;
+    font-weight: 700;
+    padding: 10px 5px 0px 8px;
+    text-decoration: none;
+    color: rgb(38, 97, 114);
+    text-decoration: line-through;
 }
 #products .pro .whlist {
     width: 45px;
@@ -2024,11 +2045,26 @@ footer .copyright {
     #feature .fe-box {
         margin: 15px 15px;
     }
+    #products {
+        padding: 20px 40px;
+    }
     #products .pro-container {
-        justify-content: center;
+        justify-content: space-between;
     }
     #products .pro {
         margin: 15px; 
+        width: 45%;
+        min-height: 550px;
+    }
+    #products .pro img {
+        width: 95%;
+        height: 65%;
+        border-radius: 10px;
+        margin: 5px 5px;
+    }
+    #products .offer {
+        display: flex;
+        flex-wrap: wrap;
     }
     #banner {
         height: 20vh;

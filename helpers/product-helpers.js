@@ -288,6 +288,90 @@ module.exports = {
         })
 
     },
+
+    brandOffer:(data) => {
+        console.log(data);
+        return new Promise(async(resolve,reject) => {
+            let brand = await db.get().collection(collection.PRODUCT_COLLECTION).find({brand: data.name}).toArray()
+            console.log(brand);
+            let brandLength = brand.length
+            let offerValue = data.percentage
+           
+            for(let i = 0; i < brandLength; i++ ) {
+               db.get().collection(collection.PRODUCT_COLLECTION).findOne({_id: objectId(brand[i]._id)}).then((proData) => {
+                let ActualPrice = proData.price
+                let discountVal = ((ActualPrice * offerValue) / 100).toFixed()
+                let offerPrice = (ActualPrice - discountVal)
+
+                db.get().collection(collection.PRODUCT_COLLECTION).updateOne({_id: objectId(brand[i]._id)},
+                {
+                    $set: {
+                        proOffer: true,
+                        percentage: offerValue,
+                        price: offerPrice,
+                        actualPrice:ActualPrice
+                    }
+                }).then(() => {
+                   
+                    resolve() 
+                })
+
+               })
+
+            }
+            db.get().collection(collection.BRAND_OFFER).insertOne(data).then(()=> {
+                resolve()
+            })
+        })
+    },
+
+    getBrandOffer: () => {
+        return new Promise(async(resolve,reject) => {
+            let brandOffer = await db.get().collection(collection.BRAND_OFFER).find().toArray()
+            resolve(brandOffer)
+        })
+
+    },
+    deleteBrandOffer: (brandId) => {
+        console.log(brandId);
+        return new Promise(async(resolve,reject) => {
+            let offerBrand = await db.get().collection(collection.BRAND_OFFER).findOne({_id: objectId(brandId)})
+            let bName = offerBrand.name
+            let brand = await db.get().collection(collection.PRODUCT_COLLECTION).find({brand: bName}).toArray()
+            let brandLength = brand.length
+           
+            for(let i = 0; i < brandLength; i++ ) {
+               db.get().collection(collection.PRODUCT_COLLECTION).findOne({_id: objectId(brand[i]._id)}).then((proData) => {
+                let ActualPrice = proData.actualPrice
+                db.get().collection(collection.PRODUCT_COLLECTION).updateOne({_id: objectId(brand[i]._id)},
+                {
+                    $set: {
+                        price: ActualPrice
+                    },
+                    $unset: {
+                        actualPrice: "",
+                        percentage: "",
+                        proOffer: ""
+                    }
+                }).then(() => {
+                   
+                    resolve() 
+                })
+
+               })
+
+            }
+            db.get().collection(collection.BRAND_OFFER).deleteOne({_id: objectId(brandId)}).then(()=> {
+                resolve()
+            })
+            
+        })
+
+
+    },
+
+
+
     getAllOrders: () => {
         return new Promise(async(resolve,reject) => {
             let orders = await db.get().collection(collection.ORDER_COLLECTION).find().toArray()

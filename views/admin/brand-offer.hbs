@@ -1,0 +1,49 @@
+<section id="pOffer">
+    <div class="product">
+        <form action="/admin/brand-offer" method="post">
+            <h3>BRAND OFFER</h3>
+            <select name="name" id="">
+                <option value="">BRAND</option>
+                {{#each brand}}
+                <option value="{{this.Name}}">{{this.Name}}</option>
+                {{/each}}
+            </select>
+            <input type="text" name="startDate" id="start" placeholder="Start Date"><br>
+            <input type="text" name="endDate" id="expire" placeholder="End Date"><br>
+            <input type="text" name="percentage" placeholder="Percentage"><br>
+            <button type="submit">Add Offer</button> 
+        </form>
+    </div>
+</section>
+
+
+
+
+<section id="view-pro">
+  <h3>Brand Offer</h3>
+    <table width="100%">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Start Date</td>
+                <td>End Date</td>
+                <td>Percentage</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each brandOffer}}
+            <tr>
+                <td>{{this.name}}</td>
+                <td>{{this.startDate}}</td>
+                <td>{{this.endDate}}</td>
+                <td>{{this.percentage}} %</td>
+                <td>
+                   {{!-- <span><a href="/admin/edit-product/{{this._id}}"><i class="fas fa-pen"></i></a></span> --}}
+                   <span><a href="/admin/delete-brand-offer/{{this._id}}"><i class="fas fa-trash"></i></a></span>
+                </td>  
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>

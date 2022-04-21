@@ -5,6 +5,7 @@ const productHelpers = require('../helpers/product-helpers');
 const userHelpers = require('../helpers/user-helpers');
 const { route } = require('./user');
 var router = express.Router();
+var fs = require('fs')
 
 
 /* GET admin listing. */
@@ -140,7 +141,11 @@ router.post('/add-product',(req,res)=>{
 router.get('/delete-product/:id',async(req,res)=>{
   let proId = req.params.id
   productHelpers.deleteProduct(proId).then((response)=>{
-    res.redirect('/admin/')
+    fs.unlinkSync('public/product-images/' + proId + 'a.jpg')
+    fs.unlinkSync('public/product-images/' + proId + 'b.jpg')
+    fs.unlinkSync('public/product-images/' + proId + 'c.jpg')
+    fs.unlinkSync('public/product-images/' + proId + 'd.jpg')
+    res.redirect('/admin/view-products')
   })
 
 })
@@ -273,6 +278,24 @@ router.get('/delete-coupon/:id',(req,res) => {
     res.redirect('/admin/coupon-offer')
   })
  
+})
+
+router.get('/brand-offer',async(req,res) => {
+  let brand = await productHelpers. getAllBrand()
+  let brandOffer = await productHelpers.getBrandOffer()
+  res.render('admin/brand-offer',{admin:true,brand,brandOffer})
+})
+router.post('/brand-offer',(req,res) => {
+  productHelpers.brandOffer(req.body).then(() => {
+    res.redirect('/admin/brand-offer')
+  })
+})
+router.get('/delete-brand-offer/:id',(req,res) => {
+  brandId = req.params.id
+  productHelpers.deleteBrandOffer(brandId).then(() => {
+    res.redirect('/admin/brand-offer')
+
+  })
 })
 
 router.get('/orders',async(req,res) => {
