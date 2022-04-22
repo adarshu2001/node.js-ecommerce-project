@@ -699,6 +699,24 @@ module.exports = {
             }
            
         })
-    }
+    },
+    getMenProducts: () => {
+        return new Promise(async(resolve,reject) => {
+            let men = await db.get().collection(collection.PRODUCT_COLLECTION).find({Mcategory: "Men's"}).toArray()
+            resolve(men)
+        })
+    },
+    getWomenProducts: () => {
+        return new Promise(async(resolve,reject) => {
+            let women = await db.get().collection(collection.PRODUCT_COLLECTION).find({Mcategory: "Women"}).toArray()
+            resolve(women)
+        })
+    },
+    getKidProducts: () => {
+        return new Promise(async(resolve,reject) => {
+            let kid = await db.get().collection(collection.PRODUCT_COLLECTION).find({Mcategory: "Kid's"}).toArray()
+            resolve(kid)
+        })
+    },
     
 }

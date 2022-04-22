@@ -1,0 +1,29 @@
+<section id="products">
+  <h2>KID'S </h2>
+  <p>Summer Collection New Morden Design For Kid's</p>
+  <div class="pro-container">
+    {{#each forKid}}
+    <div class="pro">
+      <img  src="product-images/{{this._id}}a.jpg" alt="" onclick=" window.location.href='/single-product/{{this._id}}'" />
+      <div class="des">
+      <span>{{this.brand}}</span>
+        <h5>{{this.name}}</h5>
+        <div class="star">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <div class="offer">
+        <h4>Rs : {{this.price}}</h4> {{#if percentage}} <span class="offrPer"> <p> GET {{this.percentage}}% OFF </p> </span> {{/if}}
+        {{#if actualPrice}} <span class="offrPrc"> <h4>{{this.actualPrice}}</h4> </span> {{/if}}
+        
+        </div>
+      </div>
+      <button onclick="addToWhishlist('{{this._id}}')" class="whlist"><i class="far fa-heart"></i></button>
+      {{!-- <button onclick="addToCart('{{this._id}}')" class="cart"><i class="fas fa-shopping-cart"></i></button> --}}
+    </div>
+    {{/each}}
+  </div>
+</section>

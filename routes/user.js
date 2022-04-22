@@ -31,6 +31,29 @@ router.get('/',async function(req, res, next) {
     res.render('users/home-page',{products, admin:false,user,cartCount,whishlistCount})
   })
 });
+
+router.get('/single-product/:id',verifyLogin,async(req,res)=>{
+  console.log("Product Id" + req.params.id);
+  let product = await userHelpers.singleProduct(req.params.id)
+  console.log(product);
+  let cartCount = null
+   cartCount = await userHelpers.getCartCount(req.session.user._id)
+  res.render('users/single-product',{user:req.session.user,product,cartCount})
+})
+
+router.get('/men',async(req,res) => {
+  let forMen = await userHelpers.getMenProducts()
+  res.render('users/men-collection',{forMen})
+})
+router.get('/women',async(req,res) => {
+  let forWomen = await userHelpers.getWomenProducts()
+  res.render('users/women-collection',{forWomen})
+})
+router.get('/kid',async(req,res) => {
+  let forKid = await userHelpers.getKidProducts()
+  res.render('users/kid-collection',{forKid})
+})
+
 router.get('/login',(req,res)=>{
   if(req.session.userLoggedIn){
     res.redirect('/')
@@ -415,14 +438,7 @@ router.post('/verify-payment',(req,res)=>{
    res.json({status:false})
  })
 })
-router.get('/single-product/:id',verifyLogin,async(req,res)=>{
-  console.log("Product Id" + req.params.id);
-  let product = await userHelpers.singleProduct(req.params.id)
-  console.log(product);
-  let cartCount = null
-   cartCount = await userHelpers.getCartCount(req.session.user._id)
-  res.render('users/single-product',{user:req.session.user,product,cartCount})
-})
+
 router.get('/user-profile',async(req,res)=>{
   let id = req.session.user._id
   let user = await userHelpers.userProfile(id)
