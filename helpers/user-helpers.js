@@ -702,19 +702,19 @@ module.exports = {
     },
     getMenProducts: () => {
         return new Promise(async(resolve,reject) => {
-            let men = await db.get().collection(collection.PRODUCT_COLLECTION).find({Mcategory: "Men's"}).toArray()
+            let men = await db.get().collection(collection.PRODUCT_COLLECTION).find({Mcategory: "Men's"}).sort({ _id: -1 }).toArray()
             resolve(men)
         })
     },
     getWomenProducts: () => {
         return new Promise(async(resolve,reject) => {
-            let women = await db.get().collection(collection.PRODUCT_COLLECTION).find({Mcategory: "Women"}).toArray()
+            let women = await db.get().collection(collection.PRODUCT_COLLECTION).find({Mcategory: "Women"}).sort({ _id: -1 }).toArray()
             resolve(women)
         })
     },
     getKidProducts: () => {
         return new Promise(async(resolve,reject) => {
-            let kid = await db.get().collection(collection.PRODUCT_COLLECTION).find({Mcategory: "Kid's"}).toArray()
+            let kid = await db.get().collection(collection.PRODUCT_COLLECTION).find({Mcategory: "Kid's"}).sort({ _id: -1 }).toArray()
             resolve(kid)
         })
     },

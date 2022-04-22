@@ -15,8 +15,7 @@
         </thead>
         <tbody>
             {{#each orders}}
-          <tr>
-            
+          <tr>    
             <td>{{this.date}},{{this.time}}</td>
             <td>{{this.deliveryDetails.address}}</td>
             <td>{{this.deliveryDetails.pincode}}</td>
@@ -26,8 +25,7 @@
             <td>{{this.status}}</td>
             <td>
                 <a class="btn btn bg-success" href="/view-order-products/{{this._id}}">View Products</a>
-            </td>
-           
+            </td> 
           </tr>
           {{/each}}
         </tbody>
@@ -109,11 +107,7 @@
         <p>{{this.date}}</p>
       </div>
     </div>
-  </div>
-  <div class="status">
-    <p>Delivered</p>
-  </div>
-   
+  </div>  
    {{/each}}
 
 </section>

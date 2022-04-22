@@ -88,7 +88,7 @@ module.exports = {
     },
     getAllProducts:()=>{
         return new Promise(async(resolve,reject)=>{
-            let products = await db.get().collection(collection.PRODUCT_COLLECTION).find().toArray().then((products)=>{
+            let products = await db.get().collection(collection.PRODUCT_COLLECTION).find().sort({ _id: -1 }).toArray().then((products)=>{
                 resolve(products)
             })
         })
@@ -162,7 +162,7 @@ module.exports = {
     },
     getAllUsers:()=>{
         return new Promise(async(resolve,reject)=>{
-            let allUsers = await db.get().collection(collection.USER_COLLECTION).find().toArray()
+            let allUsers = await db.get().collection(collection.USER_COLLECTION).find().sort({ _id: -1 }).toArray()
             resolve(allUsers)
         })
     },
@@ -374,7 +374,7 @@ module.exports = {
 
     getAllOrders: () => {
         return new Promise(async(resolve,reject) => {
-            let orders = await db.get().collection(collection.ORDER_COLLECTION).find().toArray()
+            let orders = await db.get().collection(collection.ORDER_COLLECTION).find().sort({ _id: -1 }).toArray()
             resolve(orders)
         })
     },
