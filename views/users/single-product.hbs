@@ -1,14 +1,16 @@
+ 
 <section id="proDetails">
 
+
   <div class="single-pro-img">
-    <div id="image-zoom">
+    {{!-- <div id="image-zoom"> --}}
     <img 
       src="/product-images/{{product._id}}a.jpg"
       width="100%"
       id="mainImg"
       alt=""
     />
-    </div>
+    {{!-- </div> --}}
 
     <div class="small-img-group">
       <div class="small-img-col">
@@ -219,9 +221,7 @@
     scale: 1.5
   }
 
-
-   new ImageZoom(document.getElementsById("image-zoom"), options );
-  
-
+   new ImageZoom(document.getElementById('image-zoom'), options);
 
 </script>
+  

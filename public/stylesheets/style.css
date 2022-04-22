@@ -1429,6 +1429,18 @@ footer .copyright {
     width: 40%;
     margin-right: 50px;
 }
+/* #proDetails .single-pro-img img {
+    width: 100%;
+    height: 100%;
+} */
+/* #proDetails  #image-zoom {
+    width: 100%;
+    height: 100%;
+}
+#proDetails #mainImg {
+    width: 100%;
+    height: 100%;
+} */
 .small-img-group {
     display: flex;
     justify-content: space-between;
