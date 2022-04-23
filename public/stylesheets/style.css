@@ -23,11 +23,18 @@ body {
     top: 0;
     left: 0;
 }
-#header img {
+#header h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    letter-spacing: 15px;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(242, 248, 252, 0.3);
+}
+/* #header img {
     width: 60px;
     height: 60px;
     
-}
+} */
 #nav1 {
     display: flex;
     align-items: center;
@@ -401,7 +408,7 @@ body {
     color: rgb(38, 97, 114);
 }
 #products .offer .offrPrc h4 {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 700;
     padding: 10px 5px 0px 8px;
     text-decoration: none;
