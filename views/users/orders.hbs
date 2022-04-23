@@ -34,7 +34,7 @@
 </section> --}}
 
 
-<section id="order">
+{{!-- <section id="order">
   {{#each orders}}
 
   <div class="address">
@@ -110,5 +110,42 @@
   </div>  
    {{/each}}
 
+</section> --}}
+
+
+<section id="my-orders">
+  {{!-- <h3>All Orders</h3> --}}
+  <table width="100%">
+    <thead>
+      <tr>
+        <td>Delivery Details</td>
+        <td>Date</td>
+        <td>Amount</td>
+        <td>Status</td>
+        <td></td>
+       
+      </tr>
+    </thead>
+    <tbody>
+      {{#each orders}}
+        <tr>
+          <td>
+            <p>Order Id : {{this._id}}</p>
+            <p>{{this.deliveryDetails.fname}}, {{this.deliveryDetails.house}}</p>
+            <p>{{this.deliveryDetails.town}}</p>
+            <p>{{this.deliveryDetails.pincode}}, {{this.deliveryDetails.phone}}</p>
+            </td>
+            <td>{{this.date}}</td>
+            <td>{{this.totalAmount}}</td>
+            <td>{{this.status}}</td>
+            <td><a href="">Cancel</a></td>
+        </tr>
+      {{/each}}
+
+    </tbody>
+  </table>
 </section>
+
+
+
 

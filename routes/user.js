@@ -417,9 +417,9 @@ router.get('/order-success',(req,res)=>{
   res.render('users/order-success',{user:req.session.user})
 })
 router.get('/orders',verifyLogin,async(req,res)=>{
+  let cancel = await userHelpers.statusCancel()
   let orders = await userHelpers.getUserOrders(req.session.user._id)
-  console.log(orders);
-  res.render('users/orders',{user:req.session.user,orders})
+  res.render('users/orders',{user:req.session.user,orders,cancel})
 })
 router.get('/view-order-products/:id',async(req,res)=>{
   let products = await userHelpers.getOrderProducts(req.params.id)

@@ -439,9 +439,16 @@ module.exports = {
     },
     getUserOrders:(userId)=>{
         return new Promise(async(resolve,reject)=>{
-            let orders = await db.get().collection(collection.ORDER_COLLECTION).find({user:objectId(userId)}).toArray()        
+            let orders = await db.get().collection(collection.ORDER_COLLECTION).find({user:objectId(userId)}).sort({ date: -1 }).toArray()        
             resolve(orders)
         })
+    },
+    statusCancel: () => {
+        return new Promise(async(resolve,reject) => {
+            let status = await db.get().collection(collection.ORDER_COLLECTION).find({ status: "Cancelled" }).toArray()
+            resolve(status)
+        })
+
     },
     getOrderProducts:(orderId)=>{
         return new Promise(async(resolve,reject)=>{

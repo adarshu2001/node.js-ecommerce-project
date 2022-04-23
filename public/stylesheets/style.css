@@ -1975,63 +1975,81 @@ footer .copyright {
 
 /* ********Orders Page******** */
 
-#order {
-    display: flex;
-    justify-content: space-around;
-    padding: 80px 80px;
-    flex-wrap: wrap;
-    /* border-width: 0 0 2px 0;
-    border-color:  rgb(38, 97, 114); */
-}
-#order .address {
-    width: 40%;
-    padding-bottom: 100px;
-}
 
-#order .address h3 {
-    padding-bottom: 25px;
+#my-orders{
+    margin: 50px 270px;
+    overflow-x: auto;
+    width: 70%;
 }
-#order .details {
-    display: flex;
-    padding: 5px 20px;
-    align-items: center;
-    width: 100%;
-}
-#order .details h5 {
-    font-weight: 600;
-    text-align: center;
-}
-#order .details p {
-    font-size: 18px;
-    text-align: center;
-    padding-left: 55px;
-}
-#order .payment {
-    width: 20%;
-    padding: 0 25px;
-}
-#order .method {
-    display: flex;
-    justify-content: space-between;
-}
-#order .method p {
-    padding-left: 35px;
-}
-#order .method a {
-    text-decoration: none;
-    background-color: rgb(38, 97, 114);
-    color: white;
-    width: 200px;
-    height: 80px;
-    padding: 15px;
-    border: none;
-    border-radius: 5px;
+#my-orders h3 {
+    padding-bottom: 35px;
+    margin-left: 80px;
     font-weight: 700;
 }
-#order .status {
-    width: 30%;
-    padding: 0 45px;
+#my-orders table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    white-space: nowrap;
 }
+#my-orders table td:nth-child(1) {
+    width: 250px;
+    text-align: start;
+}
+#my-orders table td:nth-child(2) {
+    width: 120px;
+    text-align: center;
+}
+#my-orders td:nth-child(3) {
+    width: 120px;
+    text-align: center;
+}
+#my-orders td:nth-child(4){
+    width: 150px;
+    text-align: center;
+}
+#my-orders td:nth-child(5){
+    width: 80px;
+    text-align: center;
+}
+#my-orders table thead {
+    border: 1px solid #e2e9e1;
+    border-left: none;
+    border-right: none;
+}
+#my-orders table thead td {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding: 18px 0;
+}
+#my-orders table tbody tr span i {
+    margin: 0 14px;
+    font-size: 16px;
+    color: #828997;
+
+}
+#my-orders table tbody tr td {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+#my-orders table tbody td {
+    font-size: 18px;
+    border: 1px solid #e2e9e1;
+    border-left: none;
+    border-right: none;
+}
+#my-orders table tbody tr:hover {
+    background: rgb(230, 241, 244);
+    transition: 0.6s ease;
+}
+#my-orders table tbody td a {
+    color: rgb(38, 97, 114);
+    text-decoration: none; 
+}
+
+
+
 
 /* ********Orders Page End******** */
 
