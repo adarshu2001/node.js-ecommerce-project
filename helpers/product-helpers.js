@@ -309,7 +309,7 @@ module.exports = {
                         proOffer: true,
                         percentage: offerValue,
                         price: offerPrice,
-                        actualPrice:ActualPrice
+                        actualPrice: ActualPrice
                     }
                 }).then(() => {
                    

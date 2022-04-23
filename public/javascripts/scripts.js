@@ -20,6 +20,7 @@
 //     })   
 // }
 const addToCart=(proId)=>{
+    
     let proSize=document.getElementById('size').value;
     $.ajax({
         url:'/add-to-cart',
@@ -29,6 +30,13 @@ const addToCart=(proId)=>{
         },
         method:'get',
         success:(response)=>{
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Added To The Cart',
+                showConfirmButton: false,
+                timer: 1500
+              })
             if (response.status){
                 let count = $('#cart-count').html()
                 count = parseInt(count)+1
@@ -39,7 +47,6 @@ const addToCart=(proId)=>{
 }
 
 const addToWhishlist=(proId)=>{
-    console.log(proId);
         $.ajax({
             url:'/add-to-whishlist',
             data:{
@@ -47,6 +54,13 @@ const addToWhishlist=(proId)=>{
             },
             method:'get',
             success:(response)=>{
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Added To The Wish',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
                 if (response.status){
                     let count = $('#whishlist-count').html()
                     count = parseInt(count)+1
@@ -84,20 +98,47 @@ const changeQuantity=(cartId,proId,userId,count)=>{
 }
   
 const removeProduct = (cartId,proId)=>{
-    $.ajax({
-        url:'/cart-product-remove',
-        data:{
-            cart:cartId,
-            product:proId
-        },
-        method:'post',
-        success:(response)=>{
-            if (response.status){
-                alert("Product is Removed From Cart")
-                location.reload()
-            }
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url:'/cart-product-remove',
+                data:{
+                    cart:cartId,
+                    product:proId
+                },
+                method:'post',
+                success:(response)=>{
+                    if (response.status){
+                        location.reload()
+                    }
+                }
+            })
+          
         }
-    })
+      })
+
+    // $.ajax({
+    //     url:'/cart-product-remove',
+    //     data:{
+    //         cart:cartId,
+    //         product:proId
+    //     },
+    //     method:'post',
+    //     success:(response)=>{
+    //         if (response.status){
+    //             alert("Product is Removed From Cart")
+    //             location.reload()
+    //         }
+    //     }
+    // })
 }
 
 $("#checkout-form").submit((e)=>{
