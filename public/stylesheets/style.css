@@ -188,7 +188,34 @@ body {
 
 /* ***********Home Page************ */
 
-#hero{  
+#hero {
+    position: relative;
+}
+#hero .hero-head {
+    position: absolute;
+    top: 18%;
+    left: 13%;
+}
+#hero .hero-head h1 {
+    font-size: 8em;
+    font-weight: bold;
+    letter-spacing: 25px;
+    color: transparent;
+    -webkit-text-stroke: 3px rgba(255,255,255,0.3);
+}
+#hero .hero-head h1::before {
+    content: attr(data-text);
+    color: transparent;
+    width: 0;
+    overflow: hidden;
+    transition: 3s;
+}
+#hero .hero-head h1:hover::before {
+    width: 100%;
+    -webkit-text-stroke: 3px #fff;
+} 
+
+/* #hero{  
   background-image: url("/homecover/cover.jpg");  
   height: 90vh;
   width: 100%;
@@ -237,7 +264,7 @@ body {
 #hero button:hover{
     color: white;
     background: #6fc3f0;
-}
+} */
 
 
 #feature{
@@ -2113,11 +2140,11 @@ footer .copyright {
         color: #1a1a1a;
         font-size: 28px;
     }
-    #hero {
+    /* #hero {
         padding: 0 80px;
         height: 70vh;
         background-position: top 30% right 30%;
-    }
+    } */
     #feature {
         justify-content: center;
         padding: 40px 40px;
@@ -2260,7 +2287,7 @@ footer .copyright {
     #nav2 li a {
         font-size: 18px;
     }
-    #hero {
+    /* #hero {
         padding: 0 20px;
         background-position: left 35%
     }
@@ -2282,7 +2309,7 @@ footer .copyright {
         position: absolute;
         bottom: 30%;
         right: 35%;        
-    }
+    } */
     #feature {
         padding: 20px;
         justify-content: space-between;
