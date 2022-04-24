@@ -536,6 +536,26 @@ module.exports = {
                 resolve(newTotal)
             }
         })
+    },
+    addBanner: (data) => {
+        return new Promise((resolve,reject) => {
+            db.get().collection(collection.BANNER_COLLECTION).insertOne(data).then((data) => {
+                resolve(data.insertedId)
+            })
+        })
+    },
+    getHomeBanners: () => {
+        return new Promise(async(resolve,reject) => {
+           let banners = await db.get().collection(collection.BANNER_COLLECTION).find().toArray()
+           resolve(banners)
+        })
+    },
+    deleteBanner: (bannerId) => {
+        return new Promise((resolve,reject) => {
+            db.get().collection(collection.BANNER_COLLECTION).deleteOne({ _id: objectId(bannerId) }).then((response) => {
+                resolve(response)
+            })
+        })
     }
     
 

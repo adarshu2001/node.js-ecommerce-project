@@ -1149,3 +1149,140 @@ body {
 
 
 
+
+/* **********All Banner********* */
+
+
+#add-banner {
+    margin: 150px 450px;
+    /* margin: 150px 450px 80px 450px; */
+}
+#add-banner h3 {
+    padding-bottom: 25px;
+    color: rgb(0, 183, 255);
+    font-weight: bold;
+    font-size: 30px;
+    margin-left: 30%;
+
+}
+#add-banner .banner-img {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+#add-banner .banner-img .img1,
+#add-banner .banner-img .img2,
+#add-banner .banner-img .img3 {
+    width: 300px;
+    height: 200px;
+    padding: 5px 25px;
+    
+}
+#add-banner .banner-img img {
+    width: 180px;
+    height: 180px;
+    background: #828997;
+    margin-top: 25px;
+}
+#add-banner .des {
+    margin: 100px 40px 0 120px;
+    padding: 20px;
+}
+#add-banner .des input {
+    padding: 10px 20px;
+    outline: none;
+    width: 80%;
+    margin-right: 10px;
+    border: 1px solid #e2e9e1;
+}
+#add-banner button {
+    background-color: #2b2b2b;
+    margin: 150px 350px;
+    color: #f0f0f0;
+    padding: 5px 100px 5px 100px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+#add-banner button:focus {
+    outline: none;
+}
+
+
+
+
+
+#banner-set{
+    margin: 150px 450px;
+    overflow-x: auto;
+    width: 70%;
+}
+#banner-set h3 {
+    padding-bottom: 25px;
+    color: rgb(0, 183, 255);
+    font-weight: bold;
+    font-size: 30px;
+    margin-left: 30%;
+}
+#banner-set table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    white-space: nowrap;
+}
+/* #banner table img {
+    width: 70px;
+} */
+
+#banner-set td:nth-child(1) {
+    width: 300px;
+    text-align: center;
+}
+#banner-set td:nth-child(2) {
+    width: 300px;
+    text-align: center;
+}
+#banner-set td:nth-child(3) {
+    width: 300px;
+    text-align: center;
+}
+#banner-set td:nth-child(4) {
+    width: 300px;
+    text-align: center;
+}
+
+#banner-set table thead {
+    border: 1px solid #e2e9e1;
+    border-left: none;
+    border-right: none;
+}
+#banner-set table thead td {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 18px 0;
+}
+#banner-set table tbody tr span i {
+    margin: 0 14px;
+    font-size: 16px;
+    color: #828997;
+}
+#banner-set table tbody tr td {
+    padding-top: 18px;
+}
+#banner-set table tbody td {
+    font-size: 17px;
+}
+#banner-set table tbody td img {
+    width: 150px;
+    height: 150px;
+}
+
+/* **********All Banner Ends********* */
+
+
+
+
+

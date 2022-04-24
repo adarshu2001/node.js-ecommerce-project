@@ -334,6 +334,32 @@ router.get('/cancelled/:id',(req,res) => {
     res.redirect('/admin/orders')
   }) 
 })
+router.get('/banners',async(req,res) => {
+  let banners = await productHelpers.getHomeBanners()
+  res.render('admin/banner-management',{admin: true,banners})
+})
+router.post('/add-banner',(req,res) => {
+  productHelpers.addBanner(req.body).then((id) => {
+    let img1 = req.files.img1
+    let img2 = req.files.img2
+    let img3 = req.files.img3
+
+    img1.mv('public/homecover/' + id + 'a.jpg')
+    img2.mv('public/homecover/' + id + 'b.jpg')
+    img3.mv('public/homecover/' + id + 'c.jpg')
+    res.redirect('/admin/banners')
+  })
+
+})
+router.get('/delete-banner/:id',(req,res) => {
+  let bannerId = req.params.id
+  productHelpers.deleteBanner(bannerId).then((response) => {
+    fs.unlinkSync('public/homecover/' + bannerId  + 'a.jpg')
+    fs.unlinkSync('public/homecover/' + bannerId  + 'b.jpg')
+    fs.unlinkSync('public/homecover/' + bannerId  + 'c.jpg')
+    res.redirect('/admin/banners')
+  })
+})
 
 
 

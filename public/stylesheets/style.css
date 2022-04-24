@@ -17,7 +17,7 @@ body {
     justify-content: space-between;
     padding: 20px 80px;
     background: rgb(38, 97, 114);
-    box-shadow: 0 5px 15px rgba(248, 57, 57, 0.06);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.523);
     z-index: 999;
     position: sticky;
     top: 0;
@@ -28,7 +28,7 @@ body {
     font-weight: bold;
     letter-spacing: 15px;
     color: transparent;
-    -webkit-text-stroke: 1px rgba(242, 248, 252, 0.3);
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
 }
 /* #header img {
     width: 60px;
@@ -220,7 +220,28 @@ body {
 #hero .hero-head h1:hover::before {
     width: 100%;
     -webkit-text-stroke: 3px #fff;
+}
+#hero .hero-head button {
+    margin: 170px 20px 0 80px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 10px;
+    color: transparent;
+    background: none;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+    border: none;
+}
+#hero .hero-head button:focus {
+    outline: none;
 } 
+#hero .hero-head h3 {
+    margin: 120px 100px 0 0;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+}
 
 /* #hero{  
   background-image: url("/homecover/cover.jpg");  
@@ -2102,6 +2123,15 @@ footer .copyright {
 /* ************Media Query**************** */
 
 @media (max-width:799px) {
+
+    #header h1 {
+        font-size: 2em;
+        font-weight: bold;
+        letter-spacing: 15px;
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    }
+    
     #nav1 {
         display: flex;
         flex-direction: column;
@@ -2121,15 +2151,24 @@ footer .copyright {
     #nav1.active {
         left: 0px;
     }
-    #header img {
+    /* #header img {
         display: none;
-    }
+    } */
     #nav1 li {
         margin-bottom: 28px;
     }
     #nav1 li a {
         color: #1a1a1a;
         font-weight: 600;
+    }
+    #hero .hero-head h1 {
+        font-size: 5em;
+        font-weight: bold;
+        letter-spacing: 20px;
+        color: transparent;
+        position: relative;
+        left: -20%;
+        top: 10%;
     }
     #mobile {
         display: contents;

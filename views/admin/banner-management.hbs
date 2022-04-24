@@ -1,0 +1,90 @@
+
+<section id="add-banner">
+    <h3>Add Banners</h3>
+    <form action="/admin/add-banner"  enctype="multipart/form-data" method="post">
+      <div class="banner-img">
+              <div class="img1">
+                <input type="file" name="img1" onchange="banner1(event)">
+                <img src="" alt="" id="img1">
+                
+              </div>
+
+              <div class="img2">
+                  <input type="file" name="img2" onchange="banner2(event)">
+                <img src="" alt="" id="img2">
+                
+
+              </div>
+
+              <div class="img3">
+                  <input type="file" name="img3" onchange="banner3(event)">
+                <img src="" alt="" id="img3">
+
+              </div>
+
+             </div>
+             <div class="des">
+                  <input type="text" name="description" id="" placeholder="Home Page Description">
+
+             </div>
+            
+
+                 <button type="submit">Add</button>
+
+            
+            </form>
+</section>
+
+<script>
+     function banner1(event) {
+        document.getElementById('img1').src=URL.createObjectURL(event.target.files[0])
+    }
+    function banner2(event) {
+        document.getElementById('img2').src=URL.createObjectURL(event.target.files[0])
+    }
+    function banner3(event) {
+        document.getElementById('img3').src=URL.createObjectURL(event.target.files[0])
+    }
+
+</script>
+
+
+
+<section id="banner-set">
+  <h3>Home Banners</h3>
+    <table width="100%">
+        <thead>
+            <tr>
+                <td>First</td>
+                <td>Second</td>
+                <td>Third</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each banners}}
+          
+            <tr>
+                <td>
+                    <img src="/homecover/{{this._id}}a.jpg" alt="">
+                </td>
+                <td>
+                      <img src="/homecover/{{this._id}}b.jpg" alt="">
+                </td>
+                <td>
+                    <img src="/homecover/{{this._id}}c.jpg" alt="">
+                </td>
+               
+                <td>
+                   {{!-- <span><a href="/admin/edit-banner/{{this._id}}"><i class="fas fa-pen"></i></a></span> --}}
+                   <span><a href="/admin/delete-banner/{{this._id}}"><i class="fas fa-trash"></i></a></span>
+                </td>
+                 
+            </tr>
+            {{/each}}
+
+           
+       
+        </tbody>
+    </table>
+</section>

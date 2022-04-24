@@ -19,6 +19,7 @@ const client = require('twilio')(accountSID, authToken)
 
 /* GET home page. */
 router.get('/',async function(req, res, next) {
+  let banners = await productHelpers.getHomeBanners()
   let user = req.session.user
   let cartCount = null
   let whishlistCount = null
@@ -28,7 +29,7 @@ router.get('/',async function(req, res, next) {
   }
   productHelpers.getAllProducts().then((products)=>{
     console.log(products);
-    res.render('users/home-page',{products, admin:false,user,cartCount,whishlistCount})
+    res.render('users/home-page',{products, admin:false,user,cartCount,whishlistCount,banners})
   })
 });
 
