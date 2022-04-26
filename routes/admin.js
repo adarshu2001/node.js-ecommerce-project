@@ -10,14 +10,17 @@ var fs = require('fs')
 
 /* GET admin listing. */
 router.get('/', async function(req, res, next) {
-  let userCount = await productHelpers.userCount()
-  let orderCount = await productHelpers.orderCount()
-  let productCount = await productHelpers.productCount()
-  let totalProfit = await productHelpers.totalProfit()
-  let allMethods = await productHelpers.allMethods()
-  let orderStatus = await productHelpers.orderStatus()
+    let userCount = await productHelpers.userCount()
+    let orderCount = await productHelpers.orderCount()
+    let productCount = await productHelpers.productCount()
+    let totalProfit = await productHelpers.totalProfit()
+    let allMethods = await productHelpers.allMethods()
+    let orderStatus = await productHelpers.orderStatus()
     res.render('admin/dashboard',{admin:true,userCount,orderCount,totalProfit,productCount,allMethods,orderStatus})
+  
 })
+
+
 // router.get('/', function(req, res, next) {
 //   if (req.session.adminLoggedIn){
 //     productHelpers.getAllProducts().then((products)=>{
@@ -239,7 +242,6 @@ router.get('/unblock-user/:id',(req,res)=>{
 
 router.get('/blocked-users',(req,res)=>{
   productHelpers.getBlockedUSers().then((blockedUsers)=>{
-    console.log(blockedUsers);
     res.render('admin/blocked-users',{admin:true,blockedUsers})
   })
 })
@@ -360,6 +362,7 @@ router.get('/delete-banner/:id',(req,res) => {
     res.redirect('/admin/banners')
   })
 })
+
 
 
 

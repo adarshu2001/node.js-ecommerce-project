@@ -34,13 +34,13 @@
   </div>
 
   <div class="log-details">
-    <h3>Login</h3>
-        {{#if loginErr}}
+    <h3>Admin</h3>
+        {{!-- {{#if loginErr}}
        <div class="logErr"><p>{{loginErr}}</p></div>
-        {{/if}}
+        {{/if}} --}}
     <form action="/login" method="post">
       <span><i class="fas fa-user"></i></span>
-      <input type="text" name="Mobile" placeholder="Enter Your Phone Number"><br>
+      <input type="text" name="Email" placeholder="Enter Your Email"><br>
       <span><i class="fas fa-lock"></i></span>
       <input type="password" name="Password" placeholder="Enter Your Password"><br>
       <button type="submit">Login</button>

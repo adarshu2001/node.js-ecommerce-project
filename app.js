@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('dotenv').config()
 
 var userRouter = require('./routes/user');
 var adminRouter = require('./routes/admin');
@@ -11,7 +12,9 @@ const fileUpload = require('express-fileupload')
 var db = require('./config/connection')
 // var mdb = require('mdb-ui-kit')
 var app = express();
-var session = require('express-session')
+var session = require('express-session');
+const { env } = require('process');
+
 // var jsImageZoom = require("js-image-zoom")
 
 // view engine setup
@@ -23,7 +26,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+ 
 var expressHbs = create({});
 
 expressHbs.handlebars.registerHelper('json',function(obj) {
@@ -58,5 +61,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;

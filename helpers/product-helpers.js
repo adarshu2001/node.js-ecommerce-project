@@ -127,6 +127,13 @@ module.exports = {
             })
         })
     },
+    latestPro: () => {
+        return new Promise(async(resolve,reject) => {
+            let latestPro = await db.get().collection(collection.PRODUCT_COLLECTION).find().sort( {_id: -1} ).limit(4).toArray()
+            resolve(latestPro)
+        })
+
+    },
     adminDoSignup:(adminData)=>{
         return new Promise(async(resolve,reject)=>{
             adminData.Password = await bcrypt.hash(adminData.Password,10)
@@ -196,7 +203,7 @@ module.exports = {
     getBlockedUSers: () =>{
         return new Promise(async(resolve,reject)=>{
            let blockedUsers = await db.get().collection(collection.USER_COLLECTION).find({status:false}).toArray()
-           resolve(blockedUSers)
+           resolve(blockedUsers)
         })
     },
 

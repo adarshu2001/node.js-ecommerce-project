@@ -38,6 +38,11 @@
     <span class="logo-name">YOK, Hi Admin</span>
   </div>
   <ul class="nav-links">
+     <li>
+      <a href="">
+        <i id="bar-close" class="fas fa-times"></i>
+      </a>
+    </li>
     <li>
       <a href="/admin">
         <i class="fas fa-laptop"></i>
@@ -139,6 +144,9 @@
 <div id="navbar">
   <div class="nav">
     <div class="n1">
+      <div>
+        <i id="menu-bar" class="fas fa-bars"></i>
+      </div>
       <div class="search">
         <i class="fas fa-search"></i>
         <input type="text" placeholder="Search">
@@ -151,4 +159,25 @@
   </div>
 </div>
 </section>
+
+
+<script>
+const bar = document.getElementById('menu-bar')
+const sidebar = document.querySelector('.sidebar')
+const close = document.getElementById('bar-close')
+
+   if (bar) {
+        bar.addEventListener('click', () => {
+            sidebar.classList.add('active')
+        })
+    }
+   if (close) {
+        close.addEventListener('click', () => {
+            nav.classList.remove('active')
+        })
+    }
+
+</script>
+
+
 

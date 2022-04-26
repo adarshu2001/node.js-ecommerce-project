@@ -12,14 +12,16 @@ const verifyLogin = (req,res,next)=>{
   }
 }
 
+
 const serviceSID = "VAa5825b37fce8ba7f9023f34ea97a84de"
 const accountSID = "AC02f399e851af5313a6e373d3a99f44ca"
-const authToken = "94661f2c7dae0d11e84620691316c8e4"
+const authToken = "6d93abe3c99d49fe33c2570035d079f0"
 const client = require('twilio')(accountSID, authToken)
 
 /* GET home page. */
 router.get('/',async function(req, res, next) {
   let banners = await productHelpers.getHomeBanners()
+  let latestPro = await productHelpers.latestPro()
   let user = req.session.user
   let cartCount = null
   let whishlistCount = null
@@ -29,8 +31,9 @@ router.get('/',async function(req, res, next) {
   }
   productHelpers.getAllProducts().then((products)=>{
     console.log(products);
-    res.render('users/home-page',{products, admin:false,user,cartCount,whishlistCount,banners})
+    res.render('users/home-page',{products, admin:false,user,cartCount,whishlistCount,banners,latestPro})
   })
+  
 });
 
 router.get('/single-product/:id',verifyLogin,async(req,res)=>{

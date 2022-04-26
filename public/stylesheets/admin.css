@@ -16,6 +16,9 @@ body {
 #admin-header {
     display: flex;
 }
+#bar-close {
+    display: none;
+}
 
 .sidebar {
     position: fixed;
@@ -131,7 +134,19 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 15px 30px; 
-} 
+}
+#navbar .nav .n1 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#navbar .nav #menu-bar {
+    display: none   ;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 20px;
+}
 #navbar .nav .search {
     display: flex;
     justify-content: flex-start;
@@ -197,6 +212,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* flex-wrap: wrap; */
 }
 #dashboard .values {
     padding: 30px 30px 0 30px;
@@ -1282,6 +1298,108 @@ body {
 
 /* **********All Banner Ends********* */
 
+
+/* ******Media Quary********** */
+
+
+
+/* @media (max-width:799px) {
+    .sidebar {
+        position: fixed;
+        left: -360px;
+        width: 360px;
+    }
+    .sidebar.active {
+        left: 0px;
+        opacity: 1;
+    }
+    #navbar {
+        width: 100%;
+        margin-left: 0px;
+    }
+    #navbar .nav #menu-bar {
+        display: initial;
+    }
+    #dashboard {
+        margin: 130px 0px;
+    }
+    #dashboard .head {
+        margin-left: 90px;
+    }
+    #dashboard .container {
+        justify-content: center;
+    }
+    #dashboard .values {
+        padding: 30px 30px 0 30px;
+    }
+    #dashboard .chart-box {
+        margin: 10px 0 0 0px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;
+    }
+    #dashboard .chart-box .chartPay {
+        width: 60%;
+        margin-left: 170px;
+    }
+    #dashboard .chart-box .chartStat {
+        width: 70%;
+        margin-left: 100px;
+    }
+    #dashboard .chart-box .chartStat h3 {
+        margin-left: 120px;
+      
+    }
+    #all-users {
+        margin: 150px 0px;
+        width: 100%;
+    }
+    #all-users h3 {
+        margin-left: 300px;
+        font-size: 30px;
+    }
+    #all-users  .board {
+        width: 100%;  
+    }
+    #view-pro {
+        margin: 150px 0px;
+        overflow-x: auto;
+        width: 100%;
+    }
+    #view-pro h3 {
+        margin-left: 300px;
+        font-size: 30px;
+    }
+    #add-pro .address-details h3 {
+        padding: 20px 10px;
+    }
+    #add-pro .pro-img {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        top: -5%;
+        right: 10%;
+    }
+    #add-pro .pro-img .img1, #add-pro .pro-img .img2, #add-pro .pro-img .img3, #add-pro .pro-img .img4 {
+        width: 300px;
+        height: 200px;
+        margin-top: 85px;
+    }
+    #add-pro .add-btn {
+        
+        position: relative;
+        top: 2%;
+        right: 40%;
+
+    }
+
+    
+}
+ */
 
 
 

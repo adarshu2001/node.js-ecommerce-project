@@ -1,4 +1,4 @@
-
+{{!-- 
 <div class="wrapper">
   <div class="logo">
     <img
@@ -26,4 +26,34 @@
     or
     <a href="/admin/admin-signup">Sign up</a>
   </div>
-</div>
+</div> --}}
+
+{{!-- 
+<section id="login">
+  <div class="log-box">
+  <div class="logo">
+    <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsknnF7jnlbmAf3aazRP8nkR4JJqJIfNe-Zw&usqp=CAU" alt="">
+  </div>
+
+  <div class="log-details">
+    <h3>Login</h3>
+        {{#if loginErr}}
+       <div class="logErr"><p>{{loginErr}}</p></div>
+        {{/if}}
+    <form action="/admin/admin-login" method="post">
+      <span><i class="fas fa-user"></i></span>
+      <input type="text" name="Mobile" placeholder="Enter Your Phone "><br>
+      <span><i class="fas fa-lock"></i></span>
+      <input type="password" name="Password" placeholder="Enter Your Password"><br>
+      <button type="submit">Login</button>
+        <div class="forgot">
+           <a href="/forgotpswd">Forgot Password ?</a>
+        </div>
+    </form>
+  </div>
+    <div class="signotp">
+      <div><a href="/signup">Sign Up</a></div>
+      <div><a href="/verifyMobile">Login With OTP</a></div>
+    </div>
+  </div>
+</section> --}}
