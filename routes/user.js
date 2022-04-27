@@ -30,19 +30,18 @@ router.get('/',async function(req, res, next) {
     cartCount = await userHelpers.getCartCount(req.session.user._id)
   }
   productHelpers.getAllProducts().then((products)=>{
-    console.log(products);
     res.render('users/home-page',{products, admin:false,user,cartCount,whishlistCount,banners,latestPro})
   })
   
 });
 
 router.get('/single-product/:id',verifyLogin,async(req,res)=>{
-  console.log("Product Id" + req.params.id);
+  let relatedPro = await userHelpers.relatedProduct(req.params.id)
+  console.log(relatedPro);
   let product = await userHelpers.singleProduct(req.params.id)
-  console.log(product);
   let cartCount = null
    cartCount = await userHelpers.getCartCount(req.session.user._id)
-  res.render('users/single-product',{user:req.session.user,product,cartCount})
+  res.render('users/single-product',{user:req.session.user,product,cartCount,relatedPro})
 })
 
 router.get('/men',async(req,res) => {
@@ -125,7 +124,6 @@ router.post('/otp',(req,res)=>{
 //   })
 // })
 router.post('/login',(req,res)=>{
-  console.log(req.body);
   userHelpers.doLogin(req.body).then((response)=>{
     if(response.status){  
       req.session.user = response.user
@@ -445,6 +443,7 @@ router.post('/verify-payment',(req,res)=>{
 
 router.get('/user-profile',async(req,res)=>{
   let id = req.session.user._id
+  let cartCount = await userHelpers.getCartCount(req.session.user._id)
   let user = await userHelpers.userProfile(id)
   let status = await userHelpers.addressChecker(id)
   var address = null

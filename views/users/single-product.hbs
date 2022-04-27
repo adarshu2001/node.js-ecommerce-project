@@ -58,11 +58,12 @@
   <h2>Related Products</h2>
   <p>Summer Collection New Morden Design</p>
   <div class="pro-container">
+    {{#each relatedPro}}
     <div class="pro">
-      <img src="/images/shirt.jpg" alt="" />
+      <img  src="/product-images/{{this._id}}a.jpg" alt="" onclick=" window.location.href='/single-product/{{this._id}}'" />
       <div class="des">
-        <span>addidas</span>
-        <h5>Cartoon Astronaut T-Shirt</h5>
+      <span>{{this.brand}}</span>
+        <h5>{{this.name}}</h5>
         <div class="star">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
@@ -70,63 +71,16 @@
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
         </div>
-        <h4>Rs : 200</h4>
-      </div>
-      <button class="whlist"><i class="fas fa-heart"></i></button>
-      <button class="cart"><i class="fas fa-shopping-cart"></i></button>
-    </div>
-    <div class="pro">
-      <img src="/images/shirt.jpg" alt="" />
-      <div class="des">
-        <span>addidas</span>
-        <h5>Cartoon Astronaut T-Shirt</h5>
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
+        <div class="offer">
+        <h4>Rs : {{this.price}}</h4> {{#if percentage}} <span class="offrPer"> <p> GET {{this.percentage}}% OFF </p> </span> {{/if}}
+        {{#if actualPrice}} <span class="offrPrc"> <h4>{{this.actualPrice}}</h4> </span> {{/if}}
+        
         </div>
-        <h4>Rs : 200</h4>
       </div>
-      <button class="whlist"><i class="fas fa-heart"></i></button>
+      <button onclick="addToWhishlist('{{this._id}}')" class="whlist"><i class="far fa-heart"></i></button>
       <button class="cart"><i class="fas fa-shopping-cart"></i></button>
     </div>
-    <div class="pro">
-      <img src="/images/shirt.jpg" alt="" />
-      <div class="des">
-        <span>addidas</span>
-        <h5>Cartoon Astronaut T-Shirt</h5>
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h4>Rs : 200</h4>
-      </div>
-      <button class="whlist"><i class="fas fa-heart"></i></button>
-      <button class="cart"><i class="fas fa-shopping-cart"></i></button>
-    </div>
-    <div class="pro">
-      <img src="/images/shirt.jpg" alt="" />
-      <div class="des">
-        <span>addidas</span>
-        <h5>Cartoon Astronaut T-Shirt</h5>
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h4>Rs : 200</h4>
-      </div>
-      <button class="whlist"><i class="fas fa-heart"></i></button>
-      <button class="cart"><i class="fas fa-shopping-cart"></i></button>
-    </div>
-
+    {{/each}}
   </div>
 </section>
 
@@ -144,7 +98,7 @@
 
 <footer>
   <div class="col">
-    <img src="/logo-img/logo.png" alt="" />
+    {{!-- <img src="/logo-img/logo.png" alt="" /> --}}
     <h4>Contact</h4>
     <p><strong>Address :
       </strong>adaaddadadaddaadaddadaddadadadadadadadadadaddadadadad</p>

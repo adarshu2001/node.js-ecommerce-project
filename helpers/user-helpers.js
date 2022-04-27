@@ -287,6 +287,17 @@ module.exports = {
 
     },
 
+    relatedProduct: (proId) => {
+        return new Promise(async(resolve,reject) => {
+           let product = await db.get().collection(collection.PRODUCT_COLLECTION).findOne( {_id: objectId(proId)} )
+           let cat = product.Scategory
+           let catPro = await db.get().collection(collection.PRODUCT_COLLECTION).find( {Scategory: cat} ).toArray()
+           resolve(catPro)
+        
+        })
+        
+    },
+
     getCartCount:(userId)=>{    
         return new Promise(async(resolve,reject)=>{
             let count = 0

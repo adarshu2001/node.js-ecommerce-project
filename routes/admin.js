@@ -107,22 +107,7 @@ router.get('/add-product',async(req,res)=>{
   let category = await productHelpers.categoryDetails()
   res.render('admin/add-product',{admin:true,brand,category})
 })
-// router.post('/add-product',(req,res)=>{
-//   console.log(req.body);
-//   productHelpers.addProduct(req.body).then((id)=>{
-//     let img1 = req.files.img1
-//     let img2 = req.files.img2
-//     let img3 = req.files.img3
-//     let img4 = req.files.img4
-//     image.mv('./public/product-images/'+id+'.jpg',(err,done)=>{
-//       if (!err) {
-//         res.render('admin/add-product')
-//       }else{
-//         console.log(err);
-//       }
-//     })
-//   })
-// })
+
 router.post('/add-product',(req,res)=>{
   console.log(req.body);
   productHelpers.addProduct(req.body).then((id)=>{
@@ -192,33 +177,33 @@ router.post('/edit-product/:id',(req,res)=>{
   })
   res.redirect('/admin/view-products')
 })
-router.get('/admin-login',(req,res)=>{
-  if (req.session.adminLoggedIn){
-    res.redirect('/admin/admin-login',{"logginErr":req.session.logginErr})
-  }
-  res.render('admin/admin-login',{admin:true})
-})
-router.get('/admin-signup',(req,res)=>{
-  res.render('admin/signup')
-})
-router.post('/admin-signup',(req,res)=>{
-  productHelpers.adminDoSignup(req.body).then((response)=>{
+// router.get('/admin-login',(req,res)=>{
+//   if (req.session.adminLoggedIn){
+//     res.redirect('/admin/admin-login',{"logginErr":req.session.logginErr})
+//   }
+//   res.render('admin/admin-login',{admin:true})
+// })
+// router.get('/admin-signup',(req,res)=>{
+//   res.render('admin/signup')
+// })
+// router.post('/admin-signup',(req,res)=>{
+//   productHelpers.adminDoSignup(req.body).then((response)=>{
   
-  })
+//   })
 
-})
-router.post('/admin-login',(req,res)=>{
-  productHelpers.adminDoLogin(req.body).then((responseAdmin)=>{
-    if (responseAdmin.status) {
-      req.session.admin = responseAdmin.admin
-      req.session.adminLoggedIn = true
-      console.log("This is Admin");
-      res.redirect('/admin')
-    }else{
-      req.session.logginErr = true
-    }
-  })
-})
+// })
+// router.post('/admin-login',(req,res)=>{
+//   productHelpers.adminDoLogin(req.body).then((responseAdmin)=>{
+//     if (responseAdmin.status) {
+//       req.session.admin = responseAdmin.admin
+//       req.session.adminLoggedIn = true
+//       console.log("This is Admin");
+//       res.redirect('/admin')
+//     }else{
+//       req.session.logginErr = true
+//     }
+//   })
+// })
 
 router.get('/view-user',async(req,res)=>{
   let allUsers = await productHelpers.getAllUsers()
