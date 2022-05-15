@@ -15,7 +15,7 @@ const verifyLogin = (req,res,next)=>{
 
 const serviceSID = "VAa5825b37fce8ba7f9023f34ea97a84de"
 const accountSID = "AC02f399e851af5313a6e373d3a99f44ca"
-const authToken = "762626242967808e1f44c8e9deeda7a9"
+const authToken = "9c8c268e3be5abf48175edbba834a7e6"
 const client = require('twilio')(accountSID, authToken)
 
 /* GET home page. */
@@ -154,7 +154,6 @@ router.post('/otp',(req,res)=>{
   }).then(async(resp)=>{
     if (resp.valid) {
       let signUpData = req.session.doSignUp
-      console.log(signUpData);
       userHelpers.doSignUp(signUpData).then(async() => {
         let user = await userHelpers.getUserDetails(number)
         req.session.userLoggedIn = true
@@ -432,6 +431,7 @@ router.get('/place-order',verifyLogin ,async(req,res)=>{
   }else {
     total = await userHelpers.getTotalAmount(req.session.user._id)
   }
+    
   var address = null
   let status = await userHelpers.addressChecker(req.session.user._id)
   var address = null
@@ -439,7 +439,6 @@ router.get('/place-order',verifyLogin ,async(req,res)=>{
     let addrs = await userHelpers.getUserAddress(req.session.user._id)
     let length = addrs.length
     address = addrs.slice(length -2, length)
-    console.log("sdddd"+ address);
     res.render('users/place-order',{user:req.session.user,total,address})
   }
   //  let addrs = userHelpers.getUserAddress(req.session.user._id)
@@ -464,8 +463,7 @@ router.post('/place-order',async(req,res)=>{
     }else{
       userHelpers.generateRazorpay(orderId,total).then((response)=>{
         console.log("response"+response);
-        res.json(response)
-
+        res.json(response)  
       })
     }
   })
@@ -507,7 +505,7 @@ router.get('/user-profile',async(req,res)=>{
     let length = addrs.length
     address = addrs.slice(length -2, length)
     console.log("sdddd"+ address);
-    res.render('users/user-profile',{user,user:req.session.user,address})
+    res.render('users/user-profile',{user,user:req.session.user,address,cartCount})
   }else {
     res.render('users/user-profile',{user,user:req.session.user})
   }
@@ -545,6 +543,7 @@ router.post('/couponSubmit',(req,res)=> {
   let id = req.session.user._id
   req.session.Ccode = req.body.couponCode
   userHelpers.couponValidate(req.body,id).then((response) => {
+    console.log(response);
     req.session.Ctotal = response.total
      if (response.Success) {
        res.json({couponSuccess:true,total:response.total})

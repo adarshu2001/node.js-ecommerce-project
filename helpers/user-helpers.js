@@ -396,8 +396,8 @@ module.exports = {
 
     },
     placeOrder:(order,products,total,coupon)=>{
+        console.log(order,products,total,coupon);
         return new Promise((resolve,reject)=>{
-            console.log(order,products,total,coupon);
             let couponC = coupon
             let status=order['payment-method']==='COD'?'Placed':'Pending'
             let dateIso = new Date()
@@ -687,8 +687,7 @@ module.exports = {
         return new Promise(async(resolve,reject) => {
             let data = {}
             let date = new Date()
-            date = moment(data).format('DD/MM/YYYY')
-            console.log(date);
+            date = moment(data).format('DD-MM-YYYY')
             let coupon = await db.get().collection(collection.COUPON_OFFER).findOne({coupon:Cdata.couponCode})
             if (coupon) {
                 let users = coupon.users
@@ -704,7 +703,6 @@ module.exports = {
                         data.total=total-discountAmt
                         let Cprice=data.total
                         data.Success=true
-                        console.log(data.total);
                         resolve(data)
                     }else{
                         data.couponExpire=true
