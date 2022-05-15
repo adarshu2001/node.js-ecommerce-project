@@ -12,10 +12,9 @@ const verifyLogin = (req,res,next)=>{
   }
 }
 
-
-const serviceSID = "VAa5825b37fce8ba7f9023f34ea97a84de"
-const accountSID = "AC02f399e851af5313a6e373d3a99f44ca"
-const authToken = "9c8c268e3be5abf48175edbba834a7e6"
+const serviceSID = process.env.serviceSID
+const accountSID = process.env.accountSID
+const authToken = process.env.authToken
 const client = require('twilio')(accountSID, authToken)
 
 /* GET home page. */
