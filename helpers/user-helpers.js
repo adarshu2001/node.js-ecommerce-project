@@ -9,10 +9,9 @@ const { response } = require('../app')
 const moment = require('moment')
 const { log } = require('console')
 var instance = new Razorpay({
-    key_id: 'rzp_test_r5p0n7ioSfr096',
-    key_secret: 'Xn5Z95nZRUwtCubL4SdoAS58',
+    key_id: process.env.key_id,
+    key_secret: process.env.key_secret,
   });
-
 module.exports = {
 
     doSignUp:(userData)=>{
